@@ -8,7 +8,15 @@ export type PropertyValue = string | number | boolean | null;
 export interface PropertyDefinition {
   id: string;
   name: string;
-  type: 'text' | 'number' | 'boolean' | 'date' | 'url' | 'color' | 'image';
+  type:
+    | 'text'
+    | 'number'
+    | 'boolean'
+    | 'date'
+    | 'url'
+    | 'color'
+    | 'image'
+    | 'icon';
 }
 
 export default interface Entry {
@@ -18,8 +26,6 @@ export default interface Entry {
   type: EntryType;
 
   title: string;
-  icon: string | null;
-  color: string | null;
 
   properties: Record<string, PropertyValue>;
 
