@@ -12,9 +12,9 @@ export default class EntryRepository {
     await db.delete('entries', id);
   }
 
-  async update(id: string, entry: Entry) {
+  async update(entry: Entry) {
     const db = await dbPromise;
-    await db.delete('entries', id);
+    entry.updatedAt = Date.now();
     await db.put('entries', entry);
   }
 
