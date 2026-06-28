@@ -31,6 +31,11 @@ export default class EntryRepository {
 
     this.verifyIfEntryExists(entry);
 
+    const children = await this.getChildren(entry.id);
+    for (const child of children) {
+      await this.delete(child.id);
+    }
+
     await db.delete('entries', id);
   }
 
