@@ -9,6 +9,7 @@
   --color-primary-700: var(--primary-700);
   --color-primary-800: var(--primary-800);
   --color-primary-900: var(--primary-900);
+  --color-primary-base: var(--primary-base);
   --color-secondary-50: var(--secondary-50);
   --color-secondary-100: var(--secondary-100);
   --color-secondary-200: var(--secondary-200);
@@ -19,6 +20,7 @@
   --color-secondary-700: var(--secondary-700);
   --color-secondary-800: var(--secondary-800);
   --color-secondary-900: var(--secondary-900);
+  --color-secondary-base: var(--secondary-base);
   --color-tertiary-50: var(--tertiary-50);
   --color-tertiary-100: var(--tertiary-100);
   --color-tertiary-200: var(--tertiary-200);
@@ -29,6 +31,7 @@
   --color-tertiary-700: var(--tertiary-700);
   --color-tertiary-800: var(--tertiary-800);
   --color-tertiary-900: var(--tertiary-900);
+  --color-tertiary-base: var(--tertiary-base);
   --color-neutral-50: var(--neutral-50);
   --color-neutral-100: var(--neutral-100);
   --color-neutral-200: var(--neutral-200);
@@ -39,6 +42,7 @@
   --color-neutral-700: var(--neutral-700);
   --color-neutral-800: var(--neutral-800);
   --color-neutral-900: var(--neutral-900);
+  --color-neutral-base: var(--neutral-base);
   --color-neutral-variant-50: var(--neutral-variant-50);
   --color-neutral-variant-100: var(--neutral-variant-100);
   --color-neutral-variant-200: var(--neutral-variant-200);
@@ -49,6 +53,7 @@
   --color-neutral-variant-700: var(--neutral-variant-700);
   --color-neutral-variant-800: var(--neutral-variant-800);
   --color-neutral-variant-900: var(--neutral-variant-900);
+  --color-neutral-variant-base: var(--neutral-variant-base);
   --color-error-50: var(--error-50);
   --color-error-100: var(--error-100);
   --color-error-200: var(--error-200);
@@ -59,6 +64,7 @@
   --color-error-700: var(--error-700);
   --color-error-800: var(--error-800);
   --color-error-900: var(--error-900);
+  --color-error-base: var(--error-base);
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-surface-alt: var(--surface-alt);

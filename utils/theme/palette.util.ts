@@ -18,10 +18,6 @@ export default function createPalette(base: string): Palette {
     700: scale[7],
     800: scale[8],
     900: scale[9],
-    hover: chroma(base).brighten(0.5).hex(),
-    active: chroma(base).darken(0.5).hex(),
-    focus: chroma(base).saturate(1).hex(),
-    base: base,
   };
 
   return palette;

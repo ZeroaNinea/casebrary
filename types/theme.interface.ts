@@ -18,6 +18,12 @@ export default interface Theme {
   neutral: Palette;
   neutralVariant: Palette;
   error: Palette;
+  primaryBase: string;
+  secondaryBase: string;
+  tertiaryBase: string;
+  neutralBase: string;
+  neutralVariantBase: string;
+  errorBase: string;
   bg: string;
   surface: string;
   surfaceAlt: string;

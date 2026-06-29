@@ -9,8 +9,4 @@ export type Palette = {
   '700': string;
   '800': string;
   '900': string;
-  hover: string;
-  active: string;
-  focus: string;
-  base: string;
 };

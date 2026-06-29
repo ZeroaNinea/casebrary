@@ -18,6 +18,12 @@ export default function createTheme(
   if (mode === 'light') {
     const theme: Theme = {
       ...palettes,
+      primaryBase: primary,
+      secondaryBase: secondary,
+      tertiaryBase: tertiary,
+      neutralBase: neutral,
+      neutralVariantBase: neutralVariant,
+      errorBase: error,
       bg: palettes.neutral['50'],
       surface: palettes.neutral['900'],
       surfaceAlt: palettes.neutral['800'],
@@ -33,6 +39,12 @@ export default function createTheme(
   } else {
     const theme = {
       ...palettes,
+      primaryBase: primary,
+      secondaryBase: secondary,
+      tertiaryBase: tertiary,
+      neutralBase: neutral,
+      neutralVariantBase: neutralVariant,
+      errorBase: error,
       bg: palettes.neutral['900'],
       surface: palettes.neutral['50'],
       surfaceAlt: palettes.neutral['100'],
