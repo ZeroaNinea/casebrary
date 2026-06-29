@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import reactLogo from '@/assets/react.svg';
 import wxtLogo from '/wxt.svg';
+
+import i18n from '@/utils/i18n';
+
 import './App.css';
 
 function App() {
@@ -31,6 +34,8 @@ function App() {
         Click on the WXT and React logos to learn more
       </p>
       <p>{t('helloWorld')}</p>
+      <button onClick={() => i18n.changeLanguage('ru')}>RU</button>
+      <button onClick={() => i18n.changeLanguage('en')}>EN</button>
     </>
   );
 }
