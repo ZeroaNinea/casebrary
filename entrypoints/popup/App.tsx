@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { createI18n } from '@wxt-dev/i18n';
+import { useTranslation } from 'react-i18next';
 import reactLogo from '@/assets/react.svg';
 import wxtLogo from '/wxt.svg';
 import './App.css';
 
 function App() {
   const [count, setCount] = useState(0);
-  const t = createI18n().t;
+  const { t } = useTranslation();
 
   return (
     <>
