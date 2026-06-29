@@ -2,15 +2,23 @@ import createPalette from './palette.util';
 
 import Theme from '@/types/theme.interface';
 
-export default function createTheme(
-  primary: string,
-  secondary: string,
-  tertiary: string,
-  neutral: string,
-  neutralVariant: string,
-  error: string,
-  mode: 'light' | 'dark' = 'light',
-): Theme {
+export default function createTheme({
+  primary,
+  secondary,
+  tertiary,
+  neutral,
+  neutralVariant,
+  error,
+  mode = 'light',
+}: {
+  primary: string;
+  secondary: string;
+  tertiary: string;
+  neutral: string;
+  neutralVariant: string;
+  error: string;
+  mode: 'light' | 'dark';
+}): Theme {
   const palettes = {
     primary: createPalette(primary, mode),
     secondary: createPalette(secondary, mode),
