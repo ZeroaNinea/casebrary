@@ -1,18 +1,23 @@
 import Theme from '@/types/theme.interface';
 
+function toKebabCase(text: string) {
+  return text.replace(/[A-Z]/g, (c) => `-${c.toLowerCase()}`);
+}
+
 export default function applyTheme(theme: Theme) {
   const root = document.documentElement;
 
-  root.style.setProperty('--bg', theme.bg);
-  root.style.setProperty('--surface', theme.surface);
-  root.style.setProperty('--surface-alt', theme.surfaceAlt);
+  for (const [key, value] of Object.entries(theme)) {
+    if (typeof value === 'string') {
+      root.style.setProperty(`--${toKebabCase(key)}`, value);
+    }
+  }
 
-  root.style.setProperty('--text', theme.text);
-  root.style.setProperty('--text-muted', theme.textMuted);
+  for (const [paletteName, palette] of Object.entries(theme)) {
+    if (typeof palette !== 'object') continue;
 
-  root.style.setProperty('--border', theme.border);
-
-  root.style.setProperty('--accent', theme.accent);
-  root.style.setProperty('--accent-hover', theme.accentHover);
-  root.style.setProperty('--accent-active', theme.accentActive);
+    for (const [shade, color] of Object.entries(palette)) {
+      root.style.setProperty(`--${paletteName}-${shade}`, color as string);
+    }
+  }
 }
