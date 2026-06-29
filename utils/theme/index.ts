@@ -1,4 +1,3 @@
-import { Palette } from '@/types/palette.alias';
 import createPalette from './palette.util';
 
 import Theme from '@/types/theme.interface';
