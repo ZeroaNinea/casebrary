@@ -1,14 +1,15 @@
 import { Palette } from './palette.alias';
 
-export interface ThemeOptions {
+export interface ThemeColors {
   primary: string;
   secondary: string;
   tertiary: string;
   neutral: string;
   neutralVariant: string;
   error: string;
-  mode: 'light' | 'dark';
 }
+
+export type ThemeMode = 'light' | 'dark';
 
 export default interface Theme {
   primary: Palette;
