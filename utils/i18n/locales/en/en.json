@@ -1,4 +1,6 @@
 {
   "folder": "Folder",
-  "note": "Note"
+  "note": "Note",
+  "searchLabel": "Search",
+  "searchRecords": "Search records..."
 }

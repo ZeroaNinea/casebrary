@@ -1,6 +1,6 @@
 // import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Menu, Settings, Globe, Plus } from 'lucide-react';
+import { Menu, Settings, Globe, Plus, Search, Delete } from 'lucide-react';
 
 // import i18n from '@/utils/i18n';
 
@@ -9,6 +9,7 @@ import './App.css';
 // import RippleButton from '@/entrypoints/components/ripple-button';
 import IconButton from '@/entrypoints/components/buttons/icon-button';
 import FilledButton from '@/entrypoints/components/buttons/filled-button';
+import SearchField from '@/entrypoints/components/search-field';
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -43,6 +44,15 @@ function App() {
           <Plus size={16} color="var(--color-on-primary-container)" />
           <span className="text-on-primary-container text-sm">{t('note')}</span>
         </FilledButton>
+      </div>
+      <div className="px-3 py-3">
+        <SearchField
+          label={t('searchLabel')}
+          placeholder={t('searchRecords')}
+          // onChange={(value) => {
+          //   // TODO: filter entries
+          // }}
+        />
       </div>
       <div className="mb-2"></div>
     </>

@@ -1,4 +1,6 @@
 {
   "folder": "Папка",
-  "note": "Заметка"
+  "note": "Заметка",
+  "searchLabel": "Поиск",
+  "searchRecords": "Поиск записей..."
 }
