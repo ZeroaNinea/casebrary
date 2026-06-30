@@ -1,13 +1,17 @@
 import { createSlice } from '@reduxjs/toolkit';
 import EntriesState from '@/types/entries-state.interface';
-import { fetchEntries } from './entries.thunks';
+import {
+  fetchEntries,
+  createEntry as createEntryThunk,
+} from './entries.thunks';
+import Entry from '@/types/entry.interface';
 
 export const entriesSlice = createSlice({
   name: 'entries',
   initialState: {
     entries: [],
     loading: false,
-    error: undefined,
+    error: null,
   } as EntriesState,
   reducers: {
     createEntry(state, action) {
@@ -18,7 +22,7 @@ export const entriesSlice = createSlice({
     builder
       .addCase(fetchEntries.pending, (state) => {
         state.loading = true;
-        state.error = undefined;
+        state.error = null;
       })
       .addCase(fetchEntries.fulfilled, (state, action) => {
         state.loading = false;
@@ -26,9 +30,13 @@ export const entriesSlice = createSlice({
       })
       .addCase(fetchEntries.rejected, (state, action) => {
         state.loading = false;
-        state.error = action.error.message;
+        state.error = action.error.message || null;
+      })
+      .addCase(createEntryThunk.fulfilled, (state, action) => {
+        state.entries.push(action.payload);
       });
   },
 });
 
+export const { createEntry } = entriesSlice.actions;
 export default entriesSlice;

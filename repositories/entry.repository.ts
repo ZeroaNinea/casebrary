@@ -1,5 +1,5 @@
-import { dbPromise } from '../../database/db';
-import Entry from '../../types/entry.interface';
+import { dbPromise } from '../database/db';
+import Entry from '@/types/entry.interface';
 
 export default class EntryRepository {
   private verifyTitleIdAndType(entry: Entry) {
