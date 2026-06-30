@@ -1,24 +1,10 @@
 @import 'tailwindcss';
 @import './theme.css';
 
-/* @import '../../utils/theme/theme.css'; */
-/* 
-@theme inline {
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-surface-alt: var(--surface-alt);
-  --color-border: var(--border);
-  --color-text: var(--text);
-  --color-text-muted: var(--text-muted);
-  --color-accent: var(--accent);
-  --color-accent-hover: var(--accent-hover);
-  --color-accent-active: var(--accent-active);
-} */
-
-/* div {
-  background-color: var(--surface);
-  color: var(--text);
-} */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
 
 /* :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
