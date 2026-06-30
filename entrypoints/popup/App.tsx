@@ -6,8 +6,9 @@ import { Menu, Settings, Globe, Plus } from 'lucide-react';
 
 import './App.css';
 
-import RippleButton from '@/entrypoints/components/ripple-button';
+// import RippleButton from '@/entrypoints/components/ripple-button';
 import IconButton from '@/entrypoints/components/icon-button';
+import FilledButton from '@/entrypoints/components/filled-button';
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -32,30 +33,16 @@ function App() {
         </div>
       </div>
       <div className="flex gap-2 px-3">
-        <RippleButton
-          mode="light"
-          className="flex items-center gap-1 px-2 py-1
-          bg-primary-container-filled hover:bg-primary-container-filled-hover
-          rounded-md cursor-pointer
-          transition-all duration-200"
-          classnamesonclick={['bg-primary-container-filled-hover']}
-        >
+        <FilledButton title="Folder">
           <Plus size={16} color="var(--color-on-primary-container)" />
           <span className="text-on-primary-container text-sm">
             {t('folder')}
           </span>
-        </RippleButton>
-        <RippleButton
-          mode="light"
-          className="flex items-center gap-1 px-2 py-1
-          bg-primary-container-filled hover:bg-primary-container-filled-hover
-          rounded-md cursor-pointer
-          transition-all duration-200"
-          classnamesonclick={['bg-primary-container-filled-hover']}
-        >
+        </FilledButton>
+        <FilledButton title="Note">
           <Plus size={16} color="var(--color-on-primary-container)" />
           <span className="text-on-primary-container text-sm">{t('note')}</span>
-        </RippleButton>
+        </FilledButton>
       </div>
       <div className="mb-2"></div>
     </>
