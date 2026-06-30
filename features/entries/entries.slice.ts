@@ -4,7 +4,6 @@ import {
   fetchEntries,
   createEntry as createEntryThunk,
 } from './entries.thunks';
-import Entry from '@/types/entry.interface';
 
 export const entriesSlice = createSlice({
   name: 'entries',
