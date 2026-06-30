@@ -7,8 +7,8 @@ import { Menu, Settings, Globe, Plus } from 'lucide-react';
 import './App.css';
 
 // import RippleButton from '@/entrypoints/components/ripple-button';
-import IconButton from '@/entrypoints/components/icon-button';
-import FilledButton from '@/entrypoints/components/filled-button';
+import IconButton from '@/entrypoints/components/buttons/icon-button';
+import FilledButton from '@/entrypoints/components/buttons/filled-button';
 
 function App() {
   // const [count, setCount] = useState(0);

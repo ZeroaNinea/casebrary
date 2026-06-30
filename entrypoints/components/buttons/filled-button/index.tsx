@@ -1,5 +1,5 @@
 import React from 'react';
-import RippleButton from '@/entrypoints/components/ripple-button';
+import RippleButton from '../ripple-button';
 
 export default function FilledButton({
   children,
