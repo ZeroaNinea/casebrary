@@ -35,6 +35,9 @@ export default function createTheme(
       accentActive: palettes.secondary['700'],
       primaryTitle: palettes.primary['900'],
       primaryContainer: palettes.primary['100'],
+      primaryContainerFilled: palettes.primary['600'],
+      primaryContainerFilledHover: palettes.primary['700'],
+      onPrimaryContainer: palettes.primary['50'],
     };
 
     return theme;
@@ -58,6 +61,9 @@ export default function createTheme(
       accentActive: palettes.secondary['200'],
       primaryTitle: palettes.primary['100'],
       primaryContainer: palettes.primary['800'],
+      primaryContainerFilled: palettes.primary['500'],
+      primaryContainerFilledHover: palettes.primary['400'],
+      onPrimaryContainer: palettes.primary['900'],
     };
 
     return theme;

@@ -80,4 +80,7 @@
     var(--primary-container) 60%,
     transparent
   );
+  --color-primary-container-filled: var(--primary-container-filled);
+  --color-primary-container-filled-hover: var(--primary-container-filled-hover);
+  --color-on-primary-container: var(--on-primary-container);
 }

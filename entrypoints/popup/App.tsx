@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 // import reactLogo from '@/assets/react.svg';
 // import wxtLogo from '/wxt.svg';
 
-import { Menu, Settings, Globe } from 'lucide-react';
+import { Menu, Settings, Globe, Plus } from 'lucide-react';
 
 import i18n from '@/utils/i18n';
 
@@ -45,6 +45,20 @@ function App() {
           </RippleButton>
         </div>
       </div>
+      <div className="flex px-3">
+        <RippleButton
+          mode="light"
+          className="flex items-center gap-1 px-2 py-1
+          bg-primary-container-filled hover:bg-primary-container-filled-hover
+          rounded-md cursor-pointer"
+        >
+          <Plus size={16} color="var(--color-on-primary-container)" />
+          <span className="text-on-primary-container text-sm">
+            {t('folder')}
+          </span>
+        </RippleButton>
+      </div>
+      <div className="mb-2"></div>
       {/* <div className="bg-primary-500">
         <a href="https://wxt.dev" target="_blank">
           <img src={wxtLogo} className="logo" alt="WXT logo" />
