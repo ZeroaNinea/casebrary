@@ -35,6 +35,8 @@ export default interface Theme {
   accentActive: string;
   primaryTitle: string;
   primaryContainer: string;
+  primaryContainerHover: string;
+  primaryOnContainer: string;
   primaryContainerFilled: string;
   primaryContainerFilledHover: string;
   onPrimaryContainer: string;

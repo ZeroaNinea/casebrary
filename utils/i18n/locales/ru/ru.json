@@ -2,5 +2,6 @@
   "folder": "Папка",
   "note": "Заметка",
   "searchLabel": "Поиск",
-  "searchRecords": "Поиск записей..."
+  "searchRecords": "Поиск записей...",
+  "back": "Назад"
 }
