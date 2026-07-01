@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Menu, Settings, Globe, Plus } from 'lucide-react';
 
@@ -10,11 +10,14 @@ import './App.css';
 import IconButton from '@/entrypoints/components/buttons/icon-button';
 import FilledButton from '@/entrypoints/components/buttons/filled-button';
 import SearchField from '@/entrypoints/components/search-field';
+import EntryEditorPage from '@/entrypoints/components/pages/entry-editor.page';
 
 import { useAppDispatch, useAppSelector } from '@/utils/store';
 import { fetchEntries } from '@/features/entries/entries.thunks';
 
 function App() {
+  const [showEntryEditor, setShowEntryEditor] = useState(false);
+
   const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
@@ -28,7 +31,7 @@ function App() {
   console.log(entries);
 
   return (
-    <>
+    <div className="w-100 overflow-x-hidden">
       <div className="flex justify-between w-100 p-2">
         <div className="flex gap-2 items-center">
           <IconButton title="Menu">
@@ -46,7 +49,11 @@ function App() {
         </div>
       </div>
       <div className="flex gap-2 px-3">
-        <FilledButton title="Folder">
+        <FilledButton
+          title="Folder"
+          isState={true}
+          onClick={() => setShowEntryEditor(true)}
+        >
           <Plus size={16} color="var(--color-on-primary-container)" />
           <span className="text-on-primary-container text-sm">
             {t('folder')}
@@ -67,7 +74,8 @@ function App() {
         />
       </div>
       <div className="mb-2"></div>
-    </>
+      <EntryEditorPage show={showEntryEditor} />
+    </div>
   );
 }
 
