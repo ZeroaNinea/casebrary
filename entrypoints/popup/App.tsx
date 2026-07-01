@@ -79,7 +79,7 @@ function App() {
           // }}
         />
       </div>
-      <div className="mb-5"></div>
+      <div style={{ marginBottom: '100px' }}></div>
       <EntryEditorPage
         show={currentPage === 'note' || currentPage === 'folder'}
         type={currentPage}

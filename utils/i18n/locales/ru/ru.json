@@ -5,5 +5,10 @@
   "searchRecords": "Поиск записей...",
   "back": "Назад",
   "titleLabel": "Заголовок",
-  "titlePlaceholder": "Установить заголовок..."
+  "titlePlaceholder": "Установить заголовок...",
+  "icons": "Иконки",
+  "imageUrl": "URL изображения",
+  "upload": "Загрузить",
+  "imageUploading": "Загрузка изображения в данный момент недоступна.",
+  "imageUploadingDescription": "Для начала, выберите Lucide иконку или предоставьте URL изображения."
 }

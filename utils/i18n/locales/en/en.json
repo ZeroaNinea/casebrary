@@ -5,5 +5,10 @@
   "searchRecords": "Search records...",
   "back": "Back",
   "titleLabel": "Title",
-  "titlePlaceholder": "Set a title..."
+  "titlePlaceholder": "Set a title...",
+  "icons": "Icons",
+  "imageUrl": "Image URL",
+  "upload": "Upload",
+  "imageUploading": "Image uploading isn't available yet.",
+  "imageUploadingDescription": "For now, choose a Lucide icon or provide an image URL."
 }

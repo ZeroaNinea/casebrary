@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Type, X } from 'lucide-react';
+import { Search, Type, ImageUp, X } from 'lucide-react';
 
 import IconButton from '@/entrypoints/components/buttons/icon-button';
 
@@ -30,6 +30,8 @@ export default function InputField({
         return <Search size={16} className="text-text-muted shrink-0" />;
       case 'type':
         return <Type size={16} className="text-text-muted shrink-0" />;
+      case 'image':
+        return <ImageUp size={16} className="text-text-muted shrink-0" />;
     }
   }
 
