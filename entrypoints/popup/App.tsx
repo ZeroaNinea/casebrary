@@ -1,6 +1,6 @@
 // import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Menu, Settings, Globe, Plus, Search, Delete } from 'lucide-react';
+import { Menu, Settings, Globe, Plus } from 'lucide-react';
 
 // import i18n from '@/utils/i18n';
 
@@ -11,9 +11,17 @@ import IconButton from '@/entrypoints/components/buttons/icon-button';
 import FilledButton from '@/entrypoints/components/buttons/filled-button';
 import SearchField from '@/entrypoints/components/search-field';
 
+import store from '@/utils/store';
+
 function App() {
   // const [count, setCount] = useState(0);
   const { t } = useTranslation();
+
+  store.dispatch({
+    type: 'entries/fetchEntries',
+  });
+
+  console.log(store.getState());
 
   return (
     <>
