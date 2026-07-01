@@ -16,6 +16,9 @@ export default class EntryService {
       }
     }
 
+    const siblings = await this.repository.getChildren(data.parentId);
+    const order = siblings.length;
+
     const entry: Entry = {
       id: crypto.randomUUID(),
       parentId: data.parentId,
@@ -23,7 +26,7 @@ export default class EntryService {
       title: data.title.trim(),
       icon: data.icon,
       color: data.color,
-      order: 0,
+      order: order,
       properties: {},
       createdAt: now,
       updatedAt: now,
