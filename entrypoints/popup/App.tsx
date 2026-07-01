@@ -12,14 +12,13 @@ import FilledButton from '@/entrypoints/components/buttons/filled-button';
 import SearchField from '@/entrypoints/components/search-field';
 
 import store from '@/utils/store';
+import { fetchEntries } from '@/features/entries/entries.thunks';
 
 function App() {
   // const [count, setCount] = useState(0);
   const { t } = useTranslation();
 
-  store.dispatch({
-    type: 'entries/fetchEntries',
-  });
+  store.dispatch(fetchEntries());
 
   console.log(store.getState());
 
