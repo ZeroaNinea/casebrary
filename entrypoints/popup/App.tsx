@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Menu, Settings, Globe, Plus } from 'lucide-react';
 
@@ -15,12 +15,12 @@ import store from '@/utils/store';
 import { fetchEntries } from '@/features/entries/entries.thunks';
 
 function App() {
-  // const [count, setCount] = useState(0);
   const { t } = useTranslation();
 
-  store.dispatch(fetchEntries());
-
-  console.log(store.getState());
+  useEffect(() => {
+    store.dispatch(fetchEntries());
+    console.log(store.getState());
+  }, []);
 
   return (
     <>
