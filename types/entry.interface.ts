@@ -6,6 +6,15 @@ export type PropertyType =
   | 'url'
   | 'image';
 
+export const propertyTypes: PropertyType[] = [
+  'text',
+  'number',
+  'boolean',
+  'date',
+  'url',
+  'image',
+];
+
 export interface PropertyDefinition {
   id: string;
   name: string;

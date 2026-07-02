@@ -11,5 +11,11 @@
   "imageUploading": "Image uploading isn't available yet.",
   "imageUploadingDescription": "For now, choose a Lucide icon or provide an image URL.",
   "colorLabel": "Color",
-  "addProperty": "Add Property"
+  "propertyTitle": "Add Property",
+  "property-0": "text",
+  "property-1": "number",
+  "property-2": "boolean",
+  "property-3": "date",
+  "property-4": "URL",
+  "property-5": "image"
 }
