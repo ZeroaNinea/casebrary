@@ -64,8 +64,8 @@ export default function EntryEditorPage({
           value={color}
           onChange={(value) => setColor(value)}
         />
-        <PropertyEditor />
       </div>
+      <PropertyEditor />
     </div>
   );
 }

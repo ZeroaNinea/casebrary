@@ -11,7 +11,7 @@ export default function PropertyEditor() {
 
   return (
     <div className="">
-      <h2 className="font-bold text-primary-title text-lg m-2 mt-3">
+      <h2 className="font-bold text-primary-title text-lg m-2 mx-[8%] mt-3">
         {t('propertyTitle')}
       </h2>
       <div className="flex justify-center">
