@@ -2,6 +2,7 @@ import { useState } from 'react';
 import ColorInputProps from './types/color-input-props.interface';
 
 import RippleButton from '@/entrypoints/components/buttons/ripple-button';
+import { HexColorPicker } from 'react-colorful';
 
 export default function ColorInput({
   label = 'Color',
@@ -20,17 +21,19 @@ export default function ColorInput({
   }
 
   return (
-    <div
-      className="
+    <>
+      <HexColorPicker color={currentValue} onChange={update} />
+      <div
+        className="
         group
         relative
         border-b border-border
         focus-within:border-accent
         transition-colors duration-200
       "
-    >
-      <span
-        className="
+      >
+        <span
+          className="
           absolute
           left-2
           top-2
@@ -41,10 +44,10 @@ export default function ColorInput({
           pointer-events-none
           peer-focus:hidden
         "
-      />
+        />
 
-      <label
-        className="
+        <label
+          className="
           absolute
           left-0
           top-6
@@ -58,26 +61,26 @@ export default function ColorInput({
           group-focus-within:scale-80
           group-focus-within:text-accent
         "
-      >
-        {label}
-      </label>
+        >
+          {label}
+        </label>
 
-      <div className="flex items-center gap-2 pt-5 pb-1">
-        <input
-          className="
+        <div className="flex items-center gap-2 pt-5 pb-1">
+          <input
+            className="
             flex-1
             bg-transparent
             outline-none
             text-text
             peer
           "
-          type="text"
-          value={currentValue}
-          onChange={(e) => update(e.target.value)}
-        />
+            type="text"
+            value={currentValue}
+            onChange={(e) => update(e.target.value)}
+          />
 
-        <RippleButton
-          className="
+          <RippleButton
+            className="
             relative
             w-8
             h-8
@@ -85,16 +88,16 @@ export default function ColorInput({
             overflow-hidden
             cursor-pointer
           "
-        >
-          <input
-            type="color"
-            value={currentValue}
-            onChange={(e) => update(e.target.value)}
-            className="absolute inset-0 w-full h-full cursor-pointer"
-          />
+          >
+            <input
+              type="color"
+              value={currentValue}
+              onChange={(e) => update(e.target.value)}
+              className="absolute inset-0 w-full h-full cursor-pointer"
+            />
 
-          <div
-            className="
+            <div
+              className="
               absolute
               inset-0
               pointer-events-none
@@ -102,12 +105,13 @@ export default function ColorInput({
               hover:opacity-100
               transition-opacity
             "
-            style={{
-              background: `color-mix(in oklab, ${currentValue} 85%, black 15%)`,
-            }}
-          />
-        </RippleButton>
+              style={{
+                background: `color-mix(in oklab, ${currentValue} 85%, black 15%)`,
+              }}
+            />
+          </RippleButton>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
