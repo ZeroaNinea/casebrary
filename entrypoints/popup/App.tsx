@@ -74,7 +74,6 @@ function App() {
       <div style={{ marginBottom: '325px' }}></div>
       <EntryEditorPage
         show={currentPage === 'entry-editor'}
-        type={currentPage}
         close={() => setCurrentPage(null)}
       />
     </div>

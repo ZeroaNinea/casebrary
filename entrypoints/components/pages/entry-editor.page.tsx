@@ -7,8 +7,6 @@ import TitleField from '@/entrypoints/components/input-field';
 import IconPicker from '@/entrypoints/components/icon-picker';
 import ColorInput from '@/entrypoints/components/color-input';
 
-import CurrentPage from '@/types/current-page.alias';
-
 import { IconName } from '@/utils/icons';
 
 export default function EntryEditorPage({
@@ -16,7 +14,6 @@ export default function EntryEditorPage({
   close,
 }: {
   show: boolean;
-  type: CurrentPage;
   close: () => void;
 }) {
   const { t } = useTranslation();
