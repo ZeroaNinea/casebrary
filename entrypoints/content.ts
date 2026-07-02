@@ -1,5 +1,5 @@
 import { dbPromise } from '../database/db';
-import Entry, { EntryType } from '../types/entry.interface';
+import Entry from '../types/entry.interface';
 
 export default defineContentScript({
   matches: ['*://*.google.com/*'],
@@ -12,7 +12,6 @@ export default defineContentScript({
       id: '1',
       title: 'Hello',
       parentId: null,
-      type: EntryType.Note,
       properties: {},
       createdAt: Date.now(),
       updatedAt: Date.now(),
@@ -28,7 +27,6 @@ export default defineContentScript({
       id: '2',
       title: 'Hello 2',
       parentId: null,
-      type: EntryType.Note,
       properties: {},
       createdAt: Date.now(),
       updatedAt: Date.now(),
