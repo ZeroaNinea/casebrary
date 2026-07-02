@@ -1,6 +1,5 @@
 {
-  "folder": "Папка",
-  "note": "Заметка",
+  "addEntry": "Добавить запись",
   "searchLabel": "Поиск",
   "searchRecords": "Поиск записей...",
   "back": "Назад",

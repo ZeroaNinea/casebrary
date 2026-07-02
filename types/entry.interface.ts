@@ -1,7 +1,7 @@
-export enum EntryType {
-  Folder,
-  Note,
-}
+// export enum EntryType {
+//   Folder,
+//   Note,
+// }
 
 export type PropertyValue = string | number | boolean | null;
 
@@ -14,8 +14,6 @@ export interface PropertyDefinition {
 export default interface Entry {
   id: string;
   parentId: string | null;
-
-  type: EntryType;
 
   title: string;
   icon?: string;

@@ -49,25 +49,25 @@ function App() {
           </IconButton>
         </div>
       </div>
-      <div className="flex gap-2 px-3">
+      <div className="px-3">
         <FilledButton
-          title="Folder"
+          title="Entry"
           isState={true}
-          onClick={() => setCurrentPage('folder')}
+          onClick={() => setCurrentPage('entry-editor')}
         >
           <Plus size={16} color="var(--color-on-primary-container)" />
           <span className="text-on-primary-container text-sm">
-            {t('folder')}
+            {t('addEntry')}
           </span>
         </FilledButton>
-        <FilledButton
+        {/* <FilledButton
           title="Note"
           isState={true}
           onClick={() => setCurrentPage('note')}
         >
           <Plus size={16} color="var(--color-on-primary-container)" />
           <span className="text-on-primary-container text-sm">{t('note')}</span>
-        </FilledButton>
+        </FilledButton> */}
       </div>
       <div className="px-3 py-3">
         <SearchField
@@ -81,7 +81,7 @@ function App() {
       </div>
       <div style={{ marginBottom: '325px' }}></div>
       <EntryEditorPage
-        show={currentPage === 'note' || currentPage === 'folder'}
+        show={currentPage === 'entry-editor'}
         type={currentPage}
         close={() => setCurrentPage(null)}
       />

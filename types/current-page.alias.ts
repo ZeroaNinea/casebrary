@@ -1,3 +1,3 @@
-type CurrentPage = 'folder' | 'note' | null;
+type CurrentPage = 'entry-editor' | null;
 
 export default CurrentPage;
