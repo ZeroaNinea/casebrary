@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import TransparentPillButton from '@/entrypoints/components/buttons/transparent-pill-button';
 import TitleField from '@/entrypoints/components/input-field';
 import IconPicker from '@/entrypoints/components/icon-picker';
+import ColorInput from '@/entrypoints/components/color-input';
 
 import CurrentPage from '@/types/current-page.alias';
 
@@ -59,6 +60,13 @@ export default function EntryEditorPage({
           setIconUrl={setIconUrl}
           iconMode={iconMode}
           setIconMode={setIconMode}
+        />
+        <ColorInput
+          label={t('colorLabel')}
+          value={color}
+          onChange={(value) => {
+            console.log(value);
+          }}
         />
       </div>
     </div>
