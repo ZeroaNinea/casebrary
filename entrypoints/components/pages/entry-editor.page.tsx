@@ -49,9 +49,8 @@ export default function EntryEditorPage({
           label={t('titleLabel')}
           placeholder={t('titlePlaceholder')}
           icon="type"
-          // onChange={(value) => {
-          //   // TODO: set title
-          // }}
+          value={title}
+          onChange={(value) => setTitle(value)}
         />
         <IconPicker
           icon={icon}
@@ -64,9 +63,7 @@ export default function EntryEditorPage({
         <ColorInput
           label={t('colorLabel')}
           value={color}
-          onChange={(value) => {
-            console.log(value);
-          }}
+          onChange={(value) => setColor(value)}
         />
       </div>
     </div>

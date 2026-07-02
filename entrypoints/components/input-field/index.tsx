@@ -13,7 +13,6 @@ export default function InputField({
   onChange,
 }: InputFieldProps) {
   const [internalValue, setInternalValue] = useState('');
-
   const currentValue = value ?? internalValue;
 
   function update(value: string) {
