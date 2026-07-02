@@ -26,7 +26,7 @@ export default class EntryService {
       icon: data.icon,
       color: data.color,
       order: order,
-      properties: {},
+      properties: data.properties || [],
       createdAt: now,
       updatedAt: now,
     };

@@ -3,7 +3,7 @@
 //   Note,
 // }
 
-export type PropertyValue = string | number | boolean | null;
+// export type PropertyValue = string | number | boolean | null;
 
 export interface PropertyDefinition {
   id: string;
@@ -20,8 +20,7 @@ export default interface Entry {
   color?: string;
   order?: number;
 
-  propertyDefinitions?: PropertyDefinition[];
-  properties: Record<string, PropertyValue>;
+  properties: PropertyDefinition[];
 
   createdAt: number;
   updatedAt: number;
