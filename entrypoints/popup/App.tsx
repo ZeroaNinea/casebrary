@@ -60,14 +60,6 @@ function App() {
             {t('addEntry')}
           </span>
         </FilledButton>
-        {/* <FilledButton
-          title="Note"
-          isState={true}
-          onClick={() => setCurrentPage('note')}
-        >
-          <Plus size={16} color="var(--color-on-primary-container)" />
-          <span className="text-on-primary-container text-sm">{t('note')}</span>
-        </FilledButton> */}
       </div>
       <div className="px-3 py-3">
         <SearchField
