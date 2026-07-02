@@ -22,6 +22,7 @@ export default interface Entry {
   color?: string;
   order?: number;
 
+  propertyDefinitions?: PropertyDefinition[];
   properties: Record<string, PropertyValue>;
 
   createdAt: number;
