@@ -1,14 +1,20 @@
-// export enum EntryType {
-//   Folder,
-//   Note,
-// }
-
-// export type PropertyValue = string | number | boolean | null;
+export type PropertyType =
+  | 'text'
+  | 'number'
+  | 'boolean'
+  | 'date'
+  | 'url'
+  | 'image';
 
 export interface PropertyDefinition {
   id: string;
   name: string;
-  type: 'text' | 'number' | 'boolean' | 'date' | 'url' | 'image';
+  type: PropertyType;
+}
+
+export interface Property {
+  definition: PropertyDefinition;
+  value: string | number | boolean | null;
 }
 
 export default interface Entry {
@@ -20,7 +26,7 @@ export default interface Entry {
   color?: string;
   order?: number;
 
-  properties: PropertyDefinition[];
+  properties: Property[];
 
   createdAt: number;
   updatedAt: number;
