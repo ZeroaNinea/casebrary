@@ -10,5 +10,6 @@
   "upload": "Загрузить",
   "imageUploading": "Загрузка изображения в данный момент недоступна.",
   "imageUploadingDescription": "Для начала, выберите Lucide иконку или предоставьте URL изображения.",
-  "colorLabel": "Цвет"
+  "colorLabel": "Цвет",
+  "addProperty": "Добавить свойство"
 }
