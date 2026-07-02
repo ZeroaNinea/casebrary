@@ -6,6 +6,7 @@ import TransparentPillButton from '@/entrypoints/components/buttons/transparent-
 import TitleField from '@/entrypoints/components/input-field';
 import IconPicker from '@/entrypoints/components/icon-picker';
 import ColorInput from '@/entrypoints/components/color-input';
+import PropertyEditor from '@/entrypoints/components/property-editor';
 
 import { IconName } from '@/utils/icons';
 
@@ -63,6 +64,7 @@ export default function EntryEditorPage({
           value={color}
           onChange={(value) => setColor(value)}
         />
+        <PropertyEditor />
       </div>
     </div>
   );
