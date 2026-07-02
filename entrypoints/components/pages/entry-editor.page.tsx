@@ -2,8 +2,8 @@ import { ChevronLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import TransparentPillButton from '@/entrypoints/components/buttons/transparent-pill-button';
-import IconButton from '@/entrypoints/components/buttons/icon-button';
 import TitleField from '@/entrypoints/components/input-field';
+import IconPicker from '@/entrypoints/components/icon-picker';
 
 import CurrentPage from '@/types/current-page.alias';
 
@@ -52,7 +52,7 @@ export default function EntryEditorPage({
           //   // TODO: set title
           // }}
         />
-        <div className="flex gap-2 my-3">
+        {/* <div className="flex gap-2 my-3">
           <TransparentPillButton
             isState={iconMode === 'lucide'}
             onClick={() => setIconMode('lucide')}
@@ -110,7 +110,15 @@ export default function EntryEditorPage({
 
             <p className="mt-2 text-sm">{t('imageUploadingDescription')}</p>
           </div>
-        )}
+        )} */}
+        <IconPicker
+          icon={icon}
+          setIcon={setIcon}
+          iconUrl={iconUrl}
+          setIconUrl={setIconUrl}
+          iconMode={iconMode}
+          setIconMode={setIconMode}
+        />
       </div>
     </div>
   );

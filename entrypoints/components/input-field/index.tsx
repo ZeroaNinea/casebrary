@@ -89,6 +89,7 @@ export default function InputField({
             peer-focus:left-2
             peer-focus:scale-80
             peer-focus:text-accent
+            pointer-events-none
           "
         >
           {label}
