@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 
 import TransparentPillButton from '../buttons/transparent-pill-button';
 import IconButton from '../buttons/icon-button';
-import TitleField from '../input-field';
+import TitleField from '../inputs/input-field';
 
 import IconPickerSetup from './types/icon-picker-setup.interface';
 import { icons, IconName } from '@/utils/icons';

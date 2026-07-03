@@ -3,9 +3,9 @@ import { ChevronLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import TransparentPillButton from '@/entrypoints/components/buttons/transparent-pill-button';
-import TitleField from '@/entrypoints/components/input-field';
+import TitleField from '@/entrypoints/components/inputs/input-field';
 import IconPicker from '@/entrypoints/components/icon-picker';
-import ColorInput from '@/entrypoints/components/color-input';
+import ColorInput from '@/entrypoints/components/inputs/color-input';
 import PropertyEditor from '@/entrypoints/components/property-editor';
 
 import { IconName } from '@/utils/icons';

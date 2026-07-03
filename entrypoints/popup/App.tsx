@@ -9,7 +9,7 @@ import './App.css';
 // import RippleButton from '@/entrypoints/components/ripple-button';
 import IconButton from '@/entrypoints/components/buttons/icon-button';
 import FilledButton from '@/entrypoints/components/buttons/filled-button';
-import SearchField from '@/entrypoints/components/input-field';
+import SearchField from '@/entrypoints/components/inputs/input-field';
 import EntryEditorPage from '@/entrypoints/components/pages/entry-editor.page';
 
 import { useAppDispatch, useAppSelector } from '@/utils/store';
