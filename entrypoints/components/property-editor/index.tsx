@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Check } from 'lucide-react';
+import { Check, ChevronDown, ChevronUpIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import RippleButton from '../buttons/ripple-button';
 import { propertyTypes, PropertyType } from '@/types/entry.interface';
@@ -11,11 +11,18 @@ import UrlInput from '@/entrypoints/components/inputs/input-field';
 import DateInput from '@/entrypoints/components/inputs/input-field';
 
 import SlideToggle from '@/entrypoints/components/slide-toggle';
+import FilledButton from '@/entrypoints/components/buttons/filled-button';
 
 import IconPicker from '@/entrypoints/components/icon-picker';
 import { IconName } from '@/utils/icons';
 
-export default function PropertyEditor() {
+import { Property } from '@/types/entry.interface';
+
+export default function PropertyEditor({
+  onSave,
+}: {
+  onSave: (property: Property) => void;
+}) {
   const { t } = useTranslation();
 
   const [propertyType, setPropertyType] = useState<PropertyType>('text');
@@ -31,6 +38,30 @@ export default function PropertyEditor() {
     'lucide',
   );
   const [iconUrl, setIconUrl] = useState('');
+
+  const [property, setProperty] = useState<Property>({
+    id: crypto.randomUUID(),
+    type: propertyType,
+    name: propertyName,
+    value: getPropertyValue(),
+  });
+
+  function getPropertyValue() {
+    switch (propertyType) {
+      case 'text':
+        return propertyText;
+      case 'number':
+        return propertyNumber;
+      case 'date':
+        return propertyDate;
+      case 'url':
+        return propertyUrl;
+      case 'boolean':
+        return propertyBoolean;
+      default:
+        return '';
+    }
+  }
 
   return (
     <div className="py-3">
@@ -143,6 +174,21 @@ export default function PropertyEditor() {
           />
         </div>
       )}
+      <FilledButton
+        title="Entry"
+        isState={true}
+        onClick={() => {
+          setProperty({
+            ...property,
+          });
+          return onSave(property);
+        }}
+      >
+        <ChevronDown size={16} color="var(--color-on-primary-container)" />
+        <span className="text-on-primary-container text-sm">
+          {t('addEntry')}
+        </span>
+      </FilledButton>
     </div>
   );
 }

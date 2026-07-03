@@ -10,6 +10,8 @@ import PropertyEditor from '@/entrypoints/components/property-editor';
 
 import { IconName } from '@/utils/icons';
 
+import { Property } from '@/types/entry.interface';
+
 export default function EntryEditorPage({
   show,
   close,
@@ -27,6 +29,8 @@ export default function EntryEditorPage({
     'lucide',
   );
   const [iconUrl, setIconUrl] = useState('');
+
+  const [properties, setProperties] = useState<Property[]>([]);
 
   return (
     <div
@@ -65,7 +69,9 @@ export default function EntryEditorPage({
           onChange={(value) => setColor(value)}
         />
       </div>
-      <PropertyEditor />
+      <PropertyEditor
+        onSave={(property) => setProperties((props) => [...props, property])}
+      />
     </div>
   );
 }

@@ -22,7 +22,9 @@ export interface PropertyDefinition {
 }
 
 export interface Property {
-  definition: PropertyDefinition;
+  id: string;
+  name: string;
+  type: PropertyType;
   value: string | number | boolean | null;
 }
 
