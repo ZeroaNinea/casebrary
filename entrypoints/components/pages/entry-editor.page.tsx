@@ -72,6 +72,15 @@ export default function EntryEditorPage({
       <PropertyEditor
         onSave={(property) => setProperties((props) => [...props, property])}
       />
+      {properties.map((property) => (
+        <div key={property.id} className="px-3 py-3">
+          <div className="flex items-center gap-2">
+            <span className="text-primary-on-container">{property.name}</span>
+            <span className="text-primary-on-container">{property.type}</span>
+          </div>
+        </div>
+      ))}
+      {JSON.stringify(properties)}
     </div>
   );
 }

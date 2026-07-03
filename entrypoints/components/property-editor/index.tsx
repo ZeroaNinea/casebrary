@@ -39,13 +39,6 @@ export default function PropertyEditor({
   );
   const [iconUrl, setIconUrl] = useState('');
 
-  const [property, setProperty] = useState<Property>({
-    id: crypto.randomUUID(),
-    type: propertyType,
-    name: propertyName,
-    value: getPropertyValue(),
-  });
-
   function getPropertyValue() {
     switch (propertyType) {
       case 'text':
@@ -174,21 +167,25 @@ export default function PropertyEditor({
           />
         </div>
       )}
-      <FilledButton
-        title="Entry"
-        isState={true}
-        onClick={() => {
-          setProperty({
-            ...property,
-          });
-          return onSave(property);
-        }}
-      >
-        <ChevronDown size={16} color="var(--color-on-primary-container)" />
-        <span className="text-on-primary-container text-sm">
-          {t('addEntry')}
-        </span>
-      </FilledButton>
+      <div className="flex justify-end px-6">
+        <FilledButton
+          title="Entry"
+          isState={true}
+          onClick={() => {
+            onSave({
+              id: crypto.randomUUID(),
+              type: propertyType,
+              name: propertyName,
+              value: getPropertyValue(),
+            });
+          }}
+        >
+          <ChevronDown size={16} color="var(--color-on-primary-container)" />
+          <span className="text-on-primary-container text-sm">
+            {t('addEntry')}
+          </span>
+        </FilledButton>
+      </div>
     </div>
   );
 }
