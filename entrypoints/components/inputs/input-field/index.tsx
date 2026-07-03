@@ -7,6 +7,7 @@ import {
   FolderPen,
   Link,
   Hash,
+  Calendar,
   X,
 } from 'lucide-react';
 
@@ -51,6 +52,10 @@ export default function InputField({
         return <Link size={16} className="text-text-muted shrink-0" />;
       case 'hash':
         return <Hash size={16} className="text-text-muted shrink-0" />;
+      case 'calendar':
+        return <Calendar size={16} className="text-text-muted shrink-0" />;
+      default:
+        return null;
     }
   }
 
@@ -109,6 +114,27 @@ export default function InputField({
             peer
           "
         />
+      ) : type === 'date' ? (
+        <input
+          id="search"
+          type={type ?? 'text'}
+          value={currentValue}
+          placeholder={placeholder}
+          onChange={(e) => update(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') {
+              update('');
+            }
+          }}
+          className="
+            flex-1
+            bg-transparent
+            outline-none
+            text-text
+            placeholder:text-text-muted
+            peer
+          "
+        />
       ) : (
         <input
           id="search"
@@ -139,6 +165,14 @@ export default function InputField({
             pointer-events-none
             peer-focus:hidden
           `}
+        ></span>
+      ) : type === 'date' ? (
+        <span
+          className="
+          absolute top-2 left-6 w-full h-6 bg-bg
+          pointer-events-none
+          peer-focus:hidden
+        "
         ></span>
       ) : (
         <span

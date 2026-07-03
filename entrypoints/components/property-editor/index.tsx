@@ -8,6 +8,7 @@ import NameInput from '@/entrypoints/components/inputs/input-field';
 import TextareaInput from '@/entrypoints/components/inputs/input-field';
 import NumberInput from '@/entrypoints/components/inputs/input-field';
 import UrlInput from '@/entrypoints/components/inputs/input-field';
+import DateInput from '@/entrypoints/components/inputs/input-field';
 
 import SlideToggle from '@/entrypoints/components/slide-toggle';
 
@@ -93,6 +94,16 @@ export default function PropertyEditor() {
         <div className="p-3">
           <SlideToggle
             label={propertyName || t('propertyDescriptionLabelDefault')}
+          />
+        </div>
+      )}
+      {propertyType === 'date' && (
+        <div className="p-3">
+          <DateInput
+            label={propertyName || t('propertyDescriptionLabelDefault')}
+            placeholder={t('enterPropertyDescription') + propertyName}
+            type="date"
+            icon="calendar"
           />
         </div>
       )}
