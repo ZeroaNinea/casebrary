@@ -1,5 +1,13 @@
 import { useState } from 'react';
-import { Search, Type, ImageUp, TextInitial, FolderPen, X } from 'lucide-react';
+import {
+  Search,
+  Type,
+  ImageUp,
+  TextInitial,
+  FolderPen,
+  Link,
+  X,
+} from 'lucide-react';
 
 import IconButton from '@/entrypoints/components/buttons/icon-button';
 
@@ -38,6 +46,8 @@ export default function InputField({
         return <TextInitial size={16} className="text-text-muted shrink-0" />;
       case 'folder':
         return <FolderPen size={16} className="text-text-muted shrink-0" />;
+      case 'link':
+        return <Link size={16} className="text-text-muted shrink-0" />;
     }
   }
 

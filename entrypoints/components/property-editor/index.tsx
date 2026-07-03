@@ -6,6 +6,7 @@ import { propertyTypes, PropertyType } from '@/types/entry.interface';
 
 import NameInput from '@/entrypoints/components/inputs/input-field';
 import TextareaInput from '@/entrypoints/components/inputs/input-field';
+import UrlInput from '@/entrypoints/components/inputs/input-field';
 
 export default function PropertyEditor() {
   const { t } = useTranslation();
@@ -56,16 +57,25 @@ export default function PropertyEditor() {
           onChange={setPropertyName}
         />
       </div>
-      <div className="p-3 mt-1">
-        {propertyType === 'text' && (
+      {propertyType === 'text' && (
+        <div className="p-3 mt-1">
           <TextareaInput
             multiline={true}
             label={propertyName || t('propertyDescriptionLabelDefault')}
             icon="initial"
             placeholder={t('enterPropertyDescription') + propertyName}
           />
-        )}
-      </div>
+        </div>
+      )}
+      {propertyType === 'url' && (
+        <div className="p-3">
+          <UrlInput
+            label={propertyName || t('propertyDescriptionLabelDefault')}
+            placeholder={t('enterPropertyDescription') + propertyName}
+            icon="link"
+          />
+        </div>
+      )}
     </div>
   );
 }
