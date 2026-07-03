@@ -3,8 +3,16 @@ import { X, Check } from 'lucide-react';
 
 import RippleButton from '../buttons/ripple-button';
 
-export default function SlideToggle({ label }: { label?: string }) {
-  const [value, onChange] = useState(false);
+export default function SlideToggle({
+  label,
+  value,
+  onChange,
+}: {
+  label?: string;
+  value: boolean;
+  onChange: (value: boolean) => void;
+}) {
+  // const [value, onChange] = useState(false);
 
   return (
     <div className="flex items-center">

@@ -1,7 +1,7 @@
 export default interface InputFieldProps {
   label?: string;
   placeholder?: string;
-  value?: string;
+  value?: string | number;
   icon?:
     | 'search'
     | 'type'
@@ -14,5 +14,5 @@ export default interface InputFieldProps {
   type?: 'text' | 'number' | 'url' | 'date';
   multiline?: boolean;
   rows?: number;
-  onChange?: (value: string) => void;
+  onChange?: (value: any) => void;
 }

@@ -20,6 +20,11 @@ export default function PropertyEditor() {
 
   const [propertyType, setPropertyType] = useState<PropertyType>('text');
   const [propertyName, setPropertyName] = useState('');
+  const [propertyText, setPropertyText] = useState('');
+  const [propertyNumber, setPropertyNumber] = useState(0);
+  const [propertyBoolean, setPropertyBoolean] = useState(false);
+  const [propertyDate, setPropertyDate] = useState('');
+  const [propertyUrl, setPropertyUrl] = useState('');
 
   const [icon, setIcon] = useState<IconName>('folder');
   const [iconMode, setIconMode] = useState<'lucide' | 'url' | 'upload'>(
@@ -77,6 +82,8 @@ export default function PropertyEditor() {
             label={propertyName || t('propertyDescriptionLabelDefault')}
             icon="initial"
             placeholder={t('enterPropertyDescription') + propertyName}
+            value={propertyText}
+            onChange={setPropertyText}
           />
         </div>
       )}
@@ -87,6 +94,8 @@ export default function PropertyEditor() {
             placeholder={t('enterPropertyDescription') + propertyName}
             type="number"
             icon="hash"
+            value={propertyNumber}
+            onChange={setPropertyNumber}
           />
         </div>
       )}
@@ -94,6 +103,8 @@ export default function PropertyEditor() {
         <div className="p-3">
           <SlideToggle
             label={propertyName || t('propertyDescriptionLabelDefault')}
+            value={propertyBoolean}
+            onChange={setPropertyBoolean}
           />
         </div>
       )}
@@ -104,6 +115,8 @@ export default function PropertyEditor() {
             placeholder={t('enterPropertyDescription') + propertyName}
             type="date"
             icon="calendar"
+            value={propertyDate}
+            onChange={setPropertyDate}
           />
         </div>
       )}
@@ -113,6 +126,8 @@ export default function PropertyEditor() {
             label={propertyName || t('propertyDescriptionLabelDefault')}
             placeholder={t('enterPropertyDescription') + propertyName}
             icon="link"
+            value={propertyUrl}
+            onChange={setPropertyUrl}
           />
         </div>
       )}

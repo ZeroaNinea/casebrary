@@ -25,7 +25,9 @@ export default function InputField({
   rows = 4,
   onChange,
 }: InputFieldProps) {
-  const [internalValue, setInternalValue] = useState('');
+  const [internalValue, setInternalValue] = useState(
+    type === 'number' ? 0 : '',
+  );
   const currentValue = value ?? internalValue;
 
   function update(value: string) {
