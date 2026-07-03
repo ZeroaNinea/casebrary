@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import RippleButton from '../buttons/ripple-button';
 import { propertyTypes, PropertyType } from '@/types/entry.interface';
 
+import TextareaInput from '@/entrypoints/components/inputs/input-field';
+
 export default function PropertyEditor() {
   const { t } = useTranslation();
 
@@ -42,6 +44,15 @@ export default function PropertyEditor() {
             <span className="text-text text-sm">{t(`property-${index}`)}</span>
           </RippleButton>
         ))}
+      </div>
+      <div className="p-3 mt-1">
+        {propertyType === 'text' && (
+          <TextareaInput
+            multiline={true}
+            label={t('textLabel')}
+            placeholder={t('textPlaceholder')}
+          ></TextareaInput>
+        )}
       </div>
     </div>
   );

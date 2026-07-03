@@ -17,5 +17,7 @@
   "property-2": "boolean",
   "property-3": "date",
   "property-4": "URL",
-  "property-5": "image"
+  "property-5": "image",
+  "textLabel": "Text",
+  "textPlaceholder": "Enter text..."
 }

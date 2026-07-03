@@ -10,6 +10,9 @@ export default function InputField({
   placeholder = 'Search...',
   value,
   icon,
+  type,
+  multiline = false,
+  rows = 4,
   onChange,
 }: InputFieldProps) {
   const [internalValue, setInternalValue] = useState('');
@@ -36,7 +39,7 @@ export default function InputField({
 
   return (
     <div
-      className="
+      className={`
         relative
         flex items-center gap-2
         border-b border-border
@@ -44,56 +47,106 @@ export default function InputField({
         transition-colors duration-200
         h-10
         py-1
-      "
+        ${multiline ? 'items-start min-h-28' : 'items-center h-10'}
+      `}
     >
       {/* <Search size={16} className="text-text-muted shrink-0" /> */}
       {icon && renderIcon(icon)}
 
-      <input
-        className="
-          flex-1
-          bg-transparent
-          outline-none
-          placeholder:text-text-muted
-          text-text
-          peer
-        "
-        id="search"
-        value={currentValue}
-        placeholder={placeholder}
-        onChange={(e) => update(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === 'Escape') {
-            update('');
-          }
-        }}
-      />
+      {multiline ? (
+        <textarea
+          id="search"
+          rows={rows ?? 4}
+          value={currentValue}
+          placeholder={placeholder}
+          onChange={(e) => update(e.target.value)}
+          className="
+            flex-1
+            bg-transparent
+            outline-none
+            resize-none
+            text-text
+            placeholder:text-text-muted
+            peer
+            py-1
+          "
+        />
+      ) : (
+        <input
+          id="search"
+          type={type ?? 'text'}
+          value={currentValue}
+          placeholder={placeholder}
+          onChange={(e) => update(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') {
+              update('');
+            }
+          }}
+          className="
+            flex-1
+            bg-transparent
+            outline-none
+            text-text
+            placeholder:text-text-muted
+            peer
+          "
+        />
+      )}
 
-      <span
-        className="
+      {multiline ? (
+        <span
+          className="
+            absolute top-1 left-0 w-80 h-[calc(100%-0.4rem)] bg-bg
+            pointer-events-none
+            peer-focus:hidden
+          "
+        ></span>
+      ) : (
+        <span
+          className="
           absolute top-2 left-6 w-80 h-5 bg-bg
           pointer-events-none
           peer-focus:hidden
         "
-      ></span>
-
-      {label && (
-        <label
-          htmlFor="search"
-          className="
-            absolute top-2 left-6
-            bg-bg px-2 py-0
-            transition-all duration-200
-            peer-focus:-top-3
-            peer-focus:left-2
-            peer-focus:scale-80
-            peer-focus:text-accent
-            pointer-events-none
-          "
-        >
-          {label}
-        </label>
+        ></span>
       )}
+
+      {label &&
+        (multiline ? (
+          <label
+            htmlFor="search"
+            className="
+              absolute top-4 left-2
+              bg-bg px-2 py-0
+              text-lg
+              transition-all duration-200
+              peer-focus:-top-4
+              peer-focus:-left-4
+              peer-focus:scale-75
+              peer-focus:text-accent
+              pointer-events-none
+            "
+          >
+            {label}
+          </label>
+        ) : (
+          <label
+            htmlFor="search"
+            className="
+              absolute top-2 left-6
+              bg-bg px-2 py-0
+              transition-all duration-200
+              peer-focus:-top-3
+              peer-focus:left-2
+              peer-focus:scale-80
+              peer-focus:text-accent
+              pointer-events-none
+            "
+          >
+            {label}
+          </label>
+        ))}
 
       {currentValue && (
         <IconButton title="Clear" isState={true} onClick={() => update('')}>

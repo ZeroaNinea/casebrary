@@ -17,5 +17,7 @@
   "property-2": "булево",
   "property-3": "дата",
   "property-4": "URL",
-  "property-5": "изображение"
+  "property-5": "изображение",
+  "textLabel": "Text",
+  "textPlaceholder": "Enter text..."
 }

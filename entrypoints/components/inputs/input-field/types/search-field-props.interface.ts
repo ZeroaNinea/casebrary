@@ -3,5 +3,8 @@ export default interface InputFieldProps {
   placeholder?: string;
   value?: string;
   icon?: 'search' | 'type' | 'image';
+  type?: 'text' | 'number' | 'url';
+  multiline?: boolean;
+  rows?: number;
   onChange?: (value: string) => void;
 }
