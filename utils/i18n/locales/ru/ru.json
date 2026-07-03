@@ -18,6 +18,8 @@
   "property-3": "дата",
   "property-4": "URL",
   "property-5": "изображение",
-  "textLabel": "Text",
-  "textPlaceholder": "Enter text..."
+  "propertyNameLabel": "Название свойства",
+  "enterPropertyName": "Введите название свойства...",
+  "propertyDescriptionLabelDefault": "Название",
+  "enterPropertyDescription": "Ввод: "
 }

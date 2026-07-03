@@ -18,6 +18,8 @@
   "property-3": "date",
   "property-4": "URL",
   "property-5": "image",
-  "textLabel": "Text",
-  "textPlaceholder": "Enter text..."
+  "propertyNameLabel": "Property Name",
+  "enterPropertyName": "Enter property name...",
+  "propertyDescriptionLabelDefault": "Name",
+  "enterPropertyDescription": "Enter: "
 }

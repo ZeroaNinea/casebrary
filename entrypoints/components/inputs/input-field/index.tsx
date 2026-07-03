@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Search, Type, ImageUp, X } from 'lucide-react';
+import { Search, Type, ImageUp, TextInitial, FolderPen, X } from 'lucide-react';
 
 import IconButton from '@/entrypoints/components/buttons/icon-button';
 
@@ -34,6 +34,10 @@ export default function InputField({
         return <Type size={16} className="text-text-muted shrink-0" />;
       case 'image':
         return <ImageUp size={16} className="text-text-muted shrink-0" />;
+      case 'initial':
+        return <TextInitial size={16} className="text-text-muted shrink-0" />;
+      case 'folder':
+        return <FolderPen size={16} className="text-text-muted shrink-0" />;
     }
   }
 
@@ -97,7 +101,7 @@ export default function InputField({
       {multiline ? (
         <span
           className="
-            absolute top-1 left-0 w-80 h-[calc(100%-0.4rem)] bg-bg
+            absolute top-1 left-6 w-80 h-[calc(100%-0.4rem)] bg-bg
             pointer-events-none
             peer-focus:hidden
           "
@@ -117,13 +121,12 @@ export default function InputField({
           <label
             htmlFor="search"
             className="
-              absolute top-4 left-2
+              absolute top-0 left-6
               bg-bg px-2 py-0
-              text-lg
               transition-all duration-200
               peer-focus:-top-4
-              peer-focus:-left-4
-              peer-focus:scale-75
+              peer-focus:left-4
+              peer-focus:scale-80
               peer-focus:text-accent
               pointer-events-none
             "

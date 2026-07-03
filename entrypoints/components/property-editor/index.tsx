@@ -4,12 +4,14 @@ import { useTranslation } from 'react-i18next';
 import RippleButton from '../buttons/ripple-button';
 import { propertyTypes, PropertyType } from '@/types/entry.interface';
 
+import NameInput from '@/entrypoints/components/inputs/input-field';
 import TextareaInput from '@/entrypoints/components/inputs/input-field';
 
 export default function PropertyEditor() {
   const { t } = useTranslation();
 
   const [propertyType, setPropertyType] = useState<PropertyType>('text');
+  const [propertyName, setPropertyName] = useState('');
 
   return (
     <div className="">
@@ -45,13 +47,23 @@ export default function PropertyEditor() {
           </RippleButton>
         ))}
       </div>
+      <div className="p-3">
+        <NameInput
+          label={t('propertyNameLabel')}
+          placeholder={t('enterPropertyName')}
+          value={propertyName}
+          icon="folder"
+          onChange={setPropertyName}
+        />
+      </div>
       <div className="p-3 mt-1">
         {propertyType === 'text' && (
           <TextareaInput
             multiline={true}
-            label={t('textLabel')}
-            placeholder={t('textPlaceholder')}
-          ></TextareaInput>
+            label={propertyName || t('propertyDescriptionLabelDefault')}
+            icon="initial"
+            placeholder={t('enterPropertyDescription') + propertyName}
+          />
         )}
       </div>
     </div>
