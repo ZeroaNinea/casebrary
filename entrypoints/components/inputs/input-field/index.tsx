@@ -6,12 +6,13 @@ import {
   TextInitial,
   FolderPen,
   Link,
+  Hash,
   X,
 } from 'lucide-react';
 
 import IconButton from '@/entrypoints/components/buttons/icon-button';
 
-import InputFieldProps from './types/search-field-props.interface';
+import InputFieldProps from './types/input-field-props.interface';
 
 export default function InputField({
   label = 'Search',
@@ -48,6 +49,8 @@ export default function InputField({
         return <FolderPen size={16} className="text-text-muted shrink-0" />;
       case 'link':
         return <Link size={16} className="text-text-muted shrink-0" />;
+      case 'hash':
+        return <Hash size={16} className="text-text-muted shrink-0" />;
     }
   }
 
@@ -85,6 +88,27 @@ export default function InputField({
             py-1
           "
         />
+      ) : type === 'number' ? (
+        <input
+          id="search"
+          type={type ?? 'text'}
+          value={currentValue}
+          placeholder={placeholder}
+          onChange={(e) => update(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') {
+              update('');
+            }
+          }}
+          className="
+            flex-1
+            bg-transparent
+            outline-none
+            text-text
+            placeholder:text-text-muted
+            peer
+          "
+        />
       ) : (
         <input
           id="search"
@@ -110,16 +134,16 @@ export default function InputField({
 
       {multiline ? (
         <span
-          className="
+          className={`
             absolute top-1 left-6 w-80 h-[calc(100%-0.4rem)] bg-bg
             pointer-events-none
             peer-focus:hidden
-          "
+          `}
         ></span>
       ) : (
         <span
           className="
-          absolute top-2 left-6 w-80 h-5 bg-bg
+          absolute top-2 left-6 w-80 h-6 bg-bg
           pointer-events-none
           peer-focus:hidden
         "

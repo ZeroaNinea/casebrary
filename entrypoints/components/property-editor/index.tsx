@@ -6,6 +6,7 @@ import { propertyTypes, PropertyType } from '@/types/entry.interface';
 
 import NameInput from '@/entrypoints/components/inputs/input-field';
 import TextareaInput from '@/entrypoints/components/inputs/input-field';
+import NumberInput from '@/entrypoints/components/inputs/input-field';
 import UrlInput from '@/entrypoints/components/inputs/input-field';
 
 export default function PropertyEditor() {
@@ -64,6 +65,16 @@ export default function PropertyEditor() {
             label={propertyName || t('propertyDescriptionLabelDefault')}
             icon="initial"
             placeholder={t('enterPropertyDescription') + propertyName}
+          />
+        </div>
+      )}
+      {propertyType === 'number' && (
+        <div className="p-3">
+          <NumberInput
+            label={propertyName || t('propertyDescriptionLabelDefault')}
+            placeholder={t('enterPropertyDescription') + propertyName}
+            type="number"
+            icon="hash"
           />
         </div>
       )}
