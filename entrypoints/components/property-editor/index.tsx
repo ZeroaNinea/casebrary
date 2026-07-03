@@ -9,6 +9,8 @@ import TextareaInput from '@/entrypoints/components/inputs/input-field';
 import NumberInput from '@/entrypoints/components/inputs/input-field';
 import UrlInput from '@/entrypoints/components/inputs/input-field';
 
+import SlideToggle from '@/entrypoints/components/slide-toggle';
+
 import IconPicker from '@/entrypoints/components/icon-picker';
 import { IconName } from '@/utils/icons';
 
@@ -84,6 +86,13 @@ export default function PropertyEditor() {
             placeholder={t('enterPropertyDescription') + propertyName}
             type="number"
             icon="hash"
+          />
+        </div>
+      )}
+      {propertyType === 'boolean' && (
+        <div className="p-3">
+          <SlideToggle
+            label={propertyName || t('propertyDescriptionLabelDefault')}
           />
         </div>
       )}

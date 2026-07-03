@@ -68,6 +68,7 @@
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-surface-alt: var(--surface-alt);
+  --color-surface-container: var(--surface-container);
   --color-border: var(--border);
   --color-text: var(--text);
   --color-text-muted: var(--text-muted);

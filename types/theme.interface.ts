@@ -27,6 +27,7 @@ export default interface Theme {
   bg: string;
   surface: string;
   surfaceAlt: string;
+  surfaceContainer: string;
   border: string;
   text: string;
   textMuted: string;
