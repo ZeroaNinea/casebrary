@@ -32,6 +32,19 @@ export default function EntryEditorPage({
 
   const [properties, setProperties] = useState<Property[]>([]);
 
+  function handleSave(property: Property) {
+    if (
+      property.id === '' ||
+      property.name === '' ||
+      property.value === '' ||
+      !property.value
+    ) {
+      return;
+    }
+
+    setProperties([...properties, property]);
+  }
+
   return (
     <div
       className={`
@@ -69,9 +82,7 @@ export default function EntryEditorPage({
           onChange={(value) => setColor(value)}
         />
       </div>
-      <PropertyEditor
-        onSave={(property) => setProperties((props) => [...props, property])}
-      />
+      <PropertyEditor onSave={(property) => handleSave(property)} />
       {properties.map((property) => (
         <div key={property.id} className="px-3 py-3">
           <div className="flex items-center gap-2">
