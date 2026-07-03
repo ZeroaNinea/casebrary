@@ -9,15 +9,24 @@ import TextareaInput from '@/entrypoints/components/inputs/input-field';
 import NumberInput from '@/entrypoints/components/inputs/input-field';
 import UrlInput from '@/entrypoints/components/inputs/input-field';
 
+import IconPicker from '@/entrypoints/components/icon-picker';
+import { IconName } from '@/utils/icons';
+
 export default function PropertyEditor() {
   const { t } = useTranslation();
 
   const [propertyType, setPropertyType] = useState<PropertyType>('text');
   const [propertyName, setPropertyName] = useState('');
 
+  const [icon, setIcon] = useState<IconName>('folder');
+  const [iconMode, setIconMode] = useState<'lucide' | 'url' | 'upload'>(
+    'lucide',
+  );
+  const [iconUrl, setIconUrl] = useState('');
+
   return (
-    <div className="">
-      <h2 className="font-bold text-primary-title text-lg m-2 mx-[8%] mt-3">
+    <div className="py-3">
+      <h2 className="font-bold text-primary-title text-lg m-2 mx-[8%]">
         {t('propertyTitle')}
       </h2>
       <div className="flex justify-center">
@@ -84,6 +93,18 @@ export default function PropertyEditor() {
             label={propertyName || t('propertyDescriptionLabelDefault')}
             placeholder={t('enterPropertyDescription') + propertyName}
             icon="link"
+          />
+        </div>
+      )}
+      {propertyType === 'image' && (
+        <div className="p-3">
+          <IconPicker
+            icon={icon}
+            setIcon={setIcon}
+            iconUrl={iconUrl}
+            setIconUrl={setIconUrl}
+            iconMode={iconMode}
+            setIconMode={setIconMode}
           />
         </div>
       )}
