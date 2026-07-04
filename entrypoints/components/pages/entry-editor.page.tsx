@@ -55,6 +55,19 @@ export default function EntryEditorPage({
     setProperties([...properties, property]);
   }
 
+  const entryIcon =
+    iconMode === 'lucide'
+      ? {
+          type: 'lucide' as const,
+          value: icon,
+        }
+      : iconUrl.trim()
+        ? {
+            type: 'url' as const,
+            value: iconUrl.trim(),
+          }
+        : undefined;
+
   return (
     <div
       className={`
@@ -114,16 +127,7 @@ export default function EntryEditorPage({
               createEntry({
                 parentId,
                 title,
-                icon:
-                  iconMode === 'lucide'
-                    ? {
-                        type: 'lucide',
-                        value: icon,
-                      }
-                    : {
-                        type: 'url',
-                        value: iconUrl,
-                      },
+                icon: entryIcon,
                 color,
                 properties,
               }),
