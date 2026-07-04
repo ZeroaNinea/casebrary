@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, Save } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import TransparentPillButton from '@/entrypoints/components/buttons/transparent-pill-button';
+import FilledButton from '@/entrypoints/components/buttons/filled-button';
 import TitleField from '@/entrypoints/components/inputs/input-field';
 import IconPicker from '@/entrypoints/components/icon-picker';
 import ColorInput from '@/entrypoints/components/inputs/color-input';
@@ -11,6 +12,9 @@ import PropertyEditor from '@/entrypoints/components/property-editor';
 import { IconName } from '@/utils/icons';
 
 import { Property } from '@/types/entry.interface';
+
+import { useAppDispatch } from '@/utils/store';
+import { createEntry } from '@/features/entries/entries.thunks';
 
 export default function EntryEditorPage({
   show,
@@ -31,6 +35,8 @@ export default function EntryEditorPage({
   const [iconUrl, setIconUrl] = useState('');
 
   const [properties, setProperties] = useState<Property[]>([]);
+
+  const dispatch = useAppDispatch();
 
   function handleSave(property: Property) {
     if (
@@ -92,6 +98,26 @@ export default function EntryEditorPage({
         </div>
       ))}
       {JSON.stringify(properties)}
+      <div className="flex justify-end px-6">
+        <FilledButton
+          title="Entry"
+          isState={true}
+          onClick={() => {
+            dispatch(
+              createEntry({
+                parentId: null,
+                title,
+                icon,
+                color,
+                properties,
+              }),
+            );
+          }}
+        >
+          <Save size={16} color="var(--color-on-primary-container)" />
+          <span className="text-on-primary-container text-sm">{t('save')}</span>
+        </FilledButton>
+      </div>
     </div>
   );
 }
