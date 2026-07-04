@@ -22,6 +22,7 @@ function App() {
   const dispatch = useAppDispatch();
 
   const [currentPage, setCurrentPage] = useState<CurrentPage>(null);
+  const [parentId, setParentId] = useState<string | null>(null);
 
   useEffect(() => {
     dispatch(fetchEntries());
@@ -74,6 +75,7 @@ function App() {
       <div style={{ marginBottom: '325px' }}></div>
       <EntryEditorPage
         show={currentPage === 'entry-editor'}
+        parentId={parentId}
         close={() => setCurrentPage(null)}
       />
       {JSON.stringify(entries)}
