@@ -22,6 +22,7 @@
   "enterPropertyName": "Введите название свойства...",
   "propertyDescriptionLabelDefault": "Название",
   "enterPropertyDescription": "Ввод: ",
+  "addProperty": "Добавить свойство",
   "cancel": "Отмена",
   "save": "Сохранить"
 }

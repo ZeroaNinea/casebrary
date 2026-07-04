@@ -182,7 +182,7 @@ export default function PropertyEditor({
         >
           <ChevronDown size={16} color="var(--color-on-primary-container)" />
           <span className="text-on-primary-container text-sm">
-            {t('addEntry')}
+            {t('addProperty')}
           </span>
         </FilledButton>
       </div>

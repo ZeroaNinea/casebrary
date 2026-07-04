@@ -22,6 +22,7 @@
   "enterPropertyName": "Enter property name...",
   "propertyDescriptionLabelDefault": "Name",
   "enterPropertyDescription": "Enter: ",
+  "addProperty": "Add Property",
   "cancel": "Cancel",
   "save": "Save"
 }
