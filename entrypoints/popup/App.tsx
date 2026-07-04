@@ -76,6 +76,7 @@ function App() {
         show={currentPage === 'entry-editor'}
         close={() => setCurrentPage(null)}
       />
+      {JSON.stringify(entries)}
     </div>
   );
 }
