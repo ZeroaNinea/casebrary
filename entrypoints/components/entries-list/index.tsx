@@ -16,11 +16,11 @@ export default function EntriesList({ entries }: { entries: Entry[] }) {
   }
 
   return (
-    <ul className="flex flex-col gap-2">
+    <ul className="flex flex-col gap-2 p-3">
       {entries.map((entry) => (
         <li
           key={entry.id}
-          className="flex items-center gap-2 bg-primary-container hover:primary-container-hover"
+          className="flex items-center gap-2 bg-primary-container hover:primary-container-hover p-3"
         >
           {renderIcon(entry)}
           <h1>{entry.title}</h1>

@@ -74,7 +74,7 @@ function App() {
           // }}
         />
       </div>
-      <div style={{ marginBottom: '325px' }}></div>
+      {/* <div style={{ marginBottom: '325px' }}></div> */}
       <EntryEditorPage
         show={currentPage === 'entry-editor'}
         parentId={parentId}
