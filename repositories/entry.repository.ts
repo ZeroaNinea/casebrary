@@ -2,9 +2,9 @@ import { dbPromise } from '../database/db';
 import Entry from '@/types/entry.interface';
 
 export default class EntryRepository {
-  private verifyTitleIdAndType(entry: Entry) {
-    if (!entry.title || !entry.id || entry.type === undefined) {
-      throw new Error('Entry must have a title, id and type.');
+  private verifyTitleAndId(entry: Entry) {
+    if (!entry.title || !entry.id) {
+      throw new Error('Entry must have a title and ID.');
     }
   }
 
@@ -44,7 +44,7 @@ export default class EntryRepository {
     const entry = await db.get('entries', id);
 
     this.verifyIfEntryExists(entry);
-    this.verifyTitleIdAndType(entry);
+    this.verifyTitleAndId(entry);
 
     await db.put('entries', {
       ...entry,

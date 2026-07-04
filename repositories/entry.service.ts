@@ -8,14 +8,6 @@ export default class EntryService {
   async create(data: CreateEntryDto): Promise<Entry> {
     const now = Date.now();
 
-    // if (data.parentId) {
-    //   const parent = await this.repository.get(data.parentId);
-
-    //   if (parent.type !== EntryType.Folder) {
-    //     throw new Error('Parent must be a folder.');
-    //   }
-    // }
-
     const siblings = await this.repository.getChildren(data.parentId);
     const order = siblings.length;
 
