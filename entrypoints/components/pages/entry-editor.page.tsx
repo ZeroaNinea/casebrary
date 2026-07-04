@@ -20,9 +20,11 @@ import { createEntry } from '@/features/entries/entries.thunks';
 
 export default function EntryEditorPage({
   show,
+  parentId = null,
   close,
 }: {
   show: boolean;
+  parentId?: string | null;
   close: () => void;
 }) {
   const { t } = useTranslation();
@@ -110,7 +112,7 @@ export default function EntryEditorPage({
           onClick={() => {
             dispatch(
               createEntry({
-                parentId: null,
+                parentId,
                 title,
                 icon,
                 color,
