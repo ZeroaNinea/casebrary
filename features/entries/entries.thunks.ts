@@ -11,8 +11,7 @@ const service = new EntryService();
 export const fetchEntries = createAsyncThunk(
   'entries/fetchEntries',
   async () => {
-    const entries = await repository.getAllEntries();
-    return entries;
+    return service.getAll();
   },
 );
 

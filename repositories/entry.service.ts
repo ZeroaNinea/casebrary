@@ -27,4 +27,8 @@ export default class EntryService {
 
     return entry;
   }
+
+  async getAll() {
+    return this.repository.getAllEntries();
+  }
 }
