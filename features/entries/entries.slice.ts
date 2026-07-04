@@ -13,9 +13,9 @@ export const entriesSlice = createSlice({
     error: null,
   } as EntriesState,
   reducers: {
-    createEntry(state, action) {
-      state.entries.push(action.payload);
-    },
+    // createEntry(state, action) {
+    //   state.entries.push(action.payload);
+    // },
   },
   extraReducers: (builder) => {
     builder
@@ -37,5 +37,5 @@ export const entriesSlice = createSlice({
   },
 });
 
-export const { createEntry } = entriesSlice.actions;
+// export const { createEntry } = entriesSlice.actions;
 export default entriesSlice;

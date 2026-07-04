@@ -6,7 +6,7 @@ import EntryService from '../../repositories/entry.service';
 import CreateEntryDto from '@/types/create-entry.dto';
 
 const repository = new EntryRepository();
-const service = new EntryService();
+const service = new EntryService(repository);
 
 export const fetchEntries = createAsyncThunk(
   'entries/fetchEntries',

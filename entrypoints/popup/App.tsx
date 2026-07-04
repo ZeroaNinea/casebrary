@@ -29,7 +29,7 @@ function App() {
 
   const entries = useAppSelector((state) => state.entries.entries);
 
-  console.log(entries);
+  console.log('Entries from the `App.tsx`:', entries);
 
   return (
     <div className="relative w-100 overflow-x-hidden">
