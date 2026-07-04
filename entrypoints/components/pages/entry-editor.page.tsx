@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 
 import TransparentPillButton from '@/entrypoints/components/buttons/transparent-pill-button';
 import FilledButton from '@/entrypoints/components/buttons/filled-button';
+import CancelButton from '../buttons/cancel-button/inedx';
+
 import TitleField from '@/entrypoints/components/inputs/input-field';
 import IconPicker from '@/entrypoints/components/icon-picker';
 import ColorInput from '@/entrypoints/components/inputs/color-input';
@@ -99,8 +101,13 @@ export default function EntryEditorPage({
       ))}
       {JSON.stringify(properties)}
       <div className="flex justify-end px-6">
+        <CancelButton title="Cancel" onClick={close}>
+          <span className="text-on-primary-container text-sm">
+            {t('cancel')}
+          </span>
+        </CancelButton>
         <FilledButton
-          title="Entry"
+          title="Save"
           isState={true}
           onClick={() => {
             dispatch(

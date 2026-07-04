@@ -28,6 +28,8 @@ export default interface Theme {
   surface: string;
   surfaceAlt: string;
   surfaceContainer: string;
+  surfaceContainerHover: string;
+  onSurface: string;
   border: string;
   text: string;
   textMuted: string;
