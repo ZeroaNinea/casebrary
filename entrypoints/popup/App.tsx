@@ -12,6 +12,8 @@ import FilledButton from '@/entrypoints/components/buttons/filled-button';
 import SearchField from '@/entrypoints/components/inputs/input-field';
 import EntryEditorPage from '@/entrypoints/components/pages/entry-editor.page';
 
+import EntryList from '@/entrypoints/components/entries-list';
+
 import { useAppDispatch, useAppSelector } from '@/utils/store';
 import { fetchEntries } from '@/features/entries/entries.thunks';
 
@@ -78,7 +80,8 @@ function App() {
         parentId={parentId}
         close={() => setCurrentPage(null)}
       />
-      {JSON.stringify(entries)}
+      {/* {JSON.stringify(entries)} */}
+      <EntryList entries={entries} />
     </div>
   );
 }
