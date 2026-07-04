@@ -114,7 +114,16 @@ export default function EntryEditorPage({
               createEntry({
                 parentId,
                 title,
-                icon,
+                icon:
+                  iconMode === 'lucide'
+                    ? {
+                        type: 'lucide',
+                        value: icon,
+                      }
+                    : {
+                        type: 'url',
+                        value: iconUrl,
+                      },
                 color,
                 properties,
               }),

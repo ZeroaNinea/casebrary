@@ -1,3 +1,5 @@
+import { EntryIcon } from '@/utils/icons';
+
 export type PropertyType =
   | 'text'
   | 'number'
@@ -33,7 +35,7 @@ export default interface Entry {
   parentId: string | null;
 
   title: string;
-  icon?: string;
+  icon?: EntryIcon;
   color?: string;
   order?: number;
 
