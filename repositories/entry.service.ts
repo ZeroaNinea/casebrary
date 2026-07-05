@@ -28,6 +28,14 @@ export default class EntryService {
     return entry;
   }
 
+  async update(id: string, updates: Partial<Entry>) {
+    await this.repository.update(id, updates);
+  }
+
+  async delete(id: string) {
+    await this.repository.delete(id);
+  }
+
   async getAll() {
     return this.repository.getAllEntries();
   }

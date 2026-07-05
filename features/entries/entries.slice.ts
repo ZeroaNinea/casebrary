@@ -3,6 +3,8 @@ import EntriesState from '@/types/entries-state.interface';
 import {
   fetchEntries,
   createEntry as createEntryThunk,
+  updateEntry as updateEntryThunk,
+  deleteEntry as deleteEntryThunk,
 } from './entries.thunks';
 
 export const entriesSlice = createSlice({
@@ -33,6 +35,16 @@ export const entriesSlice = createSlice({
       })
       .addCase(createEntryThunk.fulfilled, (state, action) => {
         state.entries.push(action.payload);
+      })
+      .addCase(updateEntryThunk.fulfilled, (state, action) => {
+        const entry = state.entries.find((e) => e.id === action.payload.id);
+
+        if (entry) {
+          Object.assign(entry, action.payload.updates);
+        }
+      })
+      .addCase(deleteEntryThunk.fulfilled, (state, action) => {
+        state.entries = state.entries.filter((e) => e.id !== action.payload);
       });
   },
 });
