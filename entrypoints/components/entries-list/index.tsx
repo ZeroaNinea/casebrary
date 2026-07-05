@@ -1,9 +1,12 @@
+import React from 'react';
 import { EllipsisVertical } from 'lucide-react';
 
 import Entry from '@/types/entry.interface';
 import { icons } from '@/utils/icons';
 
 import ClassicIconButton from '../buttons/classic-icon-button';
+
+import createPalette from '@/utils/theme/palette.util';
 
 export default function EntriesList({ entries }: { entries: Entry[] }) {
   function renderIcon(entry: Entry) {
@@ -24,6 +27,14 @@ export default function EntriesList({ entries }: { entries: Entry[] }) {
       {entries.map((entry) => (
         <li
           key={entry.id}
+          style={
+            {
+              '--primary-container':
+                entry.color && createPalette(entry.color)['800'],
+              '--primary-container-hover':
+                entry.color && createPalette(entry.color)['900'],
+            } as React.CSSProperties
+          }
           className="flex items-center justify-between bg-primary-container hover:primary-container-hover p-3"
         >
           <div className="flex items-center gap-2">
