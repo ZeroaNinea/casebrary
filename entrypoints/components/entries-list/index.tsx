@@ -1,5 +1,9 @@
+import { EllipsisVertical } from 'lucide-react';
+
 import Entry from '@/types/entry.interface';
 import { icons } from '@/utils/icons';
+
+import IconButton from '../buttons/icon-button';
 
 export default function EntriesList({ entries }: { entries: Entry[] }) {
   function renderIcon(entry: Entry) {
@@ -20,10 +24,17 @@ export default function EntriesList({ entries }: { entries: Entry[] }) {
       {entries.map((entry) => (
         <li
           key={entry.id}
-          className="flex items-center gap-2 bg-primary-container hover:primary-container-hover p-3"
+          className="flex items-center justify-between bg-primary-container hover:primary-container-hover p-3"
         >
-          {renderIcon(entry)}
-          <h1>{entry.title}</h1>
+          <div className="flex items-center gap-2">
+            {renderIcon(entry)}
+            <h1>{entry.title}</h1>
+          </div>
+          <div>
+            <IconButton title="Options">
+              <EllipsisVertical size={18} color="var(--color-primary-title)" />
+            </IconButton>
+          </div>
         </li>
       ))}
     </ul>
