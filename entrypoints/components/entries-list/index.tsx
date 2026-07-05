@@ -29,13 +29,11 @@ export default function EntriesList({ entries }: { entries: Entry[] }) {
           key={entry.id}
           style={
             {
-              '--primary-container':
-                entry.color && createPalette(entry.color)['800'],
-              '--primary-container-hover':
-                entry.color && createPalette(entry.color)['900'],
+              '--primary-container': `color-mix(in lch, ${entry.color && createPalette(entry.color)['800']} 60%, transparent)`,
+              '--primary-container-hover': `color-mix(in lch, ${entry.color && createPalette(entry.color)['800']} 60%, transparent)`,
             } as React.CSSProperties
           }
-          className="flex items-center justify-between bg-primary-container hover:primary-container-hover p-3"
+          className="flex items-center justify-between bg-primary-container hover:primary-container-hover p-3 rounded-md"
         >
           <div className="flex items-center gap-2">
             {renderIcon(entry)}
@@ -43,7 +41,16 @@ export default function EntriesList({ entries }: { entries: Entry[] }) {
           </div>
           <div>
             <ClassicIconButton title="Options">
-              <EllipsisVertical size={18} color="var(--color-primary-title)" />
+              <EllipsisVertical
+                size={18}
+                style={
+                  {
+                    '--primary-title':
+                      entry.color && createPalette(entry.color)['900'],
+                  } as React.CSSProperties
+                }
+                color="var(--color-primary-title)"
+              />
             </ClassicIconButton>
           </div>
         </li>

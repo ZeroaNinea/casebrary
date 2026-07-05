@@ -68,8 +68,17 @@
   --color-bg: var(--bg);
   --color-surface: var(--surface);
   --color-surface-alt: var(--surface-alt);
-  --color-surface-container: var(--surface-container);
-  --color-surface-container-hover: var(--surface-container-hover);
+  --color-surface-container: color-mix(
+    in lch,
+    var(--surface-container) 60%,
+    transparent
+  );
+  /* --color-surface-container-hover: var(--surface-container-hover); */
+  --color-surface-container-hover: color-mix(
+    in lch,
+    var(--surface-container-hover) 60%,
+    transparent
+  );
   --color-on-surface: var(--on-surface);
   --color-border: var(--border);
   --color-text: var(--text);
