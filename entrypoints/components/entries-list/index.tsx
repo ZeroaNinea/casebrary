@@ -3,7 +3,7 @@ import { EllipsisVertical } from 'lucide-react';
 import Entry from '@/types/entry.interface';
 import { icons } from '@/utils/icons';
 
-import IconButton from '../buttons/icon-button';
+import ClassicIconButton from '../buttons/classic-icon-button';
 
 export default function EntriesList({ entries }: { entries: Entry[] }) {
   function renderIcon(entry: Entry) {
@@ -31,9 +31,9 @@ export default function EntriesList({ entries }: { entries: Entry[] }) {
             <h1>{entry.title}</h1>
           </div>
           <div>
-            <IconButton title="Options">
+            <ClassicIconButton title="Options">
               <EllipsisVertical size={18} color="var(--color-primary-title)" />
-            </IconButton>
+            </ClassicIconButton>
           </div>
         </li>
       ))}
