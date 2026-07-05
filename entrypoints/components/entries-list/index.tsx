@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { EllipsisVertical } from 'lucide-react';
 
 import Entry from '@/types/entry.interface';
@@ -8,7 +8,17 @@ import ClassicIconButton from '../buttons/classic-icon-button';
 
 import createPalette from '@/utils/theme/palette.util';
 
-export default function EntriesList({ entries }: { entries: Entry[] }) {
+import RippleButton from '@/entrypoints/components/buttons/ripple-button';
+
+export default function EntriesList({
+  entries,
+  deleteEntry,
+}: {
+  entries: Entry[];
+  deleteEntry: (id: string) => void;
+}) {
+  const [isDropdownOpenIds, setIsDropdownOpenIds] = useState<string[]>([]);
+
   function renderIcon(entry: Entry) {
     if (!entry.icon) {
       return null;
@@ -22,6 +32,10 @@ export default function EntriesList({ entries }: { entries: Entry[] }) {
     }
   }
 
+  function dispatch(arg0: any) {
+    throw new Error('Function not implemented.');
+  }
+
   return (
     <ul className="flex flex-col gap-2 p-3">
       {entries.map((entry) => (
@@ -30,17 +44,30 @@ export default function EntriesList({ entries }: { entries: Entry[] }) {
           style={
             {
               '--primary-container': `color-mix(in lch, ${entry.color && createPalette(entry.color)['800']} 60%, transparent)`,
-              '--primary-container-hover': `color-mix(in lch, ${entry.color && createPalette(entry.color)['800']} 60%, transparent)`,
+              '--primary-container-hover':
+                entry.color && createPalette(entry.color)['800'],
             } as React.CSSProperties
           }
-          className="flex items-center justify-between bg-primary-container hover:primary-container-hover p-3 rounded-md"
+          className="flex items-center justify-between bg-primary-container hover:bg-primary-container-hover p-3 rounded-md transition-all duration-200"
         >
           <div className="flex items-center gap-2">
             {renderIcon(entry)}
             <h1>{entry.title}</h1>
           </div>
-          <div>
-            <ClassicIconButton title="Options">
+          <div className="relative">
+            <ClassicIconButton
+              title="Options"
+              isState={true}
+              onClick={() => {
+                if (isDropdownOpenIds.includes(entry.id)) {
+                  setIsDropdownOpenIds(
+                    isDropdownOpenIds.filter((id) => id !== entry.id),
+                  );
+                } else {
+                  setIsDropdownOpenIds([...isDropdownOpenIds, entry.id]);
+                }
+              }}
+            >
               <EllipsisVertical
                 size={18}
                 style={
@@ -52,6 +79,28 @@ export default function EntriesList({ entries }: { entries: Entry[] }) {
                 color="var(--color-primary-title)"
               />
             </ClassicIconButton>
+            <div
+              className={`
+                absolute top-12 right-0 w-50
+                rounded-md
+                transition-all duration-200
+                ${isDropdownOpenIds.includes(entry.id) ? 'h-50 opacity-100' : 'h-0 opacity-0 pointer-events-none'}
+              `}
+            >
+              <RippleButton
+                mode="dark"
+                className="w-full p-2 bg-primary-container hover:bg-primary-container-hover text-left cursor-pointer rounded-md transition-all duration-200"
+                isState={true}
+                onClick={() => {
+                  deleteEntry(entry.id);
+                  setIsDropdownOpenIds(
+                    isDropdownOpenIds.filter((id) => id !== entry.id),
+                  );
+                }}
+              >
+                Delete
+              </RippleButton>
+            </div>
           </div>
         </li>
       ))}

@@ -15,7 +15,7 @@ import EntryEditorPage from '@/entrypoints/components/pages/entry-editor.page';
 import EntryList from '@/entrypoints/components/entries-list';
 
 import { useAppDispatch, useAppSelector } from '@/utils/store';
-import { fetchEntries } from '@/features/entries/entries.thunks';
+import { deleteEntry, fetchEntries } from '@/features/entries/entries.thunks';
 
 import CurrentPage from '@/types/current-page.alias';
 
@@ -29,6 +29,12 @@ function App() {
   useEffect(() => {
     dispatch(fetchEntries());
   }, [dispatch]);
+
+  async function handleDeleteEntry(id: string) {
+    await dispatch(deleteEntry(id)).then(() => {
+      dispatch(fetchEntries());
+    });
+  }
 
   const entries = useAppSelector((state) => state.entries.entries);
 
@@ -81,7 +87,7 @@ function App() {
         close={() => setCurrentPage(null)}
       />
       {/* {JSON.stringify(entries)} */}
-      <EntryList entries={entries} />
+      <EntryList entries={entries} deleteEntry={handleDeleteEntry} />
     </div>
   );
 }
