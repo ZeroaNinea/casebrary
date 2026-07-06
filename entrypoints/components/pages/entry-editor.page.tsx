@@ -108,6 +108,7 @@ export default function EntryEditorPage({
         absolute inset-0
         bg-bg p-2
         transition-transform duration-200
+        z-50
       `}
       style={{
         transform: show ? 'translateX(0)' : 'translateX(100%)',
