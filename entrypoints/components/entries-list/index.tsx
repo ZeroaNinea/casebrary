@@ -84,7 +84,8 @@ export default function EntriesList({
                 absolute top-12 right-0 w-50
                 rounded-md
                 transition-all duration-200
-                ${isDropdownOpenId === entry.id ? 'h-50 opacity-100' : 'h-0 opacity-0 pointer-events-none'}
+                backdrop-blur-sm
+                ${isDropdownOpenId === entry.id ? 'h-20 opacity-100' : 'h-0 opacity-0 pointer-events-none'}
               `}
             >
               <RippleButton
