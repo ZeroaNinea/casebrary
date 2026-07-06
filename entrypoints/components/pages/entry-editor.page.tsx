@@ -17,7 +17,7 @@ import { Property } from '@/types/entry.interface';
 import Entry from '@/types/entry.interface';
 
 import { useAppDispatch } from '@/utils/store';
-import { createEntry } from '@/features/entries/entries.thunks';
+import { createEntry, updateEntry } from '@/features/entries/entries.thunks';
 
 export default function EntryEditorPage({
   show,
@@ -143,15 +143,29 @@ export default function EntryEditorPage({
           title="Save"
           isState={true}
           onClick={() => {
-            dispatch(
-              createEntry({
-                parentId,
-                title,
-                icon: entryIcon,
-                color,
-                properties,
-              }),
-            );
+            if (updatingEntry) {
+              dispatch(
+                updateEntry({
+                  id: updatingEntry.id,
+                  updates: {
+                    title,
+                    icon: entryIcon,
+                    color,
+                    properties,
+                  },
+                }),
+              );
+            } else {
+              dispatch(
+                createEntry({
+                  parentId,
+                  title,
+                  icon: entryIcon,
+                  color,
+                  properties,
+                }),
+              );
+            }
           }}
         >
           <Save size={16} color="var(--color-on-primary-container)" />
