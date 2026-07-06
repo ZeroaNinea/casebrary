@@ -90,7 +90,7 @@ export default function EntriesList({
             >
               <RippleButton
                 mode="dark"
-                className="w-full p-2 bg-primary-container hover:bg-primary-container-hover text-left cursor-pointer rounded-md transition-all duration-200"
+                className="w-full p-2 bg-primary-container hover:bg-primary-container-hover text-left cursor-pointer rounded-t-md transition-all duration-200"
                 isState={true}
                 onClick={() => {
                   deleteEntry(entry.id);
@@ -103,7 +103,7 @@ export default function EntriesList({
               </RippleButton>
               <RippleButton
                 mode="dark"
-                className="w-full p-2 bg-primary-container hover:bg-primary-container-hover text-left cursor-pointer rounded-md transition-all duration-200"
+                className="w-full p-2 bg-primary-container hover:bg-primary-container-hover text-left cursor-pointer rounded-b-md transition-all duration-200"
                 isState={true}
                 onClick={() => {
                   updateEntry(entry);
@@ -112,7 +112,7 @@ export default function EntriesList({
                   );
                 }}
               >
-                {t('edit')}
+                {t('update')}
               </RippleButton>
             </div>
           </div>

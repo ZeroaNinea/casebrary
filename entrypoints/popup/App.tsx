@@ -41,6 +41,10 @@ function App() {
   async function handleUpdateEntry(entry: Entry) {
     setUpdatingEntry(entry);
     setCurrentPage('entry-editor');
+
+    setTimeout(() => {
+      setUpdatingEntry(null);
+    }, 2000);
   }
 
   const entries = useAppSelector((state) => state.entries.entries);

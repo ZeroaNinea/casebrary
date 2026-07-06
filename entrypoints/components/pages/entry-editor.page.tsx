@@ -45,6 +45,17 @@ export default function EntryEditorPage({
 
   const dispatch = useAppDispatch();
 
+  function handleClose() {
+    setTitle('');
+    setIcon('folder');
+    setColor('#4FC3F7');
+    setIconMode('lucide');
+    setIconUrl('');
+    setProperties([]);
+
+    close();
+  }
+
   function handleSave(property: Property) {
     if (
       property.id === '' ||
@@ -99,7 +110,7 @@ export default function EntryEditorPage({
         transform: show ? 'translateX(0)' : 'translateX(100%)',
       }}
     >
-      <TransparentPillButton isState={true} onClick={close}>
+      <TransparentPillButton isState={true} onClick={handleClose}>
         <ChevronLeft size={18} color="var(--color-primary-on-container)" />
         <span className="text-primary-on-container">{t('back')}</span>
       </TransparentPillButton>
@@ -166,10 +177,14 @@ export default function EntryEditorPage({
                 }),
               );
             }
+
+            handleClose();
           }}
         >
           <Save size={16} color="var(--color-on-primary-container)" />
-          <span className="text-on-primary-container text-sm">{t('save')}</span>
+          <span className="text-on-primary-container text-sm">
+            {updatingEntry ? t('update') : t('save')}
+          </span>
         </FilledButton>
       </div>
     </div>
