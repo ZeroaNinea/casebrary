@@ -37,6 +37,42 @@ export default function EntriesList({
 
   const palettes = geretatePalettes();
 
+  function renderDropdown(entry: Entry) {
+    const buttons = ['update', 'delete'];
+
+    return (
+      <div
+        className={`
+          absolute top-12 right-0 w-50
+          rounded-md
+          transition-all duration-200
+          backdrop-blur-[2px]
+          z-10
+          ${isDropdownOpenId === entry.id ? 'h-20 opacity-100' : 'h-0 opacity-0 pointer-events-none'}
+        `}
+      >
+        {buttons.map((button) => (
+          <RippleButton
+            mode="dark"
+            key={button}
+            className="w-full p-2 bg-primary-container hover:bg-primary-container-hover text-left cursor-pointer first:rounded-t-md last:rounded-b-md transition-all duration-200"
+            isState={true}
+            onClick={() => {
+              if (button === 'delete') {
+                deleteEntry(entry.id);
+              } else if (button === 'update') {
+                updateEntry(entry);
+              }
+              setIsDropdownOpenId(null);
+            }}
+          >
+            {t(button)}
+          </RippleButton>
+        ))}
+      </div>
+    );
+  }
+
   function renderIcon(entry: Entry) {
     if (!entry.icon) {
       return null;
@@ -90,7 +126,8 @@ export default function EntriesList({
                 color="var(--color-primary-title)"
               />
             </ClassicIconButton>
-            <div
+            {renderDropdown(entry)}
+            {/* <div
               className={`
                 absolute top-12 right-0 w-50
                 rounded-md
@@ -122,7 +159,7 @@ export default function EntriesList({
               >
                 {t('update')}
               </RippleButton>
-            </div>
+            </div> */}
           </div>
         </li>
       ))}
