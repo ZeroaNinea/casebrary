@@ -69,7 +69,11 @@ function App() {
         <FilledButton
           title="Entry"
           isState={true}
-          onClick={() => setCurrentPage('entry-editor')}
+          onClick={() => {
+            setCurrentPage('entry-editor');
+            setParentId(null);
+            setUpdatingEntry(null);
+          }}
         >
           <Plus size={16} color="var(--color-on-primary-container)" />
           <span className="text-on-primary-container text-sm">
