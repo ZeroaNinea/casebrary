@@ -32,10 +32,6 @@ export default function EntriesList({
     }
   }
 
-  function dispatch(arg0: any) {
-    throw new Error('Function not implemented.');
-  }
-
   return (
     <ul className="flex flex-col gap-2 p-3">
       {entries.map((entry) => (

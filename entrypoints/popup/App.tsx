@@ -18,6 +18,7 @@ import { useAppDispatch, useAppSelector } from '@/utils/store';
 import { deleteEntry, fetchEntries } from '@/features/entries/entries.thunks';
 
 import CurrentPage from '@/types/current-page.alias';
+import Entry from '@/types/entry.interface';
 
 function App() {
   const { t } = useTranslation();
@@ -25,6 +26,7 @@ function App() {
 
   const [currentPage, setCurrentPage] = useState<CurrentPage>(null);
   const [parentId, setParentId] = useState<string | null>(null);
+  const [updatingEntry, setUpdatingEntry] = useState<Entry | null>(null);
 
   useEffect(() => {
     dispatch(fetchEntries());
@@ -84,6 +86,7 @@ function App() {
       <EntryEditorPage
         show={currentPage === 'entry-editor'}
         parentId={parentId}
+        updatingEntry={updatingEntry}
         close={() => setCurrentPage(null)}
       />
       {/* {JSON.stringify(entries)} */}

@@ -14,6 +14,7 @@ import PropertyEditor from '@/entrypoints/components/property-editor';
 import { IconName } from '@/utils/icons';
 
 import { Property } from '@/types/entry.interface';
+import Entry from '@/types/entry.interface';
 
 import { useAppDispatch } from '@/utils/store';
 import { createEntry } from '@/features/entries/entries.thunks';
@@ -21,10 +22,12 @@ import { createEntry } from '@/features/entries/entries.thunks';
 export default function EntryEditorPage({
   show,
   parentId = null,
+  updatingEntry = null,
   close,
 }: {
   show: boolean;
   parentId?: string | null;
+  updatingEntry?: Entry | null;
   close: () => void;
 }) {
   const { t } = useTranslation();
@@ -67,6 +70,23 @@ export default function EntryEditorPage({
             value: iconUrl.trim(),
           }
         : undefined;
+
+  useEffect(() => {
+    if (updatingEntry) {
+      setTitle(updatingEntry.title);
+
+      if (updatingEntry.icon!.type === 'lucide') {
+        setIconMode('lucide');
+        setIcon(updatingEntry.icon!.value);
+      } else {
+        setIconMode('url');
+        setIconUrl(updatingEntry.icon!.value);
+      }
+
+      setColor(updatingEntry.color ?? '#4FC3F7');
+      setProperties(updatingEntry.properties);
+    }
+  }, [updatingEntry]);
 
   return (
     <div
