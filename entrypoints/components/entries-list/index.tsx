@@ -22,7 +22,7 @@ export default function EntriesList({
 }) {
   const { t } = useTranslation();
 
-  const [isDropdownOpenIds, setIsDropdownOpenIds] = useState<string[]>([]);
+  const [isDropdownOpenId, setIsDropdownOpenId] = useState<string | null>(null);
 
   function renderIcon(entry: Entry) {
     if (!entry.icon) {
@@ -44,9 +44,10 @@ export default function EntriesList({
           key={entry.id}
           style={
             {
-              '--primary-container': `color-mix(in lch, ${entry.color && createPalette(entry.color)['800']} 60%, transparent)`,
+              '--primary-container':
+                entry.color && createPalette(entry.color)['100'],
               '--primary-container-hover':
-                entry.color && createPalette(entry.color)['800'],
+                entry.color && createPalette(entry.color)['200'],
             } as React.CSSProperties
           }
           className="flex items-center justify-between bg-primary-container hover:bg-primary-container-hover p-3 rounded-md transition-all duration-200"
@@ -60,12 +61,10 @@ export default function EntriesList({
               title="Options"
               isState={true}
               onClick={() => {
-                if (isDropdownOpenIds.includes(entry.id)) {
-                  setIsDropdownOpenIds(
-                    isDropdownOpenIds.filter((id) => id !== entry.id),
-                  );
+                if (isDropdownOpenId === entry.id) {
+                  setIsDropdownOpenId(null);
                 } else {
-                  setIsDropdownOpenIds([...isDropdownOpenIds, entry.id]);
+                  setIsDropdownOpenId(entry.id);
                 }
               }}
             >
@@ -85,7 +84,7 @@ export default function EntriesList({
                 absolute top-12 right-0 w-50
                 rounded-md
                 transition-all duration-200
-                ${isDropdownOpenIds.includes(entry.id) ? 'h-50 opacity-100' : 'h-0 opacity-0 pointer-events-none'}
+                ${isDropdownOpenId === entry.id ? 'h-50 opacity-100' : 'h-0 opacity-0 pointer-events-none'}
               `}
             >
               <RippleButton
@@ -94,9 +93,7 @@ export default function EntriesList({
                 isState={true}
                 onClick={() => {
                   deleteEntry(entry.id);
-                  setIsDropdownOpenIds(
-                    isDropdownOpenIds.filter((id) => id !== entry.id),
-                  );
+                  setIsDropdownOpenId(null);
                 }}
               >
                 {t('delete')}
@@ -107,9 +104,7 @@ export default function EntriesList({
                 isState={true}
                 onClick={() => {
                   updateEntry(entry);
-                  setIsDropdownOpenIds(
-                    isDropdownOpenIds.filter((id) => id !== entry.id),
-                  );
+                  setIsDropdownOpenId(null);
                 }}
               >
                 {t('update')}
