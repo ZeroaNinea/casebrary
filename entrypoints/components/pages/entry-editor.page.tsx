@@ -24,13 +24,13 @@ export default function EntryEditorPage({
   parentId = null,
   updatingEntry = null,
   close,
-  onFinishEditing,
+  clearUpdatingEntry,
 }: {
   show: boolean;
   parentId?: string | null;
   updatingEntry?: Entry | null;
   close: () => void;
-  onFinishEditing: () => void;
+  clearUpdatingEntry: () => void;
 }) {
   const { t } = useTranslation();
 
@@ -55,7 +55,7 @@ export default function EntryEditorPage({
     setIconUrl('');
     setProperties([]);
 
-    onFinishEditing();
+    clearUpdatingEntry();
     close();
   }
 
@@ -169,7 +169,7 @@ export default function EntryEditorPage({
                     properties,
                   },
                 }),
-              ).then(() => onFinishEditing());
+              ).then(() => clearUpdatingEntry());
             } else {
               dispatch(
                 createEntry({
