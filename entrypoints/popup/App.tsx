@@ -90,7 +90,11 @@ function App() {
         close={() => setCurrentPage(null)}
       />
       {/* {JSON.stringify(entries)} */}
-      <EntryList entries={entries} deleteEntry={handleDeleteEntry} />
+      <EntryList
+        entries={entries}
+        deleteEntry={handleDeleteEntry}
+        updateEntry={setUpdatingEntry}
+      />
     </div>
   );
 }

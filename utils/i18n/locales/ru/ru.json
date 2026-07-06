@@ -24,5 +24,7 @@
   "enterPropertyDescription": "Ввод: ",
   "addProperty": "Добавить свойство",
   "cancel": "Отмена",
-  "save": "Сохранить"
+  "save": "Сохранить",
+  "delete": "Удалить",
+  "update": "Обновить"
 }

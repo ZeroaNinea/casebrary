@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { EllipsisVertical } from 'lucide-react';
 
 import Entry from '@/types/entry.interface';
@@ -13,10 +14,14 @@ import RippleButton from '@/entrypoints/components/buttons/ripple-button';
 export default function EntriesList({
   entries,
   deleteEntry,
+  updateEntry,
 }: {
   entries: Entry[];
   deleteEntry: (id: string) => void;
+  updateEntry: (updates: Entry) => void;
 }) {
+  const { t } = useTranslation();
+
   const [isDropdownOpenIds, setIsDropdownOpenIds] = useState<string[]>([]);
 
   function renderIcon(entry: Entry) {
@@ -95,6 +100,19 @@ export default function EntriesList({
                 }}
               >
                 Delete
+              </RippleButton>
+              <RippleButton
+                mode="dark"
+                className="w-full p-2 bg-primary-container hover:bg-primary-container-hover text-left cursor-pointer rounded-md transition-all duration-200"
+                isState={true}
+                onClick={() => {
+                  updateEntry(entry);
+                  setIsDropdownOpenIds(
+                    isDropdownOpenIds.filter((id) => id !== entry.id),
+                  );
+                }}
+              >
+                Update
               </RippleButton>
             </div>
           </div>

@@ -24,5 +24,7 @@
   "enterPropertyDescription": "Enter: ",
   "addProperty": "Add Property",
   "cancel": "Cancel",
-  "save": "Save"
+  "save": "Save",
+  "delete": "Delete",
+  "update": "Update"
 }
