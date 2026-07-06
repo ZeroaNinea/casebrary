@@ -127,39 +127,6 @@ export default function EntriesList({
               />
             </ClassicIconButton>
             {renderDropdown(entry)}
-            {/* <div
-              className={`
-                absolute top-12 right-0 w-50
-                rounded-md
-                transition-all duration-200
-                backdrop-blur-[2px]
-                z-10
-                ${isDropdownOpenId === entry.id ? 'h-20 opacity-100' : 'h-0 opacity-0 pointer-events-none'}
-              `}
-            >
-              <RippleButton
-                mode="dark"
-                className="w-full p-2 bg-primary-container hover:bg-primary-container-hover text-left cursor-pointer rounded-t-md transition-all duration-200"
-                isState={true}
-                onClick={() => {
-                  deleteEntry(entry.id);
-                  setIsDropdownOpenId(null);
-                }}
-              >
-                {t('delete')}
-              </RippleButton>
-              <RippleButton
-                mode="dark"
-                className="w-full p-2 bg-primary-container hover:bg-primary-container-hover text-left cursor-pointer rounded-b-md transition-all duration-200"
-                isState={true}
-                onClick={() => {
-                  updateEntry(entry);
-                  setIsDropdownOpenId(null);
-                }}
-              >
-                {t('update')}
-              </RippleButton>
-            </div> */}
           </div>
         </li>
       ))}
