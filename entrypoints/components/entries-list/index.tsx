@@ -11,6 +11,8 @@ import createPalette from '@/utils/theme/palette.util';
 
 import RippleButton from '@/entrypoints/components/buttons/ripple-button';
 
+import { Palette } from '@/types/palette.alias';
+
 export default function EntriesList({
   entries,
   deleteEntry,
@@ -23,6 +25,17 @@ export default function EntriesList({
   const { t } = useTranslation();
 
   const [isDropdownOpenId, setIsDropdownOpenId] = useState<string | null>(null);
+
+  function geretatePalettes() {
+    const palettes: Record<string, Palette> = {};
+    for (const entry of entries) {
+      palettes[entry.id] = createPalette(entry.color || '');
+    }
+
+    return palettes;
+  }
+
+  const palettes = geretatePalettes();
 
   function renderIcon(entry: Entry) {
     if (!entry.icon) {
@@ -44,10 +57,9 @@ export default function EntriesList({
           key={entry.id}
           style={
             {
-              '--primary-container':
-                entry.color && createPalette(entry.color)['100'],
+              '--primary-container': entry.color && palettes[entry.id]['100'],
               '--primary-container-hover':
-                entry.color && createPalette(entry.color)['200'],
+                entry.color && palettes[entry.id]['200'],
             } as React.CSSProperties
           }
           className="flex items-center justify-between bg-primary-container hover:bg-primary-container-hover p-3 rounded-md transition-all duration-200"
@@ -72,8 +84,7 @@ export default function EntriesList({
                 size={18}
                 style={
                   {
-                    '--primary-title':
-                      entry.color && createPalette(entry.color)['900'],
+                    '--primary-title': entry.color && palettes[entry.id]['900'],
                   } as React.CSSProperties
                 }
                 color="var(--color-primary-title)"
@@ -84,7 +95,8 @@ export default function EntriesList({
                 absolute top-12 right-0 w-50
                 rounded-md
                 transition-all duration-200
-                backdrop-blur-sm
+                backdrop-blur-[2px]
+                z-10
                 ${isDropdownOpenId === entry.id ? 'h-20 opacity-100' : 'h-0 opacity-0 pointer-events-none'}
               `}
             >
