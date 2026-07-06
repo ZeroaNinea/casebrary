@@ -97,7 +97,7 @@ function App() {
         parentId={parentId}
         updatingEntry={updatingEntry}
         close={() => setCurrentPage(null)}
-        updatedNull={() => {
+        onFinishEditing={() => {
           setUpdatingEntry(null);
         }}
       />
