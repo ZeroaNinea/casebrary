@@ -41,10 +41,6 @@ function App() {
   async function handleUpdateEntry(entry: Entry) {
     setUpdatingEntry(entry);
     setCurrentPage('entry-editor');
-
-    setTimeout(() => {
-      setUpdatingEntry(null);
-    }, 2000);
   }
 
   const entries = useAppSelector((state) => state.entries.entries);
@@ -97,6 +93,9 @@ function App() {
         parentId={parentId}
         updatingEntry={updatingEntry}
         close={() => setCurrentPage(null)}
+        updated={() => {
+          setUpdatingEntry(null);
+        }}
       />
       {/* {JSON.stringify(entries)} */}
       <EntryList

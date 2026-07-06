@@ -24,11 +24,13 @@ export default function EntryEditorPage({
   parentId = null,
   updatingEntry = null,
   close,
+  updated,
 }: {
   show: boolean;
   parentId?: string | null;
   updatingEntry?: Entry | null;
   close: () => void;
+  updated: () => void;
 }) {
   const { t } = useTranslation();
 
@@ -165,7 +167,7 @@ export default function EntryEditorPage({
                     properties,
                   },
                 }),
-              );
+              ).then(() => updated());
             } else {
               dispatch(
                 createEntry({
