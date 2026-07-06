@@ -151,7 +151,7 @@ export default function EntryEditorPage({
       ))}
       {JSON.stringify(properties)}
       <div className="flex justify-end px-6 gap-3">
-        <CancelButton title="Cancel" onClick={close} isState={true}>
+        <CancelButton title="Cancel" onClick={handleClose} isState={true}>
           <span className="text-on-surface text-sm">{t('cancel')}</span>
         </CancelButton>
         <FilledButton
