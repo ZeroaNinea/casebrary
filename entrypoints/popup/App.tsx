@@ -38,6 +38,11 @@ function App() {
     });
   }
 
+  async function handleUpdateEntry(entry: Entry) {
+    setUpdatingEntry(entry);
+    setCurrentPage('entry-editor');
+  }
+
   const entries = useAppSelector((state) => state.entries.entries);
 
   console.log('Entries from the `App.tsx`:', entries);
@@ -93,7 +98,7 @@ function App() {
       <EntryList
         entries={entries}
         deleteEntry={handleDeleteEntry}
-        updateEntry={setUpdatingEntry}
+        updateEntry={handleUpdateEntry}
       />
     </div>
   );

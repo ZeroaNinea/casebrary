@@ -99,7 +99,7 @@ export default function EntriesList({
                   );
                 }}
               >
-                Delete
+                {t('delete')}
               </RippleButton>
               <RippleButton
                 mode="dark"
@@ -112,7 +112,7 @@ export default function EntriesList({
                   );
                 }}
               >
-                Update
+                {t('edit')}
               </RippleButton>
             </div>
           </div>
