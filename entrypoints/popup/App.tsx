@@ -93,7 +93,7 @@ function App() {
         parentId={parentId}
         updatingEntry={updatingEntry}
         close={() => setCurrentPage(null)}
-        updated={() => {
+        updatedNull={() => {
           setUpdatingEntry(null);
         }}
       />

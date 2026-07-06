@@ -24,13 +24,13 @@ export default function EntryEditorPage({
   parentId = null,
   updatingEntry = null,
   close,
-  updated,
+  updatedNull,
 }: {
   show: boolean;
   parentId?: string | null;
   updatingEntry?: Entry | null;
   close: () => void;
-  updated: () => void;
+  updatedNull: () => void;
 }) {
   const { t } = useTranslation();
 
@@ -55,6 +55,7 @@ export default function EntryEditorPage({
     setIconUrl('');
     setProperties([]);
 
+    updatedNull();
     close();
   }
 
@@ -167,7 +168,7 @@ export default function EntryEditorPage({
                     properties,
                   },
                 }),
-              ).then(() => updated());
+              ).then(() => updatedNull());
             } else {
               dispatch(
                 createEntry({
