@@ -9,7 +9,7 @@ import CancelButton from '../buttons/cancel-button/inedx';
 import TitleField from '@/entrypoints/components/inputs/input-field';
 import IconPicker from '@/entrypoints/components/icon-picker';
 import ColorInput from '@/entrypoints/components/inputs/color-input';
-import PropertyEditor from '@/entrypoints/components/property-editor';
+import PropertyEditor from '@/entrypoints/components/pages/property-editor';
 
 import { IconName } from '@/utils/icons';
 

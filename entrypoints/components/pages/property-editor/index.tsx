@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Check, ChevronDown, ChevronUpIcon } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import RippleButton from '../buttons/ripple-button';
+import RippleButton from '../../buttons/ripple-button';
 import { propertyTypes, PropertyType } from '@/types/entry.interface';
 
 import NameInput from '@/entrypoints/components/inputs/input-field';
