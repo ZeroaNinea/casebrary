@@ -36,7 +36,7 @@ export default function ({ properties }: { properties: Property[] }) {
             >
               <span className="text-primary-title">{property.type}</span>
             </RippleButton>
-            <p className="my-2">{property.value}</p>
+            <div className="whitespace-pre-wrap my-2">{property.value}</div>
           </div>
           <div className="relative">
             <ClassicIconButton
