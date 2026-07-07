@@ -8,6 +8,7 @@ export default function ({ properties }: { properties: Property[] }) {
           <div className="flex items-center gap-2">
             <span className="text-primary-on-container">{property.name}</span>
             <span className="text-primary-on-container">{property.type}</span>
+            <span className="text-primary-on-container">{property.value}</span>
           </div>
         </div>
       ))}
