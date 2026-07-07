@@ -12,6 +12,87 @@ export default function ({ properties }: { properties: Property[] }) {
     return <Icon size={16} />;
   }
 
+  function renderValue(property: Property) {
+    switch (property.type) {
+      case 'text':
+        return (
+          <p className="mt-2 whitespace-pre-wrap text-text">{property.value}</p>
+        );
+
+      case 'number':
+        return (
+          <div className="mt-2">
+            <span
+              className="
+                rounded-md
+                bg-surface-container
+                px-2 py-1
+                font-mono
+                text-sm
+              "
+            >
+              {property.value}
+            </span>
+          </div>
+        );
+
+      case 'boolean':
+        return (
+          <div className="mt-2">
+            {property.value ? (
+              <span className="rounded-full bg-green-100 px-2 py-1 text-green-700">
+                ✓ Yes
+              </span>
+            ) : (
+              <span className="rounded-full bg-red-100 px-2 py-1 text-red-700">
+                ✕ No
+              </span>
+            )}
+          </div>
+        );
+
+      case 'date':
+        return (
+          <div className="mt-2 font-mono text-sm">
+            {new Date(property.value as string).toLocaleDateString()}
+          </div>
+        );
+
+      case 'url':
+        return (
+          <a
+            href={property.value as string}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="
+              mt-2
+              block
+              truncate
+              text-accent
+              underline
+            "
+          >
+            {property.value}
+          </a>
+        );
+
+      case 'image':
+        return (
+          <img
+            src={property.value as string}
+            alt={property.name}
+            className="
+              mt-2
+              max-h-36
+              rounded-md
+              border
+              border-border
+            "
+          />
+        );
+    }
+  }
+
   return (
     <div className="flex flex-col gap-2">
       {/* {JSON.stringify(properties)} */}
@@ -36,7 +117,8 @@ export default function ({ properties }: { properties: Property[] }) {
             >
               <span className="text-primary-title">{property.type}</span>
             </RippleButton>
-            <div className="whitespace-pre-wrap my-2">{property.value}</div>
+            {/* <div className="whitespace-pre-wrap my-2">{property.value}</div> */}
+            {renderValue(property)}
           </div>
           <div className="relative">
             <ClassicIconButton
