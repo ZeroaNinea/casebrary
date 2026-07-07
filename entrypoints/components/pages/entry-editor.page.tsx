@@ -10,6 +10,7 @@ import TitleField from '@/entrypoints/components/inputs/input-field';
 import IconPicker from '@/entrypoints/components/icon-picker';
 import ColorInput from '@/entrypoints/components/inputs/color-input';
 import PropertyEditor from '@/entrypoints/components/pages/property-editor';
+import PropertiesList from '@/entrypoints/components/pages/property-editor/properties-list';
 
 import { IconName } from '@/utils/icons';
 
@@ -141,15 +142,16 @@ export default function EntryEditorPage({
         />
       </div>
       <PropertyEditor onSave={(property) => handleSave(property)} />
-      {properties.map((property) => (
+      <PropertiesList properties={properties} />
+      {/* {properties.map((property) => (
         <div key={property.id} className="px-3 py-3">
           <div className="flex items-center gap-2">
             <span className="text-primary-on-container">{property.name}</span>
             <span className="text-primary-on-container">{property.type}</span>
           </div>
         </div>
-      ))}
-      {JSON.stringify(properties)}
+      ))} */}
+      {/* {JSON.stringify(properties)} */}
       <div className="flex justify-end px-6 gap-3">
         <CancelButton title="Cancel" onClick={handleClose} isState={true}>
           <span className="text-on-surface text-sm">{t('cancel')}</span>
