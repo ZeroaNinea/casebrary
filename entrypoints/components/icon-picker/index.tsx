@@ -17,6 +17,19 @@ export default function IconPicker({
 }: IconPickerSetup) {
   const { t } = useTranslation();
 
+  function renderCurrentIcon() {
+    if (iconMode === 'lucide') {
+      const Icon = icons[icon as IconName];
+      return <Icon size={100} color="var(--color-text-muted)" />;
+    }
+  }
+
+  function renderCurrentImage() {
+    if (iconMode === 'url') {
+      return <img src={iconUrl} width={100} alt={iconUrl} />;
+    }
+  }
+
   return (
     <>
       <div className="flex gap-2 my-3">
@@ -75,6 +88,22 @@ export default function IconPicker({
         >
           <p className="font-medium">{t('imageUploading')}</p>
           <p className="mt-2 text-sm">{t('imageUploadingDescription')}</p>
+        </div>
+      )}
+      {((iconMode === 'lucide' && icon) || (iconMode === 'url' && iconUrl)) && (
+        <div
+          className="
+          flex items-center justify-center py-6 my-3
+          bg-surface-container hover:bg-surface-container-hover
+          rounded-xl cursor-pointer font-semibold text-sm
+          border border-border/30
+          shadow-sm hover:shadow-md hover:shadow-black/5
+          hover:scale-[1.02] active:scale-[0.97] hover:-translate-y-0.5 active:translate-y-0
+          transition-all duration-200 ease-out
+        "
+        >
+          {renderCurrentIcon()}
+          {renderCurrentImage()}
         </div>
       )}
     </>
