@@ -1,12 +1,27 @@
+import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { EllipsisVertical } from 'lucide-react';
+
 import { Property, PropertyType } from '@/types/entry.interface';
 
-// import RippleButton from '@/entrypoints/components/buttons/ripple-button';
+import RippleButton from '@/entrypoints/components/buttons/ripple-button';
 import ClassicIconButton from '@/entrypoints/components/buttons/classic-icon-button';
 
 import { propertyIcons } from '@/utils/property';
-import { EllipsisVertical } from 'lucide-react';
 
-export default function ({ properties }: { properties: Property[] }) {
+export default function ({
+  properties,
+  deleteProperty,
+  updateProperty,
+}: {
+  properties: Property[];
+  deleteProperty: (id: string) => void;
+  updateProperty: (property: Property) => void;
+}) {
+  const { t } = useTranslation();
+
+  const [isDropdownOpenId, setIsDropdownOpenId] = useState<string | null>(null);
+
   function renderIcon(type: PropertyType) {
     const Icon = propertyIcons[type];
     return <Icon size={16} />;
@@ -101,6 +116,53 @@ export default function ({ properties }: { properties: Property[] }) {
     }
   }
 
+  function renderDropdown(property: Property) {
+    const buttons = ['update', 'delete'];
+
+    return (
+      <div
+        className={`
+        absolute top-12 right-0 w-32
+        rounded-2xl border border-border/10
+        transition-all duration-200
+        backdrop-blur-xl bg-surface-container/20
+        shadow-xl overflow-hidden
+        z-10
+        ${
+          isDropdownOpenId === property.id
+            ? 'h-18.5 opacity-100'
+            : 'h-0 opacity-0 pointer-events-none'
+        }
+      `}
+      >
+        {buttons.map((button) => (
+          <RippleButton
+            key={button}
+            mode="dark"
+            className="
+            w-full px-4 py-2
+            bg-transparent hover:bg-primary-container/20
+            text-left text-xs font-semibold
+            transition-all duration-200
+            cursor-pointer
+          "
+            onClick={() => {
+              if (button === 'delete') {
+                deleteProperty(property.id);
+              } else {
+                updateProperty(property);
+              }
+
+              setIsDropdownOpenId(null);
+            }}
+          >
+            {t(button)}
+          </RippleButton>
+        ))}
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-3.5 p-4.5">
       {/* {JSON.stringify(properties)} */}
@@ -113,6 +175,7 @@ export default function ({ properties }: { properties: Property[] }) {
             border border-border/10
             shadow-xs hover:shadow-sm hover:-translate-y-0.5
             transition-all duration-200 ease-out
+            z-50
           "
         >
           <div className="flex-1 min-w-0 pr-4">
@@ -135,9 +198,18 @@ export default function ({ properties }: { properties: Property[] }) {
             {renderValue(property)}
           </div>
           <div className="relative">
-            <ClassicIconButton title="Options" isState={true}>
+            <ClassicIconButton
+              title="Options"
+              isState={true}
+              onClick={() =>
+                setIsDropdownOpenId(
+                  isDropdownOpenId === property.id ? null : property.id,
+                )
+              }
+            >
               <EllipsisVertical size={18} color="var(--color-primary-title)" />
             </ClassicIconButton>
+            {renderDropdown(property)}
           </div>
         </div>
       ))}
