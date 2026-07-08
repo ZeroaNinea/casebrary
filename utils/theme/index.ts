@@ -43,6 +43,9 @@ export default function createTheme(
       primaryContainerFilled: palettes.primary['600'],
       primaryContainerFilledHover: palettes.primary['700'],
       onPrimaryContainer: palettes.primary['50'],
+      errorContainer: palettes.error['100'],
+      onErrorContainer: palettes.error['50'],
+      errorBorder: palettes.error['500'],
     };
 
     return theme;
@@ -74,6 +77,9 @@ export default function createTheme(
       primaryContainerFilled: palettes.primary['500'],
       primaryContainerFilledHover: palettes.primary['400'],
       onPrimaryContainer: palettes.primary['900'],
+      errorContainer: palettes.error['900'],
+      onErrorContainer: palettes.error['50'],
+      errorBorder: palettes.error['400'],
     };
 
     return theme;

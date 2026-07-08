@@ -3,7 +3,7 @@
   "searchLabel": "Search",
   "searchRecords": "Search records...",
   "back": "Back",
-  "titleLabel": "Title",
+  "titleLabel": "Title *",
   "titlePlaceholder": "Set a title...",
   "icons": "Icons",
   "imageUrl": "Image URL",
@@ -28,5 +28,6 @@
   "delete": "Delete",
   "update": "Update",
   "updateProperty": "Update Property",
-  "cancelUpdate": "Cancel Update"
+  "cancelUpdate": "Cancel Update",
+  "titleRequired": "Title is required."
 }

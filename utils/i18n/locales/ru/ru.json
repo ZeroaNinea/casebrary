@@ -3,7 +3,7 @@
   "searchLabel": "Поиск",
   "searchRecords": "Поиск записей...",
   "back": "Назад",
-  "titleLabel": "Заголовок",
+  "titleLabel": "Заголовок *",
   "titlePlaceholder": "Установить заголовок...",
   "icons": "Иконки",
   "imageUrl": "URL изображения",
@@ -28,5 +28,6 @@
   "delete": "Удалить",
   "update": "Обновить",
   "updateProperty": "Обновить свойство",
-  "cancelUpdate": "Отменить обновление"
+  "cancelUpdate": "Отменить обновление",
+  "titleRequired": "Требуется заголовок."
 }

@@ -43,4 +43,7 @@ export default interface Theme {
   primaryContainerFilled: string;
   primaryContainerFilledHover: string;
   onPrimaryContainer: string;
+  errorContainer: string;
+  onErrorContainer: string;
+  errorBorder: string;
 }

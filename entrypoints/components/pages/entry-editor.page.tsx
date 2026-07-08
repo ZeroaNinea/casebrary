@@ -145,6 +145,8 @@ export default function EntryEditorPage({
           placeholder={t('titlePlaceholder')}
           icon="type"
           value={title}
+          required
+          errorMessage={t('titleRequired')}
           onChange={(value) => setTitle(value)}
         />
         <IconPicker

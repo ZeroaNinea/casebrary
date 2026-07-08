@@ -23,12 +23,18 @@ export default function InputField({
   type,
   multiline = false,
   rows = 4,
+  required = false,
+  errorMessage,
   onChange,
 }: InputFieldProps) {
   const [internalValue, setInternalValue] = useState(
     type === 'number' ? 0 : '',
   );
   const currentValue = value ?? internalValue;
+
+  const [touched, setTouched] = useState(false);
+
+  const hasError = required && touched && String(currentValue).trim() === '';
 
   function update(value: string) {
     if (onChange) {
@@ -64,17 +70,38 @@ export default function InputField({
   return (
     <div className="flex flex-col gap-1.5 w-full my-2 text-left">
       {label && (
-        <label className="text-xs font-semibold text-text-muted px-1.5">
+        <label
+          className={`text-xs font-semibold ${hasError ? 'text-error-border' : 'text-text-muted'} px-1.5`}
+        >
           {label}
         </label>
       )}
+      {/* bg-surface-container/30 hover:bg-surface-container/50
+          border border-border/20 focus-within:border-accent/80
+          focus-within:ring-2 focus-within:ring-accent/15 */}
       <div
         className={`
           relative
           flex items-center gap-2.5
-          bg-surface-container/30 hover:bg-surface-container/50
-          border border-border/20 focus-within:border-accent/80
-          focus-within:ring-2 focus-within:ring-accent/15
+          ${
+            hasError
+              ? `
+                bg-error-container/15
+                border-error-container
+                hover:bg-error-container/30
+                focus-within:border-error-border
+                focus-within:ring-2
+                focus-within:ring-error-border/20
+              `
+              : `
+                bg-surface-container/30
+                hover:bg-surface-container/50
+                border-border/20
+                focus-within:border-accent/80
+                focus-within:ring-2
+                focus-within:ring-accent/15
+              `
+          }
           px-3.5 py-2.5
           rounded-2xl
           shadow-xs focus-within:shadow-sm
@@ -90,6 +117,7 @@ export default function InputField({
             rows={rows ?? 4}
             value={currentValue}
             placeholder={placeholder}
+            onBlur={() => setTouched(true)}
             onChange={(e) => update(e.target.value)}
             className="
               flex-1
@@ -108,6 +136,7 @@ export default function InputField({
             type={type ?? 'text'}
             value={currentValue}
             placeholder={placeholder}
+            onBlur={() => setTouched(true)}
             onChange={(e) => update(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === 'Escape') {
@@ -131,6 +160,11 @@ export default function InputField({
           </IconButton>
         )}
       </div>
+      {hasError && (
+        <span className="px-1.5 text-xs text-error-border">
+          {errorMessage ?? 'This field is required.'}
+        </span>
+      )}
     </div>
   );
 }
