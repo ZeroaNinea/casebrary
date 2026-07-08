@@ -47,29 +47,31 @@ export default function PropertyEditor({
   const [iconUrl, setIconUrl] = useState('');
 
   useEffect(() => {
-    if (updatingProperty) {
-      setPropertyType(updatingProperty.type);
-      setPropertyName(updatingProperty.name);
-
-      if (updatingProperty.type === 'text') {
-        setPropertyText(updatingProperty.value as string);
-      } else if (updatingProperty.type === 'number') {
-        setPropertyNumber(updatingProperty.value as number);
-      } else if (updatingProperty.type === 'boolean') {
-        setPropertyBoolean(updatingProperty.value as boolean);
-      } else if (updatingProperty.type === 'date') {
-        setPropertyDate(updatingProperty.value as string);
-      } else if (updatingProperty.type === 'url') {
-        setPropertyUrl(updatingProperty.value as string);
-      } else if (updatingProperty.type === 'image') {
-        setIconUrl(updatingProperty.value as string);
-        setIconMode('url');
-      } else if (updatingProperty.type === 'icon') {
-        setIcon(updatingProperty.value as IconName);
-        setIconMode('lucide');
-      }
+    if (!updatingProperty) {
+      return;
     }
-  });
+
+    setPropertyType(updatingProperty.type);
+    setPropertyName(updatingProperty.name);
+
+    if (updatingProperty.type === 'text') {
+      setPropertyText(updatingProperty.value as string);
+    } else if (updatingProperty.type === 'number') {
+      setPropertyNumber(updatingProperty.value as number);
+    } else if (updatingProperty.type === 'boolean') {
+      setPropertyBoolean(updatingProperty.value as boolean);
+    } else if (updatingProperty.type === 'date') {
+      setPropertyDate(updatingProperty.value as string);
+    } else if (updatingProperty.type === 'url') {
+      setPropertyUrl(updatingProperty.value as string);
+    } else if (updatingProperty.type === 'image') {
+      setIconUrl(updatingProperty.value as string);
+      setIconMode('url');
+    } else if (updatingProperty.type === 'icon') {
+      setIcon(updatingProperty.value as IconName);
+      setIconMode('lucide');
+    }
+  }, [updatingProperty]);
 
   function getPropertyValue() {
     switch (propertyType) {

@@ -63,7 +63,7 @@ export default function EntryEditorPage({
     close();
   }
 
-  function handleSave(property: Property) {
+  function handleSaveProperty(property: Property) {
     if (
       property.id === '' ||
       property.name === '' ||
@@ -164,7 +164,7 @@ export default function EntryEditorPage({
       <PropertyEditor
         updatingProperty={updatingProperty}
         onCancel={() => setUpdatingProperty(null)}
-        onSave={(property) => handleSave(property)}
+        onSave={(property) => handleSaveProperty(property)}
         onUpdate={(property) => handleUpdateProperty(property)}
       />
       <PropertiesList
