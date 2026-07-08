@@ -102,17 +102,17 @@ export default function EntriesList({
                 : undefined,
             } as React.CSSProperties
           }
-          className="
+          className={`
             flex items-center justify-between
             bg-primary-container/20 hover:bg-primary-container/45 backdrop-blur-xs
             p-3.5 rounded-2xl
             border border-border/10
             shadow-xs hover:shadow-md hover:shadow-primary/5 hover:-translate-y-0.5 active:translate-y-0
             transition-all duration-200 ease-out cursor-pointer
-          "
+            ${isDropdownOpenId === entry.id ? 'z-20' : 'z-0'}
+          `}
         >
           <div className="flex items-center gap-3">
-            {/* <div className="text-primary-title"> */}
             <div
               className="flex items-center justify-center w-9 h-9 rounded-xl text-primary-title shrink-0"
               style={{

@@ -30,7 +30,7 @@ body {
   width: 400px;
   height: 520px;
   overflow: hidden;
-  border-radius: 24px;
+  /* border-radius: 24px; */
 }
 
 /* Custom scrollbar styling */
