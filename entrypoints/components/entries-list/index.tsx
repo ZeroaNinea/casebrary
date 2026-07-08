@@ -49,7 +49,7 @@ export default function EntriesList({
           backdrop-blur-md bg-surface-container/95
           shadow-lg overflow-hidden
           z-10
-          ${isDropdownOpenId === entry.id ? 'h-[74px] opacity-100' : 'h-0 opacity-0 pointer-events-none'}
+          ${isDropdownOpenId === entry.id ? 'h-18.5 opacity-100' : 'h-0 opacity-0 pointer-events-none'}
         `}
       >
         {buttons.map((button) => (
@@ -109,10 +109,10 @@ export default function EntriesList({
           "
         >
           <div className="flex items-center gap-3">
-            <div className="text-primary-title">
-              {renderIcon(entry)}
-            </div>
-            <h1 className="font-semibold text-text text-sm tracking-wide">{entry.title}</h1>
+            <div className="text-primary-title">{renderIcon(entry)}</div>
+            <h1 className="font-semibold text-text text-sm tracking-wide">
+              {entry.title}
+            </h1>
           </div>
           <div className="relative">
             <ClassicIconButton
