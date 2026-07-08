@@ -6,6 +6,7 @@ export type PropertyType =
   | 'boolean'
   | 'date'
   | 'url'
+  | 'icon'
   | 'image';
 
 export const propertyTypes: PropertyType[] = [

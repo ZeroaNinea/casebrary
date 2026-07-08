@@ -1,6 +1,6 @@
 import { Property, PropertyType } from '@/types/entry.interface';
 
-import RippleButton from '@/entrypoints/components/buttons/ripple-button';
+// import RippleButton from '@/entrypoints/components/buttons/ripple-button';
 import ClassicIconButton from '@/entrypoints/components/buttons/classic-icon-button';
 
 import { propertyIcons } from '@/utils/property';
@@ -76,6 +76,14 @@ export default function ({ properties }: { properties: Property[] }) {
           </a>
         );
 
+      case 'icon':
+        const Icon = icons[`${property.value}` as IconName];
+        return (
+          <div className="mt-2 pl-5">
+            <Icon size={24} />
+          </div>
+        );
+
       case 'image':
         return (
           <img
@@ -95,6 +103,7 @@ export default function ({ properties }: { properties: Property[] }) {
 
   return (
     <div className="flex flex-col gap-3.5 p-4.5">
+      {/* {JSON.stringify(properties)} */}
       {properties.map((property) => (
         <div
           key={property.id}
@@ -110,7 +119,7 @@ export default function ({ properties }: { properties: Property[] }) {
             <div className="flex flex-wrap items-center gap-2 mb-2">
               <div className="flex items-center gap-1.5 text-primary-title">
                 {renderIcon(property.type)}
-                <h1 className="font-semibold text-text text-xs tracking-wide truncate max-w-[120px]">
+                <h1 className="font-semibold text-text text-xs tracking-wide truncate max-w-30">
                   {property.name}
                 </h1>
               </div>
@@ -126,14 +135,8 @@ export default function ({ properties }: { properties: Property[] }) {
             {renderValue(property)}
           </div>
           <div className="relative">
-            <ClassicIconButton
-              title="Options"
-              isState={true}
-            >
-              <EllipsisVertical
-                size={18}
-                color="var(--color-primary-title)"
-              />
+            <ClassicIconButton title="Options" isState={true}>
+              <EllipsisVertical size={18} color="var(--color-primary-title)" />
             </ClassicIconButton>
           </div>
         </div>

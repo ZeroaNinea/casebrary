@@ -33,8 +33,8 @@ export default function SlideToggle({
         <div
           className={`
             absolute
-            top-[3px]
-            left-[3px]
+            top-0.75
+            left-0.75
             w-4.5
             h-4.5
             flex
@@ -44,7 +44,7 @@ export default function SlideToggle({
             bg-white
             shadow-sm
             transition-transform duration-200
-            ${value ? 'translate-x-[18px]' : ''}
+            ${value ? 'translate-x-4.5' : ''}
           `}
         >
           {value ? (

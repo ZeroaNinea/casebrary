@@ -51,9 +51,28 @@ export default function PropertyEditor({
         return propertyUrl;
       case 'boolean':
         return propertyBoolean;
+      case 'image':
+        console.log('image');
+        if (iconMode === 'lucide') {
+          return icon;
+        }
+
+        if (iconMode === 'url') {
+          return iconUrl;
+        }
+
+        return '';
       default:
         return '';
     }
+  }
+
+  function getPropertyType() {
+    if (iconMode === 'lucide' && propertyType === 'image') {
+      return 'icon';
+    }
+
+    return propertyType;
   }
 
   return (
@@ -177,7 +196,7 @@ export default function PropertyEditor({
           onClick={() => {
             onSave({
               id: crypto.randomUUID(),
-              type: propertyType,
+              type: getPropertyType(),
               name: propertyName,
               value: getPropertyValue(),
             });

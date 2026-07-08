@@ -4,6 +4,7 @@ import {
   FileText,
   Hash,
   Image,
+  Smile,
   Link,
 } from 'lucide-react';
 
@@ -13,5 +14,6 @@ export const propertyIcons = {
   boolean: CheckSquare,
   date: Calendar,
   url: Link,
+  icon: Smile,
   image: Image,
 };

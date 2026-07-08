@@ -48,13 +48,15 @@ function App() {
   console.log('Entries from the `App.tsx`:', entries);
 
   return (
-    <div className="relative w-full min-h-[520px] flex flex-col overflow-x-hidden pb-4">
+    <div className="relative w-full min-h-130 flex flex-col overflow-x-hidden pb-4">
       <div className="flex justify-between items-center w-full px-4.5 py-3 border-b border-border/10 bg-surface-container/5 mb-3">
         <div className="flex gap-2.5 items-center">
           <IconButton title="Menu">
             <Menu size={18} color="var(--color-primary-title)" />
           </IconButton>
-          <h1 className="font-bold text-primary-title text-base tracking-wide">Casebrary</h1>
+          <h1 className="font-bold text-primary-title text-base tracking-wide">
+            Casebrary
+          </h1>
         </div>
         <div className="flex gap-2 items-center">
           <IconButton title="Language">

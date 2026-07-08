@@ -84,7 +84,7 @@ export default function ColorInput({
           <div className="rounded-xl overflow-hidden shadow-xs border border-border/10">
             <HexColorPicker color={currentValue} onChange={update} />
           </div>
-          <div className="flex flex-wrap gap-2.5 items-center pl-3.5 h-24">
+          <div className="flex flex-wrap gap-2.5 items-center pl-3.5 h-24 w-30">
             {presets.map((color) => (
               <RippleButton
                 key={color}
