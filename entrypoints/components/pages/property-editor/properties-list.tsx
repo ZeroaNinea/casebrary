@@ -146,6 +146,7 @@ export default function ({
             transition-all duration-200
             cursor-pointer
           "
+            isState={true}
             onClick={() => {
               if (button === 'delete') {
                 onDelete(property.id);
