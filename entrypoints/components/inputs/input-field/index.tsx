@@ -76,9 +76,6 @@ export default function InputField({
           {label}
         </label>
       )}
-      {/* bg-surface-container/30 hover:bg-surface-container/50
-          border border-border/20 focus-within:border-accent/80
-          focus-within:ring-2 focus-within:ring-accent/15 */}
       <div
         className={`
           relative

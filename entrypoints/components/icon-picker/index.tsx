@@ -94,11 +94,11 @@ export default function IconPicker({
         <div
           className="
           flex items-center justify-center py-6 my-3
-          bg-surface-container hover:bg-surface-container-hover
+          bg-surface-container/30 hover:bg-surface-container/50
           rounded-xl cursor-pointer font-semibold text-sm
           border border-border/30
           shadow-sm hover:shadow-md hover:shadow-black/5
-          hover:scale-[1.02] active:scale-[0.97] hover:-translate-y-0.5 active:translate-y-0
+          hover:scale-[1.02] hover:-translate-y-0.5
           transition-all duration-200 ease-out
         "
         >
