@@ -103,6 +103,16 @@ export default function EntryEditorPage({
     }
   }, [updatingEntry]);
 
+  function handleDeleteProperty(id: string) {
+    setProperties((properties) =>
+      properties.filter((property) => property.id !== id),
+    );
+  }
+
+  function handleUpdateProperty(property: Property) {
+    // Open the property editor with this property loaded.
+  }
+
   return (
     <div
       className={`
@@ -142,15 +152,11 @@ export default function EntryEditorPage({
         />
       </div>
       <PropertyEditor onSave={(property) => handleSave(property)} />
-      <PropertiesList properties={properties} />
-      {/* {properties.map((property) => (
-        <div key={property.id} className="px-3 py-3">
-          <div className="flex items-center gap-2">
-            <span className="text-primary-on-container">{property.name}</span>
-            <span className="text-primary-on-container">{property.type}</span>
-          </div>
-        </div>
-      ))} */}
+      <PropertiesList
+        properties={properties}
+        onDelete={handleDeleteProperty}
+        onUpdate={handleUpdateProperty}
+      />
       {/* {JSON.stringify(properties)} */}
       <div className="flex justify-end px-6 gap-3">
         <CancelButton title="Cancel" onClick={handleClose} isState={true}>

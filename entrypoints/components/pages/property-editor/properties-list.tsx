@@ -11,12 +11,12 @@ import { propertyIcons } from '@/utils/property';
 
 export default function ({
   properties,
-  deleteProperty,
-  updateProperty,
+  onDelete,
+  onUpdate,
 }: {
   properties: Property[];
-  deleteProperty: (id: string) => void;
-  updateProperty: (property: Property) => void;
+  onDelete: (id: string) => void;
+  onUpdate: (property: Property) => void;
 }) {
   const { t } = useTranslation();
 
@@ -148,9 +148,9 @@ export default function ({
           "
             onClick={() => {
               if (button === 'delete') {
-                deleteProperty(property.id);
+                onDelete(property.id);
               } else {
-                updateProperty(property);
+                onUpdate(property);
               }
 
               setIsDropdownOpenId(null);
