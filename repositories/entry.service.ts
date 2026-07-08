@@ -6,6 +6,12 @@ export default class EntryService {
   constructor(private repository = new EntryRepository()) {}
 
   async create(data: CreateEntryDto): Promise<Entry> {
+    const title = data.title.trim();
+
+    if (!title) {
+      throw new Error('Title cannot be empty.');
+    }
+
     const now = Date.now();
 
     const siblings = await this.repository.getChildren(data.parentId);
@@ -29,6 +35,19 @@ export default class EntryService {
   }
 
   async update(id: string, updates: Partial<Entry>) {
+    if (updates.title !== undefined) {
+      const title = updates.title.trim();
+
+      if (!title) {
+        throw new Error('Title cannot be empty.');
+      }
+
+      updates = {
+        ...updates,
+        title,
+      };
+    }
+
     await this.repository.update(id, updates);
   }
 
