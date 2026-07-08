@@ -48,13 +48,32 @@ function App() {
   console.log('Entries from the `App.tsx`:', entries);
 
   return (
-    <div className="relative w-full min-h-130 flex flex-col overflow-x-hidden pb-4">
-      <div className="flex justify-between items-center w-full px-4.5 py-3 border-b border-border/10 bg-surface-container/5 mb-3">
+    <div className="relative w-full h-full flex flex-col overflow-hidden bg-linear-to-br from-(--color-neutral-50) via-(--color-primary-50) to-(--color-secondary-50) shadow-2xl">
+      {/* Premium sky-blue and cyan glowing background blobs */}
+      <div
+        className="absolute -top-10 -left-10 w-48 h-48 rounded-full pointer-events-none z-0 animate-blob-1"
+        style={{
+          backgroundColor: 'var(--color-primary-200)',
+          opacity: 0.18,
+          filter: 'blur(60px)',
+        }}
+      />
+      <div
+        className="absolute bottom-5 -right-10 w-52 h-52 rounded-full pointer-events-none z-0 animate-blob-2"
+        style={{
+          backgroundColor: 'var(--color-secondary-200)',
+          opacity: 0.18,
+          filter: 'blur(60px)',
+        }}
+      />
+
+      {/* Sticky header */}
+      <div className="flex justify-between items-center w-full px-4.5 py-3.5 border-b border-border/10 backdrop-blur-md bg-white/10 z-10 shrink-0">
         <div className="flex gap-2.5 items-center">
           <IconButton title="Menu">
             <Menu size={18} color="var(--color-primary-title)" />
           </IconButton>
-          <h1 className="font-bold text-primary-title text-base tracking-wide">
+          <h1 className="font-extrabold text-base tracking-wide bg-linear-to-r from-(--color-primary-700) to-(--color-secondary-600) bg-clip-text text-transparent">
             Casebrary
           </h1>
         </div>
@@ -67,34 +86,39 @@ function App() {
           </IconButton>
         </div>
       </div>
-      <div className="px-4.5 mb-2">
-        <FilledButton
-          title="Entry"
-          isState={true}
-          className="w-full"
-          onClick={() => {
-            setCurrentPage('entry-editor');
-            setParentId(null);
-            setUpdatingEntry(null);
-          }}
-        >
-          <Plus size={16} color="var(--color-on-primary-container)" />
-          <span className="text-on-primary-container text-sm font-semibold">
-            {t('addEntry')}
-          </span>
-        </FilledButton>
-      </div>
-      <div className="px-4.5 py-1">
-        <SearchField
-          label={t('searchLabel')}
-          placeholder={t('searchRecords')}
-          icon="search"
-          // onChange={(value) => {
-          //   // TODO: filter entries
-          // }}
+      {/* Main scrollable content */}
+      <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden z-1">
+        <div className="px-4.5 pt-4 pb-2">
+          <FilledButton
+            title="Entry"
+            isState={true}
+            className="w-full"
+            onClick={() => {
+              setCurrentPage('entry-editor');
+              setParentId(null);
+              setUpdatingEntry(null);
+            }}
+          >
+            <Plus size={16} color="var(--color-on-primary-container)" />
+            <span className="text-on-primary-container text-sm font-semibold">
+              {t('addEntry')}
+            </span>
+          </FilledButton>
+        </div>
+        <div className="px-4.5 pb-2">
+          <SearchField
+            label={t('searchLabel')}
+            placeholder={t('searchRecords')}
+            icon="search"
+          />
+        </div>
+        <EntryList
+          entries={entries}
+          deleteEntry={handleDeleteEntry}
+          updateEntry={handleUpdateEntry}
         />
       </div>
-      {/* <div style={{ marginBottom: '325px' }}></div> */}
+      {/* Entry editor — full-cover overlay, sibling to main content */}
       <EntryEditorPage
         show={currentPage === 'entry-editor'}
         parentId={parentId}
@@ -103,12 +127,6 @@ function App() {
         clearUpdatingEntry={() => {
           setUpdatingEntry(null);
         }}
-      />
-      {/* {JSON.stringify(entries)} */}
-      <EntryList
-        entries={entries}
-        deleteEntry={handleDeleteEntry}
-        updateEntry={handleUpdateEntry}
       />
     </div>
   );

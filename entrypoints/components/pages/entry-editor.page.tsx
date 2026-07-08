@@ -106,13 +106,13 @@ export default function EntryEditorPage({
   return (
     <div
       className={`
-        absolute inset-0 overflow-y-auto
-        bg-bg p-4.5
-        transition-transform duration-200
-        z-1000
+        absolute inset-0 z-50 overflow-y-auto
+        bg-linear-to-br from-(--color-neutral-50) via-(--color-primary-50) to-(--color-secondary-50)
+        p-4.5
+        transition-transform duration-300 ease-out
       `}
       style={{
-        transform: show ? 'translateX(0)' : 'translateX(100%)',
+        transform: show ? 'translateX(0)' : 'translateX(105%)',
       }}
     >
       <TransparentPillButton isState={true} onClick={handleClose}>
