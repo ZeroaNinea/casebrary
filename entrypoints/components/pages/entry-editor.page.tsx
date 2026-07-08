@@ -181,6 +181,7 @@ export default function EntryEditorPage({
         </CancelButton>
         <FilledButton
           title="Save"
+          disabled={title === ''}
           isState={true}
           onClick={() => {
             if (updatingEntry) {
