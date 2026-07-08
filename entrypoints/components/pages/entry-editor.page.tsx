@@ -45,6 +45,9 @@ export default function EntryEditorPage({
   const [iconUrl, setIconUrl] = useState('');
 
   const [properties, setProperties] = useState<Property[]>([]);
+  const [updatingProperty, setUpdatingProperty] = useState<Property | null>(
+    null,
+  );
 
   const dispatch = useAppDispatch();
 
@@ -109,8 +112,15 @@ export default function EntryEditorPage({
     );
   }
 
+  function startUpdatingProperty(property: Property) {
+    setUpdatingProperty(property);
+  }
+
   function handleUpdateProperty(property: Property) {
-    // Open the property editor with this property loaded.
+    setProperties((properties) =>
+      properties.map((p) => (p.id === property.id ? property : p)),
+    );
+    setUpdatingProperty(null);
   }
 
   return (
@@ -151,11 +161,16 @@ export default function EntryEditorPage({
           onChange={(value) => setColor(value)}
         />
       </div>
-      <PropertyEditor onSave={(property) => handleSave(property)} />
+      <PropertyEditor
+        updatingProperty={updatingProperty}
+        onCancel={() => setUpdatingProperty(null)}
+        onSave={(property) => handleSave(property)}
+        onUpdate={(property) => handleUpdateProperty(property)}
+      />
       <PropertiesList
         properties={properties}
         onDelete={handleDeleteProperty}
-        onUpdate={handleUpdateProperty}
+        onUpdate={startUpdatingProperty}
       />
       {/* {JSON.stringify(properties)} */}
       <div className="flex justify-end px-6 gap-3">

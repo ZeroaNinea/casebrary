@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { Check, ChevronDown, ChevronUpIcon } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { Check, ChevronDown, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import RippleButton from '../../buttons/ripple-button';
+import RippleButton from '@/entrypoints/components/buttons/ripple-button';
 import { propertyTypes, PropertyType } from '@/types/entry.interface';
 
 import NameInput from '@/entrypoints/components/inputs/input-field';
@@ -12,6 +12,7 @@ import DateInput from '@/entrypoints/components/inputs/input-field';
 
 import SlideToggle from '@/entrypoints/components/slide-toggle';
 import FilledButton from '@/entrypoints/components/buttons/filled-button';
+import CancelButton from '@/entrypoints/components/buttons/cancel-button/inedx';
 
 import IconPicker from '@/entrypoints/components/icon-picker';
 import { IconName } from '@/utils/icons';
@@ -19,8 +20,14 @@ import { IconName } from '@/utils/icons';
 import { Property } from '@/types/entry.interface';
 
 export default function PropertyEditor({
+  updatingProperty,
+  onCancel,
+  onUpdate,
   onSave,
 }: {
+  updatingProperty: Property | null;
+  onCancel: () => void;
+  onUpdate: (property: Property) => void;
   onSave: (property: Property) => void;
 }) {
   const { t } = useTranslation();
@@ -38,6 +45,31 @@ export default function PropertyEditor({
     'lucide',
   );
   const [iconUrl, setIconUrl] = useState('');
+
+  useEffect(() => {
+    if (updatingProperty) {
+      setPropertyType(updatingProperty.type);
+      setPropertyName(updatingProperty.name);
+
+      if (updatingProperty.type === 'text') {
+        setPropertyText(updatingProperty.value as string);
+      } else if (updatingProperty.type === 'number') {
+        setPropertyNumber(updatingProperty.value as number);
+      } else if (updatingProperty.type === 'boolean') {
+        setPropertyBoolean(updatingProperty.value as boolean);
+      } else if (updatingProperty.type === 'date') {
+        setPropertyDate(updatingProperty.value as string);
+      } else if (updatingProperty.type === 'url') {
+        setPropertyUrl(updatingProperty.value as string);
+      } else if (updatingProperty.type === 'image') {
+        setIconUrl(updatingProperty.value as string);
+        setIconMode('url');
+      } else if (updatingProperty.type === 'icon') {
+        setIcon(updatingProperty.value as IconName);
+        setIconMode('lucide');
+      }
+    }
+  });
 
   function getPropertyValue() {
     switch (propertyType) {
@@ -189,22 +221,37 @@ export default function PropertyEditor({
           />
         </div>
       )}
-      <div className="flex justify-end px-6">
+      <div className="flex justify-end px-2 gap-3">
+        {updatingProperty !== null && (
+          <CancelButton title="Cancel" onClick={onCancel} isState={true}>
+            <X size={16} color="var(--color-on-surface)" />
+            <span className="text-on-surface text-sm">{t('cancelUpdate')}</span>
+          </CancelButton>
+        )}
         <FilledButton
           title="Entry"
           isState={true}
           onClick={() => {
-            onSave({
-              id: crypto.randomUUID(),
-              type: getPropertyType(),
-              name: propertyName,
-              value: getPropertyValue(),
-            });
+            if (updatingProperty !== null) {
+              onUpdate({
+                id: updatingProperty.id,
+                type: getPropertyType(),
+                name: propertyName,
+                value: getPropertyValue(),
+              });
+            } else {
+              onSave({
+                id: crypto.randomUUID(),
+                type: getPropertyType(),
+                name: propertyName,
+                value: getPropertyValue(),
+              });
+            }
           }}
         >
           <ChevronDown size={16} color="var(--color-on-primary-container)" />
           <span className="text-on-primary-container text-sm">
-            {t('addProperty')}
+            {updatingProperty !== null ? t('updateProperty') : t('addProperty')}
           </span>
         </FilledButton>
       </div>

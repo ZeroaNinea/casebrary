@@ -26,5 +26,7 @@
   "cancel": "Cancel",
   "save": "Save",
   "delete": "Delete",
-  "update": "Update"
+  "update": "Update",
+  "updateProperty": "Update Property",
+  "cancelUpdate": "Cancel Update"
 }
