@@ -7,6 +7,7 @@ export default function FilledButton({
   disabled,
   isState,
   title,
+  className,
   ...props
 }: React.HTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
@@ -16,12 +17,16 @@ export default function FilledButton({
   return (
     <RippleButton
       mode="light"
-      className="
-        flex items-center gap-1 px-2 py-1
+      className={`
+        flex items-center justify-center gap-2 px-5 py-2.5
         bg-primary-container-filled hover:bg-primary-container-filled-hover
-        rounded-md cursor-pointer
-        transition-all duration-200
-      "
+        rounded-xl cursor-pointer font-semibold text-sm
+        border border-primary-container-filled/20
+        shadow-md shadow-primary/10 hover:shadow-lg hover:shadow-primary/20
+        hover:scale-[1.02] active:scale-[0.97] hover:-translate-y-0.5 active:translate-y-0
+        transition-all duration-200 ease-out
+        ${className || ''}
+      `}
       classnamesonclick={['bg-primary-container-filled-hover']}
       title={title}
       onClick={handleClick}
@@ -33,3 +38,5 @@ export default function FilledButton({
     </RippleButton>
   );
 }
+
+

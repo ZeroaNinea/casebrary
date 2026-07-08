@@ -48,13 +48,13 @@ function App() {
   console.log('Entries from the `App.tsx`:', entries);
 
   return (
-    <div className="relative w-100 overflow-x-hidden">
-      <div className="flex justify-between w-100 p-2">
-        <div className="flex gap-2 items-center">
+    <div className="relative w-full min-h-[520px] flex flex-col overflow-x-hidden pb-4">
+      <div className="flex justify-between items-center w-full px-4.5 py-3 border-b border-border/10 bg-surface-container/5 mb-3">
+        <div className="flex gap-2.5 items-center">
           <IconButton title="Menu">
             <Menu size={18} color="var(--color-primary-title)" />
           </IconButton>
-          <h1 className="font-bold text-primary-title text-lg">Casebrary</h1>
+          <h1 className="font-bold text-primary-title text-base tracking-wide">Casebrary</h1>
         </div>
         <div className="flex gap-2 items-center">
           <IconButton title="Language">
@@ -65,10 +65,11 @@ function App() {
           </IconButton>
         </div>
       </div>
-      <div className="px-3">
+      <div className="px-4.5 mb-2">
         <FilledButton
           title="Entry"
           isState={true}
+          className="w-full"
           onClick={() => {
             setCurrentPage('entry-editor');
             setParentId(null);
@@ -76,12 +77,12 @@ function App() {
           }}
         >
           <Plus size={16} color="var(--color-on-primary-container)" />
-          <span className="text-on-primary-container text-sm">
+          <span className="text-on-primary-container text-sm font-semibold">
             {t('addEntry')}
           </span>
         </FilledButton>
       </div>
-      <div className="px-3 py-3">
+      <div className="px-4.5 py-1">
         <SearchField
           label={t('searchLabel')}
           placeholder={t('searchRecords')}

@@ -37,99 +37,77 @@ export default function ColorInput({
   }
 
   return (
-    <>
-      <div
-        className="
-        group
-        relative
-        border-b border-border
-        focus-within:border-accent
-        transition-colors duration-200
-      "
-      >
-        <span
-          className="
-            absolute
-            left-0
-            top-6
-            h-5
-            w-full
-            bg-bg
-            pointer-events-none
-            group-focus-within:hidden
-          "
-        />
-
-        <label
-          className="
-            absolute
-            left-0
-            top-6
-            px-1
-            bg-bg
-            transition-all
-            duration-200
-            pointer-events-none
-            group-focus-within:top-1
-            group-focus-within:left-1
-            group-focus-within:scale-80
-            group-focus-within:text-accent
-          "
-        >
+    <div className="flex flex-col gap-1.5 w-full my-2 text-left">
+      {label && (
+        <label className="text-xs font-semibold text-text-muted px-1.5">
           {label}
         </label>
-
-        <div className="flex items-center gap-2 pt-5 pb-1">
-          <input
-            className="
+      )}
+      <div
+        className="
+          flex items-center gap-2.5
+          bg-surface-container/30 hover:bg-surface-container/50
+          border border-border/20 focus-within:border-accent/80
+          focus-within:ring-2 focus-within:ring-accent/15
+          px-3.5 py-2
+          rounded-2xl
+          shadow-xs focus-within:shadow-sm
+          transition-all duration-200 ease-out
+          h-12
+        "
+      >
+        <input
+          className="
             flex-1
             bg-transparent
             outline-none
-            text-text
+            text-text text-sm
             peer
           "
-            type="text"
-            value={currentValue}
-            onChange={(e) => update(e.target.value)}
+          type="text"
+          value={currentValue}
+          onChange={(e) => update(e.target.value)}
+        />
+        <RippleButton
+          className="w-8 h-8 rounded-lg overflow-hidden cursor-pointer"
+          onClick={() => setShowPicker((v) => !v)}
+        >
+          <div
+            className="w-full h-full rounded-lg border border-border/30 hover:scale-105 active:scale-95 transition-transform"
+            style={{ backgroundColor: currentValue }}
           />
-          <RippleButton
-            className="w-8 h-8 rounded-lg overflow-hidden"
-            onClick={() => setShowPicker((v) => !v)}
-          >
-            <div
-              className="w-full h-full rounded-lg border border-border"
-              style={{ backgroundColor: currentValue }}
-            />
-          </RippleButton>
-        </div>
+        </RippleButton>
       </div>
 
       {showPicker && (
-        <div className="mt-3 flex">
-          <div>
+        <div className="mt-3.5 flex p-3.5 bg-surface-container/20 border border-border/10 rounded-2xl shadow-md">
+          <div className="rounded-xl overflow-hidden shadow-xs border border-border/10">
             <HexColorPicker color={currentValue} onChange={update} />
           </div>
-          <div className="flex flex-wrap gap-3 items-center pl-3 h-24">
+          <div className="flex flex-wrap gap-2.5 items-center pl-3.5 h-24">
             {presets.map((color) => (
               <RippleButton
                 key={color}
                 onClick={() => update(color)}
                 className="
-                  w-7
-                  h-7
+                  w-6
+                  h-6
                   rounded-full
                   flex
                   items-center
                   justify-center
+                  cursor-pointer
+                  hover:scale-110 active:scale-95
+                  transition-transform
                 "
               >
                 <div
                   className="
-                    w-5
-                    h-5
+                    w-4.5
+                    h-4.5
                     rounded-full
                     border
-                    border-border
+                    border-border/30
                   "
                   style={{
                     backgroundColor: color,
@@ -140,6 +118,6 @@ export default function ColorInput({
           </div>
         </div>
       )}
-    </>
+    </div>
   );
 }

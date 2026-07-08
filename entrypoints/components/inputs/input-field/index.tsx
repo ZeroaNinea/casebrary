@@ -62,170 +62,75 @@ export default function InputField({
   }
 
   return (
-    <div
-      className={`
-        relative
-        flex items-center gap-2
-        border-b border-border
-        focus-within:border-accent
-        transition-colors duration-200
-        h-10
-        py-1
-        ${multiline ? 'items-start min-h-28' : 'items-center h-10'}
-      `}
-    >
-      {/* <Search size={16} className="text-text-muted shrink-0" /> */}
-      {icon && renderIcon(icon)}
-
-      {multiline ? (
-        <textarea
-          id="search"
-          rows={rows ?? 4}
-          value={currentValue}
-          placeholder={placeholder}
-          onChange={(e) => update(e.target.value)}
-          className="
-            flex-1
-            bg-transparent
-            outline-none
-            resize-none
-            text-text
-            placeholder:text-text-muted
-            peer
-            py-1
-          "
-        />
-      ) : type === 'number' ? (
-        <input
-          id="search"
-          type={type ?? 'text'}
-          value={currentValue}
-          placeholder={placeholder}
-          onChange={(e) => update(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Escape') {
-              update('');
-            }
-          }}
-          className="
-            flex-1
-            bg-transparent
-            outline-none
-            text-text
-            placeholder:text-text-muted
-            peer
-          "
-        />
-      ) : type === 'date' ? (
-        <input
-          id="search"
-          type={type ?? 'text'}
-          value={currentValue}
-          placeholder={placeholder}
-          onChange={(e) => update(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Escape') {
-              update('');
-            }
-          }}
-          className="
-            flex-1
-            bg-transparent
-            outline-none
-            text-text
-            placeholder:text-text-muted
-            peer
-          "
-        />
-      ) : (
-        <input
-          id="search"
-          type={type ?? 'text'}
-          value={currentValue}
-          placeholder={placeholder}
-          onChange={(e) => update(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Escape') {
-              update('');
-            }
-          }}
-          className="
-            flex-1
-            bg-transparent
-            outline-none
-            text-text
-            placeholder:text-text-muted
-            peer
-          "
-        />
+    <div className="flex flex-col gap-1.5 w-full my-2 text-left">
+      {label && (
+        <label className="text-xs font-semibold text-text-muted px-1.5">
+          {label}
+        </label>
       )}
+      <div
+        className={`
+          relative
+          flex items-center gap-2.5
+          bg-surface-container/30 hover:bg-surface-container/50
+          border border-border/20 focus-within:border-accent/80
+          focus-within:ring-2 focus-within:ring-accent/15
+          px-3.5 py-2.5
+          rounded-2xl
+          shadow-xs focus-within:shadow-sm
+          transition-all duration-200 ease-out
+          ${multiline ? 'items-start min-h-28' : 'items-center h-12'}
+        `}
+      >
+        {icon && renderIcon(icon)}
 
-      {multiline ? (
-        <span
-          className={`
-            absolute top-1 left-6 w-80 h-[calc(100%-0.4rem)] bg-bg
-            pointer-events-none
-            peer-focus:hidden
-          `}
-        ></span>
-      ) : type === 'date' ? (
-        <span
-          className="
-          absolute top-2 left-6 w-full h-6 bg-bg
-          pointer-events-none
-          peer-focus:hidden
-        "
-        ></span>
-      ) : (
-        <span
-          className="
-          absolute top-2 left-6 w-80 h-6 bg-bg
-          pointer-events-none
-          peer-focus:hidden
-        "
-        ></span>
-      )}
-
-      {label &&
-        (multiline ? (
-          <label
-            htmlFor="search"
+        {multiline ? (
+          <textarea
+            id="search"
+            rows={rows ?? 4}
+            value={currentValue}
+            placeholder={placeholder}
+            onChange={(e) => update(e.target.value)}
             className="
-              absolute top-0 left-6
-              bg-bg px-2 py-0
-              transition-all duration-200
-              peer-focus:-top-4
-              peer-focus:left-4
-              peer-focus:scale-80
-              peer-focus:text-accent
-              pointer-events-none
+              flex-1
+              bg-transparent
+              outline-none
+              resize-none
+              text-text text-sm
+              placeholder:text-text-muted
+              peer
+              py-0.5
             "
-          >
-            {label}
-          </label>
+          />
         ) : (
-          <label
-            htmlFor="search"
+          <input
+            id="search"
+            type={type ?? 'text'}
+            value={currentValue}
+            placeholder={placeholder}
+            onChange={(e) => update(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Escape') {
+                update('');
+              }
+            }}
             className="
-              absolute top-2 left-6
-              bg-bg px-2 py-0
-              transition-all duration-200
-              peer-focus:-top-3
-              peer-focus:left-2
-              peer-focus:scale-80
-              peer-focus:text-accent
-              pointer-events-none
+              flex-1
+              bg-transparent
+              outline-none
+              text-text text-sm
+              placeholder:text-text-muted
+              peer
             "
-          >
-            {label}
-          </label>
-        ))}
+          />
+        )}
 
-      {currentValue && (
-        <IconButton title="Clear" isState={true} onClick={() => update('')}>
-          <X size={14} />
-        </IconButton>
-      )}
+        {currentValue && (
+          <IconButton title="Clear" isState={true} onClick={() => update('')}>
+            <X size={14} />
+          </IconButton>
+        )}
+      </div>
     </div>
   );
 }

@@ -94,55 +94,47 @@ export default function ({ properties }: { properties: Property[] }) {
   }
 
   return (
-    <div className="flex flex-col gap-2">
-      {/* {JSON.stringify(properties)} */}
+    <div className="flex flex-col gap-3.5 p-4.5">
       {properties.map((property) => (
         <div
           key={property.id}
-          className="flex justify-between items-center px-3 py-3"
+          className="
+            flex justify-between items-center
+            bg-surface-container/20 p-4 rounded-2xl
+            border border-border/10
+            shadow-xs hover:shadow-sm hover:-translate-y-0.5
+            transition-all duration-200 ease-out
+          "
         >
-          <div>
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-2">
+          <div className="flex-1 min-w-0 pr-4">
+            <div className="flex flex-wrap items-center gap-2 mb-2">
+              <div className="flex items-center gap-1.5 text-primary-title">
                 {renderIcon(property.type)}
-                <h1 className="text-primary-title">{property.name}</h1>
+                <h1 className="font-semibold text-text text-xs tracking-wide truncate max-w-[120px]">
+                  {property.name}
+                </h1>
+              </div>
+              <div
+                className="
+                  inline-block px-2 py-0.5 text-[9px] font-bold tracking-wider uppercase rounded-full
+                  bg-primary-container text-primary-on-container border border-border/10
+                "
+              >
+                {property.type}
               </div>
             </div>
-            <RippleButton
-              mode="dark"
-              className="
-                px-2 py-1 text-sm rounded-md border border-border
-                hover:bg-primary-container-hover transition-all duration-200
-              "
-            >
-              <span className="text-primary-title">{property.type}</span>
-            </RippleButton>
-            {/* <div className="whitespace-pre-wrap my-2">{property.value}</div> */}
             {renderValue(property)}
           </div>
           <div className="relative">
             <ClassicIconButton
               title="Options"
               isState={true}
-              // onClick={() => {
-              //   if (isDropdownOpenId === entry.id) {
-              //     setIsDropdownOpenId(null);
-              //   } else {
-              //     setIsDropdownOpenId(entry.id);
-              //   }
-              // }}
             >
               <EllipsisVertical
                 size={18}
-                // style={
-                //   {
-                //     '--primary-title': entry.color && palettes[entry.id]['900'],
-                //   } as React.CSSProperties
-                // }
                 color="var(--color-primary-title)"
               />
             </ClassicIconButton>
-            {/* {renderDropdown(entry)} */}
           </div>
         </div>
       ))}

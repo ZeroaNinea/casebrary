@@ -15,49 +15,52 @@ export default function SlideToggle({
   // const [value, onChange] = useState(false);
 
   return (
-    <div className="flex items-center">
+    <div className="flex items-center gap-3.5 my-2 text-left">
       <RippleButton
         mode="dark"
         onClick={() => onChange(!value)}
         className={`
-        relative
-        w-11
-        h-6
-        rounded-full
-        transition-colors
-        ${value ? 'bg-accent' : 'bg-surface-container'}
-      `}
+          relative
+          w-11
+          h-6.5
+          rounded-full
+          cursor-pointer
+          transition-colors duration-200
+          shadow-inner
+          ${value ? 'bg-primary' : 'bg-surface-container/60 border border-border/10'}
+        `}
       >
         <div
           className={`
-          absolute
-          top-0.5
-          left-0.5
-          w-5
-          h-5
-          flex
-          items-center
-          justify-center
-          rounded-full
-          bg-primary-50
-          transition-transform
-          ${value ? 'translate-x-5' : ''}
-        `}
+            absolute
+            top-[3px]
+            left-[3px]
+            w-4.5
+            h-4.5
+            flex
+            items-center
+            justify-center
+            rounded-full
+            bg-white
+            shadow-sm
+            transition-transform duration-200
+            ${value ? 'translate-x-[18px]' : ''}
+          `}
         >
           {value ? (
-            <Check size={14} color="var(--color-primary-title)" />
+            <Check size={10} className="text-primary" />
           ) : (
-            <X size={14} color="var(--color-primary-title)" />
+            <X size={10} className="text-text-muted" />
           )}
         </div>
       </RippleButton>
       {label && (
-        <RippleButton
-          mode="dark"
-          className="border border-border px-2 m-2 rounded-md"
+        <span
+          onClick={() => onChange(!value)}
+          className="text-sm font-semibold text-text cursor-pointer select-none px-1.5"
         >
-          <span className="text-text text-sm">{label}</span>
-        </RippleButton>
+          {label}
+        </span>
       )}
     </div>
   );

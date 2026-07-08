@@ -7,6 +7,7 @@ export default function TransparentPillButton({
   disabled,
   isState,
   title,
+  className,
   ...props
 }: React.HTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
@@ -16,12 +17,16 @@ export default function TransparentPillButton({
   return (
     <RippleButton
       mode="dark"
-      className="
-        flex items-center gap-1 px-2 py-1
-        bg-primary-container hover:bg-primary-container-hover
-        rounded-full cursor-pointer
-        transition-all duration-200
-      "
+      className={`
+        flex items-center justify-center gap-1.5 px-4.5 py-2
+        bg-primary-container/50 hover:bg-primary-container/80
+        rounded-full cursor-pointer font-bold text-xs
+        border border-border/20
+        shadow-xs hover:shadow-sm hover:shadow-primary/5
+        hover:scale-[1.03] active:scale-[0.97] hover:-translate-y-0.25 active:translate-y-0
+        transition-all duration-200 ease-out
+        ${className || ''}
+      `}
       classnamesonclick={['bg-primary-container-hover']}
       title={title}
       onClick={handleClick}
@@ -33,3 +38,5 @@ export default function TransparentPillButton({
     </RippleButton>
   );
 }
+
+

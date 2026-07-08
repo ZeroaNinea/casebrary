@@ -44,18 +44,19 @@ export default function EntriesList({
       <div
         className={`
           absolute top-12 right-0 w-50
-          rounded-md
+          rounded-xl border border-border/15
           transition-all duration-200
-          backdrop-blur-[2px]
+          backdrop-blur-md bg-surface-container/95
+          shadow-lg overflow-hidden
           z-10
-          ${isDropdownOpenId === entry.id ? 'h-20 opacity-100' : 'h-0 opacity-0 pointer-events-none'}
+          ${isDropdownOpenId === entry.id ? 'h-[74px] opacity-100' : 'h-0 opacity-0 pointer-events-none'}
         `}
       >
         {buttons.map((button) => (
           <RippleButton
             mode="dark"
             key={button}
-            className="w-full p-2 bg-primary-container hover:bg-primary-container-hover text-left cursor-pointer first:rounded-t-md last:rounded-b-md transition-all duration-200"
+            className="w-full px-4 py-2 bg-transparent hover:bg-primary-container/20 text-left text-xs font-semibold text-text cursor-pointer transition-all duration-200"
             isState={true}
             onClick={() => {
               if (button === 'delete') {
@@ -87,7 +88,7 @@ export default function EntriesList({
   }
 
   return (
-    <ul className="flex flex-col gap-2 p-3">
+    <ul className="flex flex-col gap-3.5 p-4.5">
       {entries.map((entry) => (
         <li
           key={entry.id}
@@ -98,11 +99,20 @@ export default function EntriesList({
                 entry.color && palettes[entry.id]['200'],
             } as React.CSSProperties
           }
-          className="flex items-center justify-between bg-primary-container hover:bg-primary-container-hover p-3 rounded-md transition-all duration-200"
+          className="
+            flex items-center justify-between
+            bg-primary-container/70 hover:bg-primary-container
+            p-4 rounded-2xl
+            border border-border/10 hover:border-border/30
+            shadow-xs hover:shadow-md hover:-translate-y-0.5 active:translate-y-0
+            transition-all duration-200 ease-out cursor-pointer
+          "
         >
-          <div className="flex items-center gap-2">
-            {renderIcon(entry)}
-            <h1>{entry.title}</h1>
+          <div className="flex items-center gap-3">
+            <div className="text-primary-title">
+              {renderIcon(entry)}
+            </div>
+            <h1 className="font-semibold text-text text-sm tracking-wide">{entry.title}</h1>
           </div>
           <div className="relative">
             <ClassicIconButton

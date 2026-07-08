@@ -2,12 +2,13 @@ import createTheme from './index';
 
 export default createTheme(
   {
-    primary: '#4FC3F7',
-    secondary: '#2196F3',
-    tertiary: '#086CBC',
-    neutral: '#929CA6',
-    neutralVariant: '#6E8E9D',
-    error: '#E01B24',
+    primary: '#00b242',
+    secondary: '#3B82F6',
+    tertiary: '#00B0FF',
+    neutral: '#4A607A',
+    neutralVariant: '#627B94',
+    error: '#EF4444',
   },
   'light',
 );
+

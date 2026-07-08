@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronLeft, Save } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
@@ -106,8 +106,8 @@ export default function EntryEditorPage({
   return (
     <div
       className={`
-        absolute inset-0
-        bg-bg p-2
+        absolute inset-0 overflow-y-auto
+        bg-bg p-4.5
         transition-transform duration-200
         z-1000
       `}

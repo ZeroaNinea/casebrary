@@ -17,7 +17,7 @@ export default function ClassicIconButton({
   return (
     <RippleButton
       mode="dark"
-      className="p-2 rounded-full cursor-pointer hover:bg-surface-container transition-all duration-200"
+      className="p-2.5 rounded-full cursor-pointer hover:bg-surface-container/60 hover:shadow-sm hover:scale-[1.06] active:scale-[0.92] transition-all duration-200 ease-out"
       classnamesonclick={['bg-surface-container']}
       onClick={handleClick}
       disabled={disabled}
@@ -29,3 +29,5 @@ export default function ClassicIconButton({
     </RippleButton>
   );
 }
+
+

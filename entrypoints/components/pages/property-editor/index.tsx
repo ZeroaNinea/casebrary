@@ -61,18 +61,21 @@ export default function PropertyEditor({
       <h2 className="font-bold text-primary-title text-lg m-2 mx-[8%]">
         {t('propertyTitle')}
       </h2>
-      <div className="flex justify-center">
+      <div className="flex justify-center bg-surface-container/20 p-1.5 rounded-2xl border border-border/10 max-w-[92%] mx-auto shadow-xs">
         {propertyTypes.map((type, index) => (
           <RippleButton
             key={type}
             title="Entry"
             mode="dark"
             className={`
-              border-border first:rounded-l-lg last:rounded-r-lg
-              border flex items-center gap-1 py-1
-              hover:bg-primary-container
-              transition-all duration-200 cursor-pointer
-              ${propertyType === type ? 'px-3' : 'px-1'}
+              flex items-center justify-center gap-1.5 py-1.5 px-3
+              rounded-xl cursor-pointer font-semibold
+              transition-all duration-200
+              ${
+                propertyType === type
+                  ? 'bg-primary-container text-primary-on-container shadow-xs scale-[1.02]'
+                  : 'hover:bg-surface-container/40 text-text/70'
+              }
             `}
             isState={true}
             onClick={() => setPropertyType(type)}
@@ -81,12 +84,12 @@ export default function PropertyEditor({
               className={`
                 transition-all
                 duration-200
-                ${propertyType === type ? 'opacity-100 scale-100 w-2 mr-1' : 'opacity-0 scale-0 w-0 mr-0'}
+                ${propertyType === type ? 'opacity-100 scale-100 w-3.5' : 'opacity-0 scale-0 w-0'}
               `}
             >
               <Check size={14} />
             </span>
-            <span className="text-text text-sm">{t(`property-${index}`)}</span>
+            <span className="text-xs">{t(`property-${index}`)}</span>
           </RippleButton>
         ))}
       </div>
