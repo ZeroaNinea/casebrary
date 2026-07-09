@@ -38,7 +38,7 @@ export default function EntriesList({
   const palettes = geretatePalettes();
 
   function renderDropdown(entry: Entry) {
-    const buttons = ['update', 'delete'];
+    const buttons = ['addChild', 'update', 'delete'];
 
     return (
       <div
@@ -49,7 +49,7 @@ export default function EntriesList({
           backdrop-blur-xl bg-surface-container/90
           shadow-xl overflow-hidden
           z-10
-          ${isDropdownOpenId === entry.id ? 'h-18.5 opacity-100' : 'h-0 opacity-0 pointer-events-none'}
+          ${isDropdownOpenId === entry.id ? 'h-24.5 opacity-100' : 'h-0 opacity-0 pointer-events-none'}
         `}
       >
         {buttons.map((button) => (
