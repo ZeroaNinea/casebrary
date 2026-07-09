@@ -130,7 +130,7 @@ export default function ({
         z-10
         ${
           isDropdownOpenId === property.id
-            ? 'h-18.5 opacity-100'
+            ? 'h-16.5 opacity-100'
             : 'h-0 opacity-0 pointer-events-none'
         }
       `}
