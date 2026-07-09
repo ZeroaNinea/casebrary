@@ -61,7 +61,6 @@ export default class EntryService {
 
   async move(id: string, newParentId: string | null, order: number) {
     const entry = await this.repository.get(id);
-    const parentId = entry.parentId;
 
     if (newParentId === entry.id) {
       throw new Error('Cannot move entry to itself.');
