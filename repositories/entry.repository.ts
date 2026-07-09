@@ -84,7 +84,7 @@ export default class EntryRepository {
     return entry;
   }
 
-  async move(id: string, newParentId: string, newOrder: number) {
+  async move(id: string, newParentId: string | null, newOrder: number) {
     const db = await dbPromise;
     const entry = await this.get(id);
 
@@ -97,6 +97,18 @@ export default class EntryRepository {
       order: newOrder,
       updatedAt: Date.now(),
     });
+
+    if (entry.parentId === newParentId) {
+      return await this.getChildren(newParentId);
+    }
+
+    const updated = [
+      ...(await this.getChildren(entry.parentId)),
+      ...(await this.getChildren(newParentId)),
+      await this.get(id),
+    ];
+
+    return updated;
   }
 
   private async closeGap(parentId: string | null, order: number) {

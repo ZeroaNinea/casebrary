@@ -59,7 +59,7 @@ export default class EntryService {
     return this.repository.getAllEntries();
   }
 
-  async move(id: string, newParentId: string, order: number) {
+  async move(id: string, newParentId: string | null, order: number) {
     const entry = await this.repository.get(id);
     const parentId = entry.parentId;
 
@@ -67,10 +67,10 @@ export default class EntryService {
       throw new Error('Cannot move entry to itself.');
     }
 
-    if (await this.repository.isDescendant(parentId, id)) {
+    if (await this.repository.isDescendant(newParentId, id)) {
       throw new Error('Cannot move an entry into its own descendant.');
     }
 
-    await this.repository.move(id, newParentId, order);
+    return await this.repository.move(id, newParentId, order);
   }
 }

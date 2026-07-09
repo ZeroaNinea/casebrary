@@ -47,10 +47,9 @@ export const moveEntry = createAsyncThunk(
     order,
   }: {
     id: string;
-    newParentId: string;
+    newParentId: string | null;
     order: number;
   }) => {
-    await service.move(id, newParentId, order);
-    return { id, newParentId, order };
+    return await service.move(id, newParentId, order);
   },
 );

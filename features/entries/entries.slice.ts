@@ -5,6 +5,7 @@ import {
   createEntry as createEntryThunk,
   updateEntry as updateEntryThunk,
   deleteEntry as deleteEntryThunk,
+  moveEntry as moveEntryThunk,
 } from './entries.thunks';
 
 export const entriesSlice = createSlice({
@@ -45,6 +46,15 @@ export const entriesSlice = createSlice({
       })
       .addCase(deleteEntryThunk.fulfilled, (state, action) => {
         state.entries = state.entries.filter((e) => e.id !== action.payload);
+      })
+      .addCase(moveEntryThunk.fulfilled, (state, action) => {
+        for (const updated of action.payload) {
+          const entry = state.entries.find((e) => e.id === updated.id);
+
+          if (entry) {
+            Object.assign(entry, updated);
+          }
+        }
       });
   },
 });
