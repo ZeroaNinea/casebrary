@@ -64,6 +64,12 @@ export default class EntryRepository {
     return db.getAllFromIndex('entries', 'parentId', parentId);
   }
 
+  // async getSiblings(parentId: string) {
+  //   const db = await dbPromise;
+
+  //   return db.getAllFromIndex('entries', 'parentId', parentId);
+  // }
+
   async getAllEntries() {
     const db = await dbPromise;
     return db.getAll('entries');
@@ -76,5 +82,62 @@ export default class EntryRepository {
     this.verifyIfEntryExists(entry);
 
     return entry;
+  }
+
+  async move(id: string, newParentId: string, newOrder: number) {
+    const db = await dbPromise;
+    const entry = await this.get(id);
+
+    await this.closeGap(entry.parentId, entry.order);
+    await this.makeRoom(newParentId, newOrder);
+
+    await db.put('entries', {
+      ...entry,
+      parentId: newParentId,
+      order: newOrder,
+      updatedAt: Date.now(),
+    });
+  }
+
+  private async closeGap(parentId: string | null, order: number) {
+    const db = await dbPromise;
+    const siblings = await this.getChildren(parentId);
+
+    for (const sibling of siblings) {
+      if (sibling.order > order) {
+        sibling.order--;
+        await db.put('entries', sibling);
+      }
+    }
+  }
+
+  private async makeRoom(parentId: string | null, order: number) {
+    const db = await dbPromise;
+    const siblings = await this.getChildren(parentId);
+
+    for (const sibling of siblings) {
+      if (sibling.order >= order) {
+        sibling.order++;
+        await db.put('entries', sibling);
+      }
+    }
+  }
+
+  async isDescendant(possibleDescendantId: string | null, ancestorId: string) {
+    if (possibleDescendantId === null) {
+      return false;
+    }
+
+    let current = await this.get(possibleDescendantId);
+
+    while (current.parentId !== null) {
+      if (current.parentId === ancestorId) {
+        return true;
+      }
+
+      current = await this.get(current.parentId);
+    }
+
+    return false;
   }
 }

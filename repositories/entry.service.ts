@@ -58,4 +58,19 @@ export default class EntryService {
   async getAll() {
     return this.repository.getAllEntries();
   }
+
+  async move(id: string, newParentId: string, order: number) {
+    const entry = await this.repository.get(id);
+    const parentId = entry.parentId;
+
+    if (newParentId === entry.id) {
+      throw new Error('Cannot move entry to itself.');
+    }
+
+    if (await this.repository.isDescendant(parentId, id)) {
+      throw new Error('Cannot move an entry into its own descendant.');
+    }
+
+    await this.repository.move(id, newParentId, order);
+  }
 }
