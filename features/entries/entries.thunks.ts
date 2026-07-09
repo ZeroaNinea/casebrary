@@ -38,3 +38,19 @@ export const deleteEntry = createAsyncThunk(
     return id;
   },
 );
+
+export const moveEntry = createAsyncThunk(
+  'entries/moveEntry',
+  async ({
+    id,
+    newParentId,
+    order,
+  }: {
+    id: string;
+    newParentId: string;
+    order: number;
+  }) => {
+    await service.move(id, newParentId, order);
+    return { id, newParentId, order };
+  },
+);
