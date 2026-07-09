@@ -17,10 +17,12 @@ export default function EntriesList({
   entries,
   deleteEntry,
   updateEntry,
+  onAddChild,
 }: {
   entries: Entry[];
   deleteEntry: (id: string) => void;
   updateEntry: (updates: Entry) => void;
+  onAddChild: (id: string) => void;
 }) {
   const { t } = useTranslation();
 
@@ -63,6 +65,8 @@ export default function EntriesList({
                 deleteEntry(entry.id);
               } else if (button === 'update') {
                 updateEntry(entry);
+              } else if (button === 'addChild') {
+                onAddChild(entry.id);
               }
               setIsDropdownOpenId(null);
             }}

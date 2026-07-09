@@ -26,12 +26,14 @@ export default function EntryEditorPage({
   updatingEntry = null,
   close,
   clearUpdatingEntry,
+  clearParentId,
 }: {
   show: boolean;
   parentId?: string | null;
   updatingEntry?: Entry | null;
   close: () => void;
   clearUpdatingEntry: () => void;
+  clearParentId: () => void;
 }) {
   const { t } = useTranslation();
 
@@ -60,6 +62,7 @@ export default function EntryEditorPage({
     setProperties([]);
 
     clearUpdatingEntry();
+    clearParentId();
     close();
   }
 

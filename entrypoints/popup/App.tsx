@@ -39,13 +39,12 @@ function App() {
   }
 
   async function handleUpdateEntry(entry: Entry) {
+    setParentId(entry.parentId);
     setUpdatingEntry(entry);
     setCurrentPage('entry-editor');
   }
 
   const entries = useAppSelector((state) => state.entries.entries);
-
-  console.log('Entries from the `App.tsx`:', entries);
 
   return (
     <div className="relative w-full h-full flex flex-col overflow-hidden bg-linear-to-br from-(--color-neutral-50) via-(--color-primary-50) to-(--color-secondary-50) shadow-2xl">
@@ -97,6 +96,7 @@ function App() {
               setCurrentPage('entry-editor');
               setParentId(null);
               setUpdatingEntry(null);
+              setParentId(null);
             }}
           >
             <Plus size={16} color="var(--color-on-primary-container)" />
@@ -112,10 +112,15 @@ function App() {
             icon="search"
           />
         </div>
+        {/* {JSON.stringify(entries)} */}
         <EntryList
           entries={entries}
           deleteEntry={handleDeleteEntry}
           updateEntry={handleUpdateEntry}
+          onAddChild={(parentId: string) => {
+            setParentId(parentId);
+            setCurrentPage('entry-editor');
+          }}
         />
       </div>
       {/* Entry editor — full-cover overlay, sibling to main content */}
@@ -127,6 +132,7 @@ function App() {
         clearUpdatingEntry={() => {
           setUpdatingEntry(null);
         }}
+        clearParentId={() => setParentId(null)}
       />
     </div>
   );
