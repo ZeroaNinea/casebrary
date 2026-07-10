@@ -97,11 +97,10 @@ export default function EntriesList({
       .sort((a, b) => a.order - b.order);
   }
 
-  return (
-    <ul className="flex flex-col gap-3.5 p-4.5 z-1">
-      {entries.map((entry) => (
-        <li
-          key={entry.id}
+  function renderEntry(entry: Entry) {
+    return (
+      <li key={entry.id}>
+        <div
           style={
             {
               '--primary-container': entry.color && palettes[entry.id]['100'],
@@ -113,14 +112,14 @@ export default function EntriesList({
             } as React.CSSProperties
           }
           className={`
-            flex items-center justify-between
-            bg-primary-container/20 hover:bg-primary-container/45 backdrop-blur-xs
-            p-3.5 rounded-2xl
-            border border-border/10
-            shadow-xs hover:shadow-md hover:shadow-primary/5 hover:-translate-y-0.5 active:translate-y-0
-            transition-all duration-200 ease-out cursor-pointer
-            ${isDropdownOpenId === entry.id ? 'z-20' : 'z-0'}
-          `}
+                flex items-center justify-between
+                bg-primary-container/20 hover:bg-primary-container/45 backdrop-blur-xs
+                p-3.5 rounded-2xl
+                border border-border/10
+                shadow-xs hover:shadow-md hover:shadow-primary/5 hover:-translate-y-0.5 active:translate-y-0
+                transition-all duration-200 ease-out cursor-pointer
+                ${isDropdownOpenId === entry.id ? 'z-20' : 'z-0'}
+              `}
         >
           <div className="flex items-center gap-3">
             <div
@@ -164,8 +163,22 @@ export default function EntriesList({
             </ClassicIconButton>
             {renderDropdown(entry)}
           </div>
-        </li>
-      ))}
+        </div>
+        {renderChildren(entry.id)}
+      </li>
+    );
+  }
+
+  function renderChildren(parentId: string | null) {
+    const children = getChildren(parentId);
+    return <ul>{children.map((child) => renderEntry(child))}</ul>;
+  }
+
+  return (
+    <ul className="flex flex-col gap-3.5 p-4.5 z-1">
+      {entries
+        .filter((e) => e.parentId === null)
+        .map((entry) => renderEntry(entry))}
     </ul>
   );
 }
