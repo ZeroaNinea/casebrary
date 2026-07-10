@@ -28,7 +28,7 @@ export default function DropdownMenu({
         absolute top-12 right-0 w-32
         rounded-2xl border border-border/10
         transition-all duration-200
-        backdrop-blur-xl bg-surface-container/90
+        backdrop-blur-xl bg-surface-container/10
         shadow-xl overflow-hidden
         z-10
         ${isDropdownOpenId === entry.id ? 'h-24.5 opacity-100' : 'h-0 opacity-0 pointer-events-none'}
