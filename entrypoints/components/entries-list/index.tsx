@@ -37,20 +37,18 @@ export default function EntriesList({
       .sort((a, b) => a.order - b.order);
   }
 
-  function renderChildren(parentId: string | null) {
+  let depth = 0;
+
+  function renderChildren(parentId: string | null, depth: number) {
     const children = getChildren(parentId);
-    let depth = 0;
-    depth += 1;
 
     if (children.length <= 0) {
       return null;
     }
 
     return (
-      <ul
-        style={{ marginLeft: `${depth * 5}px` }}
-        className="flex flex-col gap-3.5 p-0 mt-3 z-1 border-l border-border border-dotted"
-      >
+      <ul className="relative flex flex-col gap-3.5 p-0 mt-3 ml-2 z-1">
+        <div className="absolute top-0 -left-1 w-px h-full bg-border/20 rounded-full"></div>
         {children.map((child) => (
           <EntryElement
             entry={child}
@@ -61,6 +59,7 @@ export default function EntriesList({
             updateEntry={updateEntry}
             onAddChild={onAddChild}
             renderChildren={renderChildren}
+            depth={depth}
           />
         ))}
       </ul>
@@ -82,6 +81,7 @@ export default function EntriesList({
             updateEntry={updateEntry}
             onAddChild={onAddChild}
             renderChildren={renderChildren}
+            depth={depth}
           />
         ))}
     </ul>

@@ -18,6 +18,7 @@ export default function EntryElement({
   updateEntry,
   onAddChild,
   renderChildren,
+  depth = 0,
 }: {
   entry: Entry;
   palettes: Record<string, Palette>;
@@ -26,7 +27,11 @@ export default function EntryElement({
   deleteEntry: (id: string) => void;
   updateEntry: (entry: Entry) => void;
   onAddChild: (id: string) => void;
-  renderChildren: (parentId: string | null) => React.JSX.Element | null;
+  renderChildren: (
+    parentId: string | null,
+    depth: number,
+  ) => React.JSX.Element | null;
+  depth: number;
 }) {
   return (
     <li
@@ -44,6 +49,9 @@ export default function EntryElement({
         } as React.CSSProperties
       }
     >
+      {depth > 0 && (
+        <div className="absolute top-8 -left-1 w-1 h-px bg-border/20 rounded-full"></div>
+      )}
       <div
         className={`
           flex items-center justify-between
@@ -110,7 +118,7 @@ export default function EntryElement({
         updateEntry={updateEntry}
         onAddChild={onAddChild}
       />
-      {renderChildren(entry.id)}
+      {renderChildren(entry.id, depth + 1)}
     </li>
   );
 }
