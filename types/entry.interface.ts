@@ -38,7 +38,7 @@ export default interface Entry {
   title: string;
   icon?: EntryIcon;
   color?: string;
-  order?: number;
+  order: number;
 
   properties: Property[];
 

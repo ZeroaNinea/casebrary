@@ -91,6 +91,12 @@ export default function EntriesList({
     }
   }
 
+  function getChildren(parentId: string | null) {
+    return entries
+      .filter((e) => e.parentId === parentId)
+      .sort((a, b) => a.order - b.order);
+  }
+
   return (
     <ul className="flex flex-col gap-3.5 p-4.5 z-1">
       {entries.map((entry) => (
