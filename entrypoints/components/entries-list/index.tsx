@@ -39,8 +39,18 @@ export default function EntriesList({
 
   function renderChildren(parentId: string | null) {
     const children = getChildren(parentId);
+    let depth = 0;
+    depth += 1;
+
+    if (children.length <= 0) {
+      return null;
+    }
+
     return (
-      <ul>
+      <ul
+        style={{ marginLeft: `${depth * 5}px` }}
+        className="flex flex-col gap-3.5 p-0 mt-3 z-1 border-l border-border border-dotted"
+      >
         {children.map((child) => (
           <EntryElement
             entry={child}

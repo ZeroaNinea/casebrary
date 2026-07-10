@@ -26,13 +26,13 @@ export default function EntryElement({
   deleteEntry: (id: string) => void;
   updateEntry: (entry: Entry) => void;
   onAddChild: (id: string) => void;
-  renderChildren: (parentId: string | null) => React.JSX.Element;
+  renderChildren: (parentId: string | null) => React.JSX.Element | null;
 }) {
   return (
     <li
       key={entry.id}
       id={entry.id}
-      className={`relative`}
+      className="relative"
       style={
         {
           zIndex: isDropdownOpenId === entry.id ? 20 : undefined,
