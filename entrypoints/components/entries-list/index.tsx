@@ -178,6 +178,7 @@ export default function EntriesList({
     <ul className="flex flex-col gap-3.5 p-4.5 z-1">
       {entries
         .filter((e) => e.parentId === null)
+        .sort((a, b) => a.order - b.order)
         .map((entry) => renderEntry(entry))}
     </ul>
   );
