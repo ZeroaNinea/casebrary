@@ -32,9 +32,10 @@ export default function EntryElement({
     <li
       key={entry.id}
       id={entry.id}
-      className={`${isDropdownOpenId === entry.id ? 'relative z-20' : 'relative'}`}
+      className={`relative`}
       style={
         {
+          zIndex: isDropdownOpenId === entry.id ? 20 : undefined,
           '--primary-container': entry.color && palettes[entry.id]['100'],
           '--primary-container-hover': entry.color && palettes[entry.id]['200'],
           borderColor: entry.color
@@ -46,7 +47,7 @@ export default function EntryElement({
       <div
         className={`
           flex items-center justify-between
-          bg-primary-container/20 hover:bg-primary-container/45 backdrop-blur-xs
+          bg-primary-container/20 hover:bg-primary-container/45 backdrop-blur-[2px]
           p-3.5 rounded-2xl
           border border-border/10
           shadow-xs hover:shadow-md hover:shadow-primary/5 hover:-translate-y-0.5 active:translate-y-0
