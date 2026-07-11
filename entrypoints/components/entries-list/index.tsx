@@ -86,8 +86,8 @@ export default function EntriesList({
   return (
     <ul className="flex flex-col gap-3.5 p-4.5 z-1">
       {/* {JSON.stringify(dragState)} */}
-      {JSON.stringify(dropTarget)}
-      {JSON.stringify(draggedId)}
+      {/* {JSON.stringify(dropTarget)} */}
+      {/* {JSON.stringify(draggedId)} */}
       {/* {JSON.stringify(entries)} */}
       {entries
         .filter((e) => e.parentId === null)

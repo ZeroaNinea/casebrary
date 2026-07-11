@@ -69,41 +69,15 @@ export default function EntryElement({
             : undefined,
         } as React.CSSProperties
       }
-      draggable
-      onDragStart={() => {
-        setDraggedId(entry.id);
-      }}
-      onDragOver={(e) => {
-        e.preventDefault();
-
-        const rect = e.currentTarget.getBoundingClientRect();
-        const ratio = (e.clientY - rect.top) / rect.height;
-
-        const position =
-          ratio < 0.25 ? 'before' : ratio > 0.75 ? 'after' : 'inside';
-
-        setDropTarget({
-          id: entry.id,
-          position,
-        });
-      }}
-      onDrop={() => {
-        if (!draggedId || !dropTarget) return;
-
-        dispatch(
-          moveEntry({
-            draggedId: draggedId,
-            targetId: dropTarget?.id,
-            position: dropTarget?.position,
-          }),
-        );
-
-        setDraggedId(null);
-        setDropTarget(null);
-      }}
     >
       {depth > 0 && (
         <div className="absolute top-8 -left-1 w-1 h-px bg-border/20 rounded-full"></div>
+      )}
+      {dropTarget?.id === entry.id && dropTarget?.position === 'before' && (
+        <div className="absolute -top-2 left-0 w-full h-px bg-border/20 rounded-full"></div>
+      )}
+      {dropTarget?.id === entry.id && dropTarget?.position === 'after' && (
+        <div className="absolute -bottom-2 left-0 w-full h-px bg-border/20 rounded-full"></div>
       )}
       <div
         className={`
@@ -111,9 +85,42 @@ export default function EntryElement({
           bg-primary-container/20 hover:bg-primary-container/45 backdrop-blur-[2px]
           p-3.5 rounded-2xl
           border border-border/10
-          shadow-xs hover:shadow-md hover:shadow-primary/5 hover:-translate-y-0.5 active:translate-y-0
+          hover:shadow-md hover:shadow-primary/5 hover:-translate-y-0.5 active:translate-y-0
           transition-all duration-200 ease-out cursor-pointer
+          ${dropTarget?.id === entry.id && dropTarget?.position === 'inside' ? 'shadow-xl' : 'shadow-xs'}
         `}
+        draggable
+        onDragStart={() => {
+          setDraggedId(entry.id);
+        }}
+        onDragOver={(e) => {
+          e.preventDefault();
+
+          const rect = e.currentTarget.getBoundingClientRect();
+          const ratio = (e.clientY - rect.top) / rect.height;
+
+          const position =
+            ratio < 0.25 ? 'before' : ratio > 0.75 ? 'after' : 'inside';
+
+          setDropTarget({
+            id: entry.id,
+            position,
+          });
+        }}
+        onDrop={() => {
+          if (!draggedId || !dropTarget) return;
+
+          dispatch(
+            moveEntry({
+              draggedId: draggedId,
+              targetId: dropTarget?.id,
+              position: dropTarget?.position,
+            }),
+          );
+
+          setDraggedId(null);
+          setDropTarget(null);
+        }}
       >
         <div className="flex items-center gap-3">
           <div
