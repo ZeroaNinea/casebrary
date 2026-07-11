@@ -19,6 +19,11 @@ export default function EntriesList({
   onAddChild: (id: string) => void;
 }) {
   const [isDropdownOpenId, setIsDropdownOpenId] = useState<string | null>(null);
+  const [draggedId, setDraggedId] = useState<string | null>(null);
+  const [dropTarget, setDropTarget] = useState<{
+    id: string;
+    position: 'before' | 'inside' | 'after';
+  } | null>(null);
 
   function geretatePalettes() {
     const palettes: Record<string, Palette> = {};
@@ -60,6 +65,7 @@ export default function EntriesList({
             onAddChild={onAddChild}
             renderChildren={renderChildren}
             depth={depth}
+            setDraggedId={setDraggedId}
           />
         ))}
       </ul>
@@ -82,6 +88,7 @@ export default function EntriesList({
             onAddChild={onAddChild}
             renderChildren={renderChildren}
             depth={depth}
+            setDraggedId={setDraggedId}
           />
         ))}
     </ul>

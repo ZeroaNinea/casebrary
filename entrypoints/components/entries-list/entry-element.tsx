@@ -19,6 +19,7 @@ export default function EntryElement({
   onAddChild,
   renderChildren,
   depth = 0,
+  setDraggedId,
 }: {
   entry: Entry;
   palettes: Record<string, Palette>;
@@ -32,6 +33,7 @@ export default function EntryElement({
     depth: number,
   ) => React.JSX.Element | null;
   depth: number;
+  setDraggedId: (id: string | null) => void;
 }) {
   return (
     <li
@@ -48,6 +50,13 @@ export default function EntryElement({
             : undefined,
         } as React.CSSProperties
       }
+      draggable
+      onDragStart={() => {
+        setDraggedId(entry.id);
+      }}
+      onDragOver={(e) => {
+        e.preventDefault();
+      }}
     >
       {depth > 0 && (
         <div className="absolute top-8 -left-1 w-1 h-px bg-border/20 rounded-full"></div>
