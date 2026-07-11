@@ -66,6 +66,7 @@ export default function EntriesList({
             renderChildren={renderChildren}
             depth={depth}
             setDraggedId={setDraggedId}
+            setDropTarget={setDropTarget}
           />
         ))}
       </ul>
@@ -74,6 +75,8 @@ export default function EntriesList({
 
   return (
     <ul className="flex flex-col gap-3.5 p-4.5 z-1">
+      {draggedId}
+      {JSON.stringify(dropTarget)}
       {entries
         .filter((e) => e.parentId === null)
         .sort((a, b) => a.order - b.order)
@@ -89,6 +92,7 @@ export default function EntriesList({
             renderChildren={renderChildren}
             depth={depth}
             setDraggedId={setDraggedId}
+            setDropTarget={setDropTarget}
           />
         ))}
     </ul>

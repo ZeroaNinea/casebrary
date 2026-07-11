@@ -20,6 +20,7 @@ export default function EntryElement({
   renderChildren,
   depth = 0,
   setDraggedId,
+  setDropTarget,
 }: {
   entry: Entry;
   palettes: Record<string, Palette>;
@@ -34,6 +35,12 @@ export default function EntryElement({
   ) => React.JSX.Element | null;
   depth: number;
   setDraggedId: (id: string | null) => void;
+  setDropTarget: (
+    target: {
+      id: string;
+      position: 'before' | 'inside' | 'after';
+    } | null,
+  ) => void;
 }) {
   return (
     <li
@@ -51,11 +58,39 @@ export default function EntryElement({
         } as React.CSSProperties
       }
       draggable
-      onDragStart={() => {
+      onDragStart={(e) => {
+        // e.preventDefault();
         setDraggedId(entry.id);
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        // e.dataTransfer.setDragImage(e.currentTarget, x, y);
+
+        const ratio = y / rect.height;
+
+        if (ratio < 0.25) {
+          setDropTarget({
+            id: entry.id,
+            position: 'before',
+          });
+        } else if (ratio > 0.75) {
+          setDropTarget({
+            id: entry.id,
+            position: 'after',
+          });
+        } else {
+          setDropTarget({
+            id: entry.id,
+            position: 'inside',
+          });
+        }
       }}
       onDragOver={(e) => {
         e.preventDefault();
+      }}
+      onDrop={() => {
+        setDraggedId(null);
+        setDropTarget(null);
       }}
     >
       {depth > 0 && (
