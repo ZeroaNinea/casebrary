@@ -58,13 +58,14 @@ export default function EntryElement({
         } as React.CSSProperties
       }
       draggable
-      onDragStart={(e) => {
-        // e.preventDefault();
+      onDragStart={() => {
         setDraggedId(entry.id);
+      }}
+      onDragOver={(e) => {
+        e.preventDefault();
+
         const rect = e.currentTarget.getBoundingClientRect();
-        const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        // e.dataTransfer.setDragImage(e.currentTarget, x, y);
 
         const ratio = y / rect.height;
 
@@ -84,9 +85,6 @@ export default function EntryElement({
             position: 'inside',
           });
         }
-      }}
-      onDragOver={(e) => {
-        e.preventDefault();
       }}
       onDrop={() => {
         setDraggedId(null);
