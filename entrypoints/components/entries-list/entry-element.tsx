@@ -8,7 +8,9 @@ import ClassicIconButton from '@/entrypoints/components/buttons/classic-icon-but
 
 import EntryIcon from './entry-icon';
 import DropdownMenu from './dropdown-menu';
+
 import { moveEntry } from '@/features/entries/entries.thunks';
+import { useAppDispatch } from '@/utils/store';
 
 export default function EntryElement({
   entry,
@@ -37,22 +39,6 @@ export default function EntryElement({
     depth: number,
   ) => React.JSX.Element | null;
   depth: number;
-  // dragState: {
-  //   draggedId: string | null;
-  //   dropTarget: {
-  //     id: string;
-  //     position: 'before' | 'inside' | 'after';
-  //   } | null;
-  // };
-  // setDragState: React.Dispatch<
-  //   React.SetStateAction<{
-  //     draggedId: string | null;
-  //     dropTarget: {
-  //       id: string;
-  //       position: 'before' | 'inside' | 'after';
-  //     } | null;
-  //   }>
-  // >;
   draggedId: string | null;
   setDraggedId: React.Dispatch<React.SetStateAction<string | null>>;
   dropTarget: {
@@ -66,9 +52,7 @@ export default function EntryElement({
     } | null>
   >;
 }) {
-  function dispatch(arg0: any) {
-    throw new Error('Function not implemented.');
-  }
+  const dispatch = useAppDispatch();
 
   return (
     <li
@@ -87,8 +71,6 @@ export default function EntryElement({
       }
       draggable
       onDragStart={() => {
-        // setDragState({ draggedId: entry.id, dropTarget: null });
-        console.log('drag start', entry.id);
         setDraggedId(entry.id);
       }}
       onDragOver={(e) => {
@@ -100,14 +82,6 @@ export default function EntryElement({
         const position =
           ratio < 0.25 ? 'before' : ratio > 0.75 ? 'after' : 'inside';
 
-        // setDragState((prev) => ({
-        //   ...prev,
-        //   dropTarget: {
-        //     id: entry.id,
-        //     position,
-        //   },
-        // }));
-
         setDropTarget({
           id: entry.id,
           position,
@@ -116,13 +90,13 @@ export default function EntryElement({
       onDrop={() => {
         if (!draggedId || !dropTarget) return;
 
-        // dispatch(
-        //   moveEntry({
-        //     draggedId: draggedId || '',
-        //     targetId: dropTarget?.id || '',
-        //     position: dropTarget?.position || 'inside',
-        //   }),
-        // );
+        dispatch(
+          moveEntry({
+            draggedId: draggedId,
+            targetId: dropTarget?.id,
+            position: dropTarget?.position,
+          }),
+        );
 
         setDraggedId(null);
         setDropTarget(null);
