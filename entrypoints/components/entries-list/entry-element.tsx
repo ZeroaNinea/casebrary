@@ -103,11 +103,6 @@ export default function EntryElement({
               color="var(--color-primary-title)"
             />
           </ClassicIconButton>
-          {/* {renderDropdown(entry)} */}
-          {/* {createPortal( */}
-
-          {/* document.body, */}
-          {/* )} */}
         </div>
       </div>
       <DropdownMenu
