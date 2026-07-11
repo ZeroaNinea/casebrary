@@ -59,17 +59,70 @@ export default class EntryService {
     return this.repository.getAllEntries();
   }
 
-  async move(id: string, newParentId: string | null, order: number) {
-    const entry = await this.repository.get(id);
+  async determineNewPosition(
+    targetId: string,
+    position: 'before' | 'after' | 'inside',
+  ) {
+    const target = await this.repository.get(targetId);
 
-    if (newParentId === entry.id) {
-      throw new Error('Cannot move entry to itself.');
+    let parentId: string | null = null;
+    let order = 0;
+
+    switch (position) {
+      case 'before':
+        parentId = target.parentId;
+        order = target.order;
+        break;
+
+      case 'after':
+        parentId = target.parentId;
+        order = target.order + 1;
+        break;
+
+      case 'inside':
+        parentId = target.id;
+        order = (await this.repository.getChildren(target.id)).length;
     }
 
-    if (await this.repository.isDescendant(newParentId, id)) {
-      throw new Error('Cannot move an entry into its own descendant.');
+    return {
+      parentId,
+      order,
+    };
+  }
+
+  // async move(id: string, newParentId: string | null, order: number) {
+  //   const entry = await this.repository.get(id);
+
+  //   if (newParentId === entry.id) {
+  //     throw new Error('Cannot move entry to itself.');
+  //   }
+
+  //   if (await this.repository.isDescendant(newParentId, id)) {
+  //     throw new Error('Cannot move an entry into its own descendant.');
+  //   }
+
+  //   return await this.repository.move(id, newParentId, order);
+  // }
+  async move(
+    draggedId: string,
+    targetId: string,
+    position: 'before' | 'after' | 'inside',
+  ) {
+    const { parentId, order } = await this.determineNewPosition(
+      targetId,
+      position,
+    );
+
+    const dragged = await this.repository.get(draggedId);
+
+    if (parentId === dragged.id) {
+      throw new Error('Cannot move entry into itself.');
     }
 
-    return await this.repository.move(id, newParentId, order);
+    if (await this.repository.isDescendant(parentId, dragged.id)) {
+      throw new Error('Cannot move entry into its descendant.');
+    }
+
+    return this.repository.move(draggedId, parentId, order);
   }
 }

@@ -19,11 +19,19 @@ export default function EntriesList({
   onAddChild: (id: string) => void;
 }) {
   const [isDropdownOpenId, setIsDropdownOpenId] = useState<string | null>(null);
-  const [draggedId, setDraggedId] = useState<string | null>(null);
-  const [dropTarget, setDropTarget] = useState<{
-    id: string;
-    position: 'before' | 'inside' | 'after';
-  } | null>(null);
+  // const [draggedId, setDraggedId] = useState<string | null>(null);
+  // const [dropTarget, setDropTarget] = useState<{
+  //   id: string;
+  //   position: 'before' | 'inside' | 'after';
+  // } | null>(null);
+
+  const [dragState, setDragState] = useState({
+    draggedId: null as string | null,
+    dropTarget: null as {
+      id: string;
+      position: 'before' | 'inside' | 'after';
+    } | null,
+  });
 
   function geretatePalettes() {
     const palettes: Record<string, Palette> = {};
@@ -65,8 +73,8 @@ export default function EntriesList({
             onAddChild={onAddChild}
             renderChildren={renderChildren}
             depth={depth}
-            setDraggedId={setDraggedId}
-            setDropTarget={setDropTarget}
+            dragState={dragState}
+            setDragState={setDragState}
           />
         ))}
       </ul>
@@ -75,8 +83,7 @@ export default function EntriesList({
 
   return (
     <ul className="flex flex-col gap-3.5 p-4.5 z-1">
-      {draggedId}
-      {JSON.stringify(dropTarget)}
+      {JSON.stringify(dragState)}
       {entries
         .filter((e) => e.parentId === null)
         .sort((a, b) => a.order - b.order)
@@ -91,8 +98,8 @@ export default function EntriesList({
             onAddChild={onAddChild}
             renderChildren={renderChildren}
             depth={depth}
-            setDraggedId={setDraggedId}
-            setDropTarget={setDropTarget}
+            dragState={dragState}
+            setDragState={setDragState}
           />
         ))}
     </ul>

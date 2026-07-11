@@ -8,6 +8,7 @@ import ClassicIconButton from '@/entrypoints/components/buttons/classic-icon-but
 
 import EntryIcon from './entry-icon';
 import DropdownMenu from './dropdown-menu';
+import { moveEntry } from '@/features/entries/entries.thunks';
 
 export default function EntryElement({
   entry,
@@ -19,8 +20,8 @@ export default function EntryElement({
   onAddChild,
   renderChildren,
   depth = 0,
-  setDraggedId,
-  setDropTarget,
+  dragState,
+  setDragState,
 }: {
   entry: Entry;
   palettes: Record<string, Palette>;
@@ -34,14 +35,27 @@ export default function EntryElement({
     depth: number,
   ) => React.JSX.Element | null;
   depth: number;
-  setDraggedId: (id: string | null) => void;
-  setDropTarget: (
-    target: {
+  dragState: {
+    draggedId: string | null;
+    dropTarget: {
       id: string;
       position: 'before' | 'inside' | 'after';
-    } | null,
-  ) => void;
+    } | null;
+  };
+  setDragState: React.Dispatch<
+    React.SetStateAction<{
+      draggedId: string | null;
+      dropTarget: {
+        id: string;
+        position: 'before' | 'inside' | 'after';
+      } | null;
+    }>
+  >;
 }) {
+  function dispatch(arg0: any) {
+    throw new Error('Function not implemented.');
+  }
+
   return (
     <li
       key={entry.id}
@@ -59,7 +73,7 @@ export default function EntryElement({
       }
       draggable
       onDragStart={() => {
-        setDraggedId(entry.id);
+        setDragState({ draggedId: entry.id, dropTarget: null });
       }}
       onDragOver={(e) => {
         e.preventDefault();
@@ -70,25 +84,48 @@ export default function EntryElement({
         const ratio = y / rect.height;
 
         if (ratio < 0.25) {
-          setDropTarget({
-            id: entry.id,
-            position: 'before',
+          setDragState({
+            draggedId: entry.id,
+            dropTarget: {
+              id: entry.id,
+              position: 'before',
+            },
           });
         } else if (ratio > 0.75) {
-          setDropTarget({
-            id: entry.id,
-            position: 'after',
+          setDragState({
+            draggedId: entry.id,
+            dropTarget: {
+              id: entry.id,
+              position: 'after',
+            },
           });
         } else {
-          setDropTarget({
-            id: entry.id,
-            position: 'inside',
+          setDragState({
+            draggedId: entry.id,
+            dropTarget: {
+              id: entry.id,
+              position: 'inside',
+            },
           });
         }
       }}
       onDrop={() => {
-        setDraggedId(null);
-        setDropTarget(null);
+        if (!dragState.draggedId || !dragState.dropTarget) {
+          return;
+        }
+
+        dispatch(
+          moveEntry({
+            draggedId: entry.id,
+            targetId: dragState.dropTarget.id,
+            position: dragState.dropTarget.position,
+          }),
+        );
+
+        setDragState({
+          draggedId: null,
+          dropTarget: null,
+        });
       }}
     >
       {depth > 0 && (

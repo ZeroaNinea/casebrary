@@ -42,14 +42,14 @@ export const deleteEntry = createAsyncThunk(
 export const moveEntry = createAsyncThunk(
   'entries/moveEntry',
   async ({
-    id,
-    newParentId,
-    order,
+    draggedId,
+    targetId,
+    position,
   }: {
-    id: string;
-    newParentId: string | null;
-    order: number;
+    draggedId: string;
+    targetId: string;
+    position: 'before' | 'after' | 'inside';
   }) => {
-    return await service.move(id, newParentId, order);
+    return await service.move(draggedId, targetId, position);
   },
 );

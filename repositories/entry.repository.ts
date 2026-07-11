@@ -91,6 +91,10 @@ export default class EntryRepository {
     await this.closeGap(entry.parentId, entry.order);
     await this.makeRoom(newParentId, newOrder);
 
+    if (entry.parentId === newParentId && newOrder > entry.order) {
+      newOrder--;
+    }
+
     await db.put('entries', {
       ...entry,
       parentId: newParentId,
