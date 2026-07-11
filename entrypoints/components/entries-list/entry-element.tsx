@@ -20,8 +20,10 @@ export default function EntryElement({
   onAddChild,
   renderChildren,
   depth = 0,
-  dragState,
-  setDragState,
+  draggedId,
+  setDraggedId,
+  dropTarget,
+  setDropTarget,
 }: {
   entry: Entry;
   palettes: Record<string, Palette>;
@@ -35,21 +37,33 @@ export default function EntryElement({
     depth: number,
   ) => React.JSX.Element | null;
   depth: number;
-  dragState: {
-    draggedId: string | null;
-    dropTarget: {
+  // dragState: {
+  //   draggedId: string | null;
+  //   dropTarget: {
+  //     id: string;
+  //     position: 'before' | 'inside' | 'after';
+  //   } | null;
+  // };
+  // setDragState: React.Dispatch<
+  //   React.SetStateAction<{
+  //     draggedId: string | null;
+  //     dropTarget: {
+  //       id: string;
+  //       position: 'before' | 'inside' | 'after';
+  //     } | null;
+  //   }>
+  // >;
+  draggedId: string | null;
+  setDraggedId: React.Dispatch<React.SetStateAction<string | null>>;
+  dropTarget: {
+    id: string;
+    position: 'before' | 'inside' | 'after';
+  } | null;
+  setDropTarget: React.Dispatch<
+    React.SetStateAction<{
       id: string;
       position: 'before' | 'inside' | 'after';
-    } | null;
-  };
-  setDragState: React.Dispatch<
-    React.SetStateAction<{
-      draggedId: string | null;
-      dropTarget: {
-        id: string;
-        position: 'before' | 'inside' | 'after';
-      } | null;
-    }>
+    } | null>
   >;
 }) {
   function dispatch(arg0: any) {
@@ -73,59 +87,45 @@ export default function EntryElement({
       }
       draggable
       onDragStart={() => {
-        setDragState({ draggedId: entry.id, dropTarget: null });
+        // setDragState({ draggedId: entry.id, dropTarget: null });
+        console.log('drag start', entry.id);
+        setDraggedId(entry.id);
       }}
       onDragOver={(e) => {
         e.preventDefault();
 
         const rect = e.currentTarget.getBoundingClientRect();
-        const y = e.clientY - rect.top;
+        const ratio = (e.clientY - rect.top) / rect.height;
 
-        const ratio = y / rect.height;
+        const position =
+          ratio < 0.25 ? 'before' : ratio > 0.75 ? 'after' : 'inside';
 
-        if (ratio < 0.25) {
-          setDragState({
-            draggedId: entry.id,
-            dropTarget: {
-              id: entry.id,
-              position: 'before',
-            },
-          });
-        } else if (ratio > 0.75) {
-          setDragState({
-            draggedId: entry.id,
-            dropTarget: {
-              id: entry.id,
-              position: 'after',
-            },
-          });
-        } else {
-          setDragState({
-            draggedId: entry.id,
-            dropTarget: {
-              id: entry.id,
-              position: 'inside',
-            },
-          });
-        }
+        // setDragState((prev) => ({
+        //   ...prev,
+        //   dropTarget: {
+        //     id: entry.id,
+        //     position,
+        //   },
+        // }));
+
+        setDropTarget({
+          id: entry.id,
+          position,
+        });
       }}
       onDrop={() => {
-        if (!dragState.draggedId || !dragState.dropTarget) {
-          return;
-        }
+        if (!draggedId || !dropTarget) return;
 
-        dispatch(
-          moveEntry({
-            draggedId: entry.id,
-            targetId: dragState.dropTarget.id,
-            position: dragState.dropTarget.position,
-          }),
-        );
+        // dispatch(
+        //   moveEntry({
+        //     draggedId: draggedId || '',
+        //     targetId: dropTarget?.id || '',
+        //     position: dropTarget?.position || 'inside',
+        //   }),
+        // );
 
-        setDragState({
-          draggedId: null,
-          dropTarget: null,
-        });
+        setDraggedId(null);
+        setDropTarget(null);
       }}
     >
       {depth > 0 && (

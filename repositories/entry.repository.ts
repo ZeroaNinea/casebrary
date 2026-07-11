@@ -84,9 +84,9 @@ export default class EntryRepository {
     return entry;
   }
 
-  async move(id: string, newParentId: string | null, newOrder: number) {
+  async move(entry: Entry, newParentId: string | null, newOrder: number) {
     const db = await dbPromise;
-    const entry = await this.get(id);
+    // const entry = await this.get(id);
 
     await this.closeGap(entry.parentId, entry.order);
     await this.makeRoom(newParentId, newOrder);
@@ -109,7 +109,8 @@ export default class EntryRepository {
     const updated = [
       ...(await this.getChildren(entry.parentId)),
       ...(await this.getChildren(newParentId)),
-      await this.get(id),
+      // await this.get(id),
+      entry,
     ];
 
     return updated;

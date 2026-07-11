@@ -123,6 +123,6 @@ export default class EntryService {
       throw new Error('Cannot move entry into its descendant.');
     }
 
-    return this.repository.move(draggedId, parentId, order);
+    return this.repository.move(dragged, parentId, order);
   }
 }
