@@ -11,6 +11,7 @@ import IconButton from '@/entrypoints/components/buttons/icon-button';
 import FilledButton from '@/entrypoints/components/buttons/filled-button';
 import SearchField from '@/entrypoints/components/inputs/input-field';
 import EntryEditorPage from '@/entrypoints/components/pages/entry-editor.page';
+import LanguageDropdown from '@/entrypoints/components/language-dropdown';
 
 import EntryList from '@/entrypoints/components/entries-list';
 
@@ -27,6 +28,8 @@ function App() {
   const [currentPage, setCurrentPage] = useState<CurrentPage>(null);
   const [parentId, setParentId] = useState<string | null>(null);
   const [updatingEntry, setUpdatingEntry] = useState<Entry | null>(null);
+  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] =
+    useState<boolean>(false);
 
   useEffect(() => {
     dispatch(fetchEntries());
@@ -77,9 +80,19 @@ function App() {
           </h1>
         </div>
         <div className="flex gap-2 items-center">
-          <IconButton title="Language">
-            <Globe size={18} color="var(--color-primary-title)" />
-          </IconButton>
+          <div className="relative">
+            <IconButton
+              title="Language"
+              isState={true}
+              onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
+            >
+              <Globe size={18} color="var(--color-primary-title)" />
+            </IconButton>
+            <LanguageDropdown
+              isDropdownOpen={isLanguageDropdownOpen}
+              setIsDropdownOpen={setIsLanguageDropdownOpen}
+            />
+          </div>
           <IconButton title="Settings">
             <Settings size={18} color="var(--color-primary-title)" />
           </IconButton>
