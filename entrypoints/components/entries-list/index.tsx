@@ -27,13 +27,7 @@ export default function EntriesList({
     position: 'before' | 'inside' | 'after';
   } | null>(null);
 
-  // const [dragState, setDragState] = useState({
-  //   draggedId: null as string | null,
-  //   dropTarget: null as {
-  //     id: string;
-  //     position: 'before' | 'inside' | 'after';
-  //   } | null,
-  // });
+  const [expandedIds, setExpandedIds] = useState<string[]>([]);
 
   function geretatePalettes() {
     const palettes: Record<string, Palette> = {};
@@ -62,7 +56,7 @@ export default function EntriesList({
     }
 
     return (
-      <ul className="relative flex flex-col gap-3.5 p-0 mt-3 ml-2 z-1">
+      <ul className={`relative flex flex-col gap-3.5 p-0 mt-3 ml-2 z-1`}>
         <div className="absolute top-0 -left-1 w-px h-full rounded-full guidelines-vertical"></div>
         {children.map((child) => (
           <EntryElement
