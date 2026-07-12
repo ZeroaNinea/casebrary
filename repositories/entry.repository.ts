@@ -86,7 +86,6 @@ export default class EntryRepository {
 
   async move(entry: Entry, newParentId: string | null, newOrder: number) {
     const db = await dbPromise;
-    // const entry = await this.get(id);
 
     await this.closeGap(entry.parentId, entry.order);
     await this.makeRoom(newParentId, newOrder);
@@ -95,12 +94,14 @@ export default class EntryRepository {
       newOrder--;
     }
 
-    await db.put('entries', {
+    const movedEntry = {
       ...entry,
       parentId: newParentId,
       order: newOrder,
       updatedAt: Date.now(),
-    });
+    };
+
+    await db.put('entries', movedEntry);
 
     if (entry.parentId === newParentId) {
       return await this.getChildren(newParentId);
@@ -109,8 +110,7 @@ export default class EntryRepository {
     const updated = [
       ...(await this.getChildren(entry.parentId)),
       ...(await this.getChildren(newParentId)),
-      // await this.get(id),
-      entry,
+      movedEntry,
     ];
 
     return updated;

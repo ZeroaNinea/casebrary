@@ -90,19 +90,6 @@ export default class EntryService {
     };
   }
 
-  // async move(id: string, newParentId: string | null, order: number) {
-  //   const entry = await this.repository.get(id);
-
-  //   if (newParentId === entry.id) {
-  //     throw new Error('Cannot move entry to itself.');
-  //   }
-
-  //   if (await this.repository.isDescendant(newParentId, id)) {
-  //     throw new Error('Cannot move an entry into its own descendant.');
-  //   }
-
-  //   return await this.repository.move(id, newParentId, order);
-  // }
   async move(
     draggedId: string,
     targetId: string,

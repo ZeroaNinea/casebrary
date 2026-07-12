@@ -48,6 +48,7 @@ export const entriesSlice = createSlice({
         state.entries = state.entries.filter((e) => e.id !== action.payload);
       })
       .addCase(moveEntryThunk.fulfilled, (state, action) => {
+        console.log(action.payload);
         for (const updated of action.payload) {
           const entry = state.entries.find((e) => e.id === updated.id);
 
