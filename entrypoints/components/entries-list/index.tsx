@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ChevronDown, ChevronRight } from 'lucide-react';
 
 import Entry from '@/types/entry.interface';
 import { Palette } from '@/types/palette.alias';
@@ -58,6 +59,23 @@ export default function EntriesList({
     return (
       <ul className={`relative flex flex-col gap-3.5 p-0 mt-3 ml-2 z-1`}>
         <div className="absolute top-0 -left-1 w-px h-full rounded-full guidelines-vertical"></div>
+        {/* {JSON.stringify(expandedIds)} */}
+        {parentId && (
+          <div
+            className="absolute -top-4 -left-3 w-3 h-3 z-1000 cursor-pointer"
+            onClick={() =>
+              expandedIds.includes(parentId)
+                ? setExpandedIds(expandedIds.filter((id) => id !== parentId))
+                : setExpandedIds([...expandedIds, parentId])
+            }
+          >
+            {expandedIds.includes(parentId) ? (
+              <ChevronDown size={16} color={`var(--color-text-muted)`} />
+            ) : (
+              <ChevronRight size={16} color={`var(--color-text-muted)`} />
+            )}
+          </div>
+        )}
         {children.map((child) => (
           <EntryElement
             entry={child}
