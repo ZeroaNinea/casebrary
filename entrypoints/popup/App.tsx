@@ -2,11 +2,8 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Menu, Settings, Globe, Plus } from 'lucide-react';
 
-// import i18n from '@/utils/i18n';
-
 import './App.css';
 
-// import RippleButton from '@/entrypoints/components/ripple-button';
 import IconButton from '@/entrypoints/components/buttons/icon-button';
 import FilledButton from '@/entrypoints/components/buttons/filled-button';
 import SearchField from '@/entrypoints/components/inputs/input-field';
@@ -21,8 +18,36 @@ import { deleteEntry, fetchEntries } from '@/features/entries/entries.thunks';
 import CurrentPage from '@/types/current-page.alias';
 import Entry from '@/types/entry.interface';
 
+import i18n from '@/utils/i18n';
+
 function App() {
   const { t } = useTranslation();
+
+  useEffect(() => {
+    async function initializeLanguage() {
+      const supported = ['en', 'ru'];
+
+      const saved = localStorage.getItem('language');
+
+      if (saved && supported.includes(saved)) {
+        document.documentElement.lang = saved;
+        i18n.changeLanguage(saved);
+      } else {
+        const browserLanguage = navigator.language.split('-')[0];
+
+        const language = supported.includes(browserLanguage)
+          ? browserLanguage
+          : 'en';
+
+        document.documentElement.lang = language;
+        i18n.changeLanguage(language);
+        localStorage.setItem('language', language);
+      }
+    }
+
+    initializeLanguage();
+  }, []);
+
   const dispatch = useAppDispatch();
 
   const [currentPage, setCurrentPage] = useState<CurrentPage>(null);
@@ -152,4 +177,3 @@ function App() {
 }
 
 export default App;
-// i18n.changeLanguage('en')

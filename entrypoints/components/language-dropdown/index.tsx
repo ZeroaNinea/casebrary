@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import i18n from '@/utils/i18n';
 import RippleButton from '@/entrypoints/components/buttons/ripple-button';
 
@@ -9,9 +8,10 @@ export default function LanguageDropdown({
   isDropdownOpen: boolean;
   setIsDropdownOpen: (isOpen: boolean) => void;
 }) {
-  const { t } = useTranslation();
-
-  const buttons = ['English', 'Русский'];
+  const languages = [
+    { code: 'en', label: 'English' },
+    { code: 'ru', label: 'Русский' },
+  ];
 
   return (
     <div
@@ -25,28 +25,21 @@ export default function LanguageDropdown({
         ${isDropdownOpen ? 'h-16.5 opacity-100' : 'h-0 opacity-0 pointer-events-none'}
       `}
     >
-      {buttons.map((button) => (
+      {languages.map((language) => (
         <RippleButton
           mode="dark"
-          key={button}
-          className="w-full px-4 py-2 bg-transparent hover:bg-primary-container/20 text-left text-xs font-semibold text-text cursor-pointer transition-all duration-200"
+          key={language.code}
+          className="w-full px-4 py-2 bg-transparent hover:bg-primary-container text-left text-xs font-semibold text-text cursor-pointer transition-all duration-200"
           isState={true}
           onClick={() => {
-            switch (button) {
-              case 'English':
-                document.documentElement.lang = 'en';
-                i18n.changeLanguage('en');
-                break;
-              case 'Русский':
-                document.documentElement.lang = 'ru';
-                i18n.changeLanguage('ru');
-                break;
-            }
+            document.documentElement.lang = language.code;
+            i18n.changeLanguage(language.code);
+            localStorage.setItem('language', language.code);
 
             setIsDropdownOpen(false);
           }}
         >
-          {t(button)}
+          {language.label}
         </RippleButton>
       ))}
     </div>
