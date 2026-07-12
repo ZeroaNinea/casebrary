@@ -71,13 +71,13 @@ export default function EntryElement({
       }
     >
       {depth > 0 && (
-        <div className="absolute top-8 -left-1 w-1 h-px bg-border/20 rounded-full"></div>
+        <div className="absolute top-8 -left-1 w-1 h-px rounded-full guidelines-horizontal"></div>
       )}
       {dropTarget?.id === entry.id && dropTarget?.position === 'before' && (
-        <div className="absolute -top-2 left-0 w-full h-px bg-border/20 rounded-full"></div>
+        <div className="absolute -top-2 left-0 w-full h-px rounded-full guidelines-horizontal"></div>
       )}
       {dropTarget?.id === entry.id && dropTarget?.position === 'after' && (
-        <div className="absolute -bottom-2 left-0 w-full h-px bg-border/20 rounded-full"></div>
+        <div className="absolute -bottom-2 left-0 w-full h-px rounded-full guidelines-horizontal"></div>
       )}
       <div
         className={`

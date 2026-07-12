@@ -1,0 +1,37 @@
+.guidelines-vertical,
+.guidelines-horizontal {
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+}
+
+.guidelines-vertical {
+  animation: gradient-vertical 5s ease infinite;
+}
+
+.guidelines-horizontal {
+  animation: gradient-horizontal 5s ease infinite;
+}
+
+@keyframes gradient-vertical {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes gradient-horizontal {
+  0% {
+    background-position: 50% 0%;
+  }
+  50% {
+    background-position: 50% 100%;
+  }
+  100% {
+    background-position: 50% 0%;
+  }
+}

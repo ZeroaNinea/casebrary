@@ -7,6 +7,8 @@ import createPalette from '@/utils/theme/palette.util';
 
 import EntryElement from './entry-element';
 
+import './style.css';
+
 export default function EntriesList({
   entries,
   deleteEntry,
@@ -61,7 +63,7 @@ export default function EntriesList({
 
     return (
       <ul className="relative flex flex-col gap-3.5 p-0 mt-3 ml-2 z-1">
-        <div className="absolute top-0 -left-1 w-px h-full bg-border/20 rounded-full"></div>
+        <div className="absolute top-0 -left-1 w-px h-full rounded-full guidelines-vertical"></div>
         {children.map((child) => (
           <EntryElement
             entry={child}
