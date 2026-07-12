@@ -71,14 +71,31 @@ export default function EntryElement({
       }
     >
       {depth > 0 && (
-        <div className="absolute top-8 -left-1 w-1 h-px rounded-full guidelines-horizontal"></div>
+        <div
+          style={{
+            animationDelay: `${Math.random() * 100}ms`,
+          }}
+          className="absolute top-8 -left-1 w-1 h-px rounded-full guidelines-horizontal"
+        ></div>
       )}
-      {dropTarget?.id === entry.id && dropTarget?.position === 'before' && (
-        <div className="absolute -top-2 left-3 w-80 h-px rounded-full guidelines-horizontal"></div>
-      )}
-      {dropTarget?.id === entry.id && dropTarget?.position === 'after' && (
-        <div className="absolute -bottom-2 left-3 w-80 h-px rounded-full guidelines-horizontal"></div>
-      )}
+      <div
+        style={{
+          animationDelay: `${Math.random() * 100}ms`,
+        }}
+        className={`
+          absolute -top-2 left-3 w-80 h-px rounded-full guidelines-horizontal pointer-events-none
+          ${dropTarget?.id === entry.id && dropTarget?.position === 'before' ? 'opacity-50' : 'opacity-0'}
+        `}
+      ></div>
+      <div
+        style={{
+          animationDelay: `${Math.random() * 100}ms`,
+        }}
+        className={`
+          absolute -bottom-2 left-3 w-80 h-px rounded-full guidelines-horizontal pointer-events-none
+          ${dropTarget?.id === entry.id && dropTarget?.position === 'after' ? 'opacity-50' : 'opacity-0'}
+        `}
+      ></div>
       <div
         className={`
           flex items-center justify-between
