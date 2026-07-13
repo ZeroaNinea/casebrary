@@ -8,6 +8,7 @@ import IconButton from '@/entrypoints/components/buttons/icon-button';
 import FilledButton from '@/entrypoints/components/buttons/filled-button';
 import SearchField from '@/entrypoints/components/inputs/input-field';
 import EntryEditorPage from '@/entrypoints/components/pages/entry-editor.page';
+import SettingsPage from '@/entrypoints/components/pages/settings.page';
 import LanguageDropdown from '@/entrypoints/components/language-dropdown';
 
 import EntryList from '@/entrypoints/components/entries-list';
@@ -118,7 +119,13 @@ function App() {
               setIsDropdownOpen={setIsLanguageDropdownOpen}
             />
           </div>
-          <IconButton title="Settings">
+          <IconButton
+            title="Settings"
+            isState={true}
+            onClick={() => {
+              setCurrentPage('settings');
+            }}
+          >
             <Settings size={18} color="var(--color-primary-title)" />
           </IconButton>
         </div>
@@ -171,6 +178,10 @@ function App() {
           setUpdatingEntry(null);
         }}
         clearParentId={() => setParentId(null)}
+      />
+      <SettingsPage
+        show={currentPage === 'settings'}
+        close={() => setCurrentPage(null)}
       />
     </div>
   );
