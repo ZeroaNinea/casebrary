@@ -4,8 +4,6 @@ import { useTranslation } from 'react-i18next';
 
 import FilledButton from '@/entrypoints/components/buttons/filled-button';
 
-import TransparentPillButton from '@/entrypoints/components/buttons/transparent-pill-button';
-
 import Entry from '@/types/entry.interface';
 import { importEntries } from '@/features/entries/entries.thunks';
 
@@ -34,10 +32,6 @@ export default function BackupSection({ entries }: { entries: Entry[] }) {
   }
 
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // function openFilePicker() {
-  //   fileInputRef.current?.click();
-  // }
 
   async function handleImport(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
