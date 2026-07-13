@@ -35,9 +35,9 @@ export default function BackupSection({ entries }: { entries: Entry[] }) {
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  function openFilePicker() {
-    fileInputRef.current?.click();
-  }
+  // function openFilePicker() {
+  //   fileInputRef.current?.click();
+  // }
 
   async function handleImport(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
