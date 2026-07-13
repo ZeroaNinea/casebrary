@@ -35,5 +35,6 @@
   "optionsTitle": "Настройки",
   "backupTitle": "Резервное копирование",
   "downloadEntries": "Скачать записи",
-  "uploadEntriesIndexedDB": "Загрузить записи в IndexedDB"
+  "uploadEntriesIndexedDB": "Загрузить записи в IndexedDB",
+  "backupDescription": "Скачайте свои записи в формате JSON. Вы можете использовать это, чтобы востановить свои записи позже. Загркзите JSON файлы обратно в IndexedDB, чтобы востановить свои записи."
 }

@@ -55,6 +55,9 @@ export default function BackupSection({ entries }: { entries: Entry[] }) {
       <h2 className="text-2xl font-bold text-primary-title">
         {t('backupTitle')}
       </h2>
+
+      <p className="mt-1 text-sm text-text/70">{t('backupDescription')}</p>
+
       <div className="flex gap-2 my-3">
         <FilledButton
           title="Entry"
