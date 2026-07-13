@@ -53,13 +53,9 @@ export default function BackupSection({ entries }: { entries: Entry[] }) {
 
   return (
     <div>
-      <TransparentPillButton>
-        <ChevronLeft size={18} color="var(--color-primary-on-container)" />
-        <span className="text-primary-on-container">{t('back')}</span>
-      </TransparentPillButton>
-      <h1 className="text-2xl font-bold text-primary-title">
-        {t('settingsTitle')}
-      </h1>
+      <h2 className="text-2xl font-bold text-primary-title">
+        {t('backupTitle')}
+      </h2>
       <FilledButton
         title="Entry"
         className="w-full"

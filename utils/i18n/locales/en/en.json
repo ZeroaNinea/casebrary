@@ -32,7 +32,7 @@
   "updateProperty": "Update Property",
   "cancelUpdate": "Cancel Update",
   "titleRequired": "Title is required.",
-  "settingsTitle": "Settings",
+  "backupTitle": "Backup",
   "downloadEntries": "Download Entries",
   "uploadEntriesIndexedDB": "Upload Entries to IndexedDB"
 }
