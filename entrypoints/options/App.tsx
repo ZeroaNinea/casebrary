@@ -48,10 +48,13 @@ function App() {
       className={`
         absolute inset-0 z-50 overflow-y-auto
         bg-linear-to-br from-(--color-bg) via-(--color-primary-background) to-(--color-secondary-background)
-        p-4.5
+        p-10
         transition-transform duration-300 ease-out
       `}
     >
+      <h1 className="text-3xl font-bold text-primary-title">
+        {t('optionsTitle')}
+      </h1>
       <BackupSection entries={entries} />
     </div>
   );

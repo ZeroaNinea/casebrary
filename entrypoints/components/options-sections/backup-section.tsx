@@ -56,24 +56,24 @@ export default function BackupSection({ entries }: { entries: Entry[] }) {
       <h2 className="text-2xl font-bold text-primary-title">
         {t('backupTitle')}
       </h2>
-      <FilledButton
-        title="Entry"
-        className="w-full"
-        isState={true}
-        onClick={() => exportEntries(entries)}
-      >
-        <HardDriveDownload
-          size={16}
-          color="var(--color-on-primary-container)"
-        />
-        <span className="text-on-primary-container text-sm font-semibold">
-          {t('downloadEntries')}
-        </span>
-      </FilledButton>
-      <input
-        type="file"
-        className="
-          w-full h-10 p-3
+      <div className="flex gap-2 my-3">
+        <FilledButton
+          title="Entry"
+          isState={true}
+          onClick={() => exportEntries(entries)}
+        >
+          <HardDriveDownload
+            size={16}
+            color="var(--color-on-primary-container)"
+          />
+          <span className="text-on-primary-container text-sm font-semibold">
+            {t('downloadEntries')}
+          </span>
+        </FilledButton>
+        <input
+          type="file"
+          className="
+          px-5 py-2.5
           bg-surface-container hover:bg-surface-container-hover
           rounded-xl cursor-pointer font-semibold text-sm
           border border-border/30
@@ -81,10 +81,11 @@ export default function BackupSection({ entries }: { entries: Entry[] }) {
           hover:scale-[1.02] active:scale-[0.97] hover:-translate-y-0.5 active:translate-y-0
           transition-all duration-200 ease-out
         "
-        accept=".json"
-        ref={fileInputRef}
-        onChange={handleImport}
-      />
+          accept=".json"
+          ref={fileInputRef}
+          onChange={handleImport}
+        />
+      </div>
     </div>
   );
 }

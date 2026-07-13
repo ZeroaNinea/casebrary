@@ -32,6 +32,7 @@
   "updateProperty": "Обновить свойство",
   "cancelUpdate": "Отменить обновление",
   "titleRequired": "Требуется заголовок.",
+  "optionsTitle": "Настройки",
   "backupTitle": "Резервное копирование",
   "downloadEntries": "Скачать записи",
   "uploadEntriesIndexedDB": "Загрузить записи в IndexedDB"
