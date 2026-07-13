@@ -15,11 +15,17 @@ export default function LanguageDropdown({
 
   return (
     <div
+      style={
+        {
+          background:
+            'color-mix(in lch, var(--surface-container) 80%, transparent)',
+          backdropFilter: 'blur(10px)',
+        } as React.CSSProperties
+      }
       className={`
         absolute top-15 right-0 w-32
         rounded-2xl border border-border/10
         transition-all duration-200
-        backdrop-blur-xl bg-surface-container
         shadow-xl overflow-hidden
         z-10
         ${isDropdownOpen ? 'h-16.5 opacity-100' : 'h-0 opacity-0 pointer-events-none'}
