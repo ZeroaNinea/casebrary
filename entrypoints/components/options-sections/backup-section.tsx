@@ -11,7 +11,7 @@ import { importEntries } from '@/features/entries/entries.thunks';
 
 import { useAppDispatch } from '@/utils/store';
 
-export default function SettingsPage({ entries }: { entries: Entry[] }) {
+export default function BackupSection({ entries }: { entries: Entry[] }) {
   const { t } = useTranslation();
 
   const dispatch = useAppDispatch();
@@ -81,13 +81,6 @@ export default function SettingsPage({ entries }: { entries: Entry[] }) {
           {t('downloadEntries')}
         </span>
       </FilledButton>
-      {/* <FilledButton title="Entry" isState={true} onClick={() => {}}>
-        <DatabaseArrowUp size={16} color="var(--color-on-primary-container)" />
-        <span className="text-on-primary-container text-sm font-semibold">
-          {t('uploadEntriesIndexedDB')}
-        </span>
-      </FilledButton> */}
-      {JSON.stringify(entries)}
       <input
         type="file"
         className="

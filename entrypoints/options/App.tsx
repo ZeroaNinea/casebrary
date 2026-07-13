@@ -5,7 +5,7 @@ import i18n from '@/utils/i18n';
 import { useAppDispatch, useAppSelector } from '@/utils/store';
 import { useTranslation } from 'react-i18next';
 
-import SettingsPage from '@/entrypoints/components/pages/settings.page';
+import BackupSection from '@/entrypoints/components/options-sections/backup-section';
 
 function App() {
   const { t } = useTranslation();
@@ -45,7 +45,7 @@ function App() {
 
   return (
     <div>
-      <SettingsPage entries={entries} />
+      <BackupSection entries={entries} />
     </div>
   );
 }

@@ -10,7 +10,6 @@ import IconButton from '@/entrypoints/components/buttons/icon-button';
 import FilledButton from '@/entrypoints/components/buttons/filled-button';
 import SearchField from '@/entrypoints/components/inputs/input-field';
 import EntryEditorPage from '@/entrypoints/components/pages/entry-editor.page';
-import SettingsPage from '@/entrypoints/components/pages/settings.page';
 import LanguageDropdown from '@/entrypoints/components/language-dropdown';
 
 import EntryList from '@/entrypoints/components/entries-list';
