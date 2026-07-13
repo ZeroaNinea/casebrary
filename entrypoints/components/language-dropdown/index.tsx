@@ -35,7 +35,7 @@ export default function LanguageDropdown({
         <RippleButton
           mode="dark"
           key={language.code}
-          className="w-full px-4 py-2 bg-transparent hover:bg-primary-container text-left text-xs font-semibold text-text cursor-pointer transition-all duration-200"
+          className="w-full px-4 py-2 bg-transparent hover:bg-primary-container-hover hover:text-text text-left text-xs font-semibold text-on-surface cursor-pointer transition-all duration-200"
           isState={true}
           onClick={() => {
             document.documentElement.lang = language.code;

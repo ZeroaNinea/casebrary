@@ -66,6 +66,8 @@
   --color-error-900: var(--error-900);
   --color-error-base: var(--error-base);
   --color-bg: var(--bg);
+  --color-primary-background: var(--primary-background);
+  --color-secondary-background: var(--secondary-background);
   --color-surface: var(--surface);
   --color-surface-alt: var(--surface-alt);
   --color-surface-container: color-mix(

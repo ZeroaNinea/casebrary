@@ -130,7 +130,7 @@ export default function EntryEditorPage({
     <div
       className={`
         absolute inset-0 z-50 overflow-y-auto
-        bg-linear-to-br from-(--color-neutral-50) via-(--color-primary-50) to-(--color-secondary-50)
+        bg-linear-to-br from-(--color-bg) via-(--color-primary-background) to-(--color-secondary-background)
         p-4.5
         transition-transform duration-300 ease-out
       `}

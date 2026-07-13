@@ -147,7 +147,7 @@ export default function EntryElement({
                 ? `${palettes[entry.id]['200']}40`
                 : 'var(--color-primary-container)',
               color: entry.color
-                ? palettes[entry.id]['800']
+                ? palettes[entry.id]['700']
                 : 'var(--color-primary-title)',
             }}
           >

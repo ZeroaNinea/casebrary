@@ -25,6 +25,8 @@ export default interface Theme {
   neutralVariantBase: string;
   errorBase: string;
   bg: string;
+  primaryBackground: string;
+  secondaryBackground: string;
   surface: string;
   surfaceAlt: string;
   surfaceContainer: string;

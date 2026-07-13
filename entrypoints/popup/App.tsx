@@ -75,7 +75,7 @@ function App() {
   const entries = useAppSelector((state) => state.entries.entries);
 
   return (
-    <div className="relative w-full h-full flex flex-col overflow-hidden bg-linear-to-br from-(--color-neutral-50) via-(--color-primary-50) to-(--color-secondary-50) shadow-2xl">
+    <div className="relative w-full h-full flex flex-col overflow-hidden bg-linear-to-br from-(--color-bg) via-(--color-primary-background) to-(--color-secondary-background) shadow-2xl">
       {/* Premium sky-blue and cyan glowing background blobs */}
       <div
         className="absolute -top-10 -left-10 w-48 h-48 rounded-full pointer-events-none z-0 animate-blob-1"
