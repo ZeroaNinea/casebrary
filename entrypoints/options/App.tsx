@@ -44,7 +44,14 @@ function App() {
   const entries = useAppSelector((state) => state.entries.entries);
 
   return (
-    <div>
+    <div
+      className={`
+        absolute inset-0 z-50 overflow-y-auto
+        bg-linear-to-br from-(--color-bg) via-(--color-primary-background) to-(--color-secondary-background)
+        p-4.5
+        transition-transform duration-300 ease-out
+      `}
+    >
       <BackupSection entries={entries} />
     </div>
   );

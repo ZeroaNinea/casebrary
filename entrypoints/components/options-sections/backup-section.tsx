@@ -52,14 +52,7 @@ export default function BackupSection({ entries }: { entries: Entry[] }) {
   }
 
   return (
-    <div
-      className={`
-        absolute inset-0 z-50 overflow-y-auto
-        bg-linear-to-br from-(--color-bg) via-(--color-primary-background) to-(--color-secondary-background)
-        p-4.5
-        transition-transform duration-300 ease-out
-      `}
-    >
+    <div>
       <TransparentPillButton>
         <ChevronLeft size={18} color="var(--color-primary-on-container)" />
         <span className="text-primary-on-container">{t('back')}</span>
