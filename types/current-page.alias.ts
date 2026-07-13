@@ -1,3 +1,3 @@
-type CurrentPage = 'entry-editor' | 'settings' | null;
+type CurrentPage = 'entry-editor' | null;
 
 export default CurrentPage;

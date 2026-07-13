@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Menu, Settings, Globe, Plus } from 'lucide-react';
 
+import browser from 'webextension-polyfill';
+
 import './App.css';
 
 import IconButton from '@/entrypoints/components/buttons/icon-button';
@@ -123,7 +125,7 @@ function App() {
             title="Settings"
             isState={true}
             onClick={() => {
-              setCurrentPage('settings');
+              browser.runtime.openOptionsPage();
             }}
           >
             <Settings size={18} color="var(--color-primary-title)" />
@@ -178,11 +180,6 @@ function App() {
           setUpdatingEntry(null);
         }}
         clearParentId={() => setParentId(null)}
-      />
-      <SettingsPage
-        entries={entries}
-        show={currentPage === 'settings'}
-        close={() => setCurrentPage(null)}
       />
     </div>
   );

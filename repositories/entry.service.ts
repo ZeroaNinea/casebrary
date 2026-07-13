@@ -112,4 +112,14 @@ export default class EntryService {
 
     return this.repository.move(dragged, parentId, order);
   }
+
+  async import(entries: Entry[]) {
+    for (const entry of entries) {
+      if (typeof entry.id !== 'string' || typeof entry.title !== 'string') {
+        throw new Error('Invalid backup.');
+      }
+    }
+
+    return await this.repository.import(entries);
+  }
 }

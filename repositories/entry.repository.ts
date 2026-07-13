@@ -157,4 +157,20 @@ export default class EntryRepository {
 
     return false;
   }
+
+  async import(entries: Entry[]) {
+    const db = await dbPromise;
+
+    const tx = db.transaction('entries', 'readwrite');
+
+    await tx.store.clear();
+
+    for (const entry of entries) {
+      await tx.store.put(entry);
+    }
+
+    await tx.done;
+
+    return entries;
+  }
 }

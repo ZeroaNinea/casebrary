@@ -6,6 +6,7 @@ import {
   updateEntry as updateEntryThunk,
   deleteEntry as deleteEntryThunk,
   moveEntry as moveEntryThunk,
+  importEntries as importEntriesThunk,
 } from './entries.thunks';
 
 export const entriesSlice = createSlice({
@@ -56,6 +57,9 @@ export const entriesSlice = createSlice({
             Object.assign(entry, updated);
           }
         }
+      })
+      .addCase(importEntriesThunk.fulfilled, (state, action) => {
+        state.entries = action.payload;
       });
   },
 });

@@ -6,6 +6,8 @@ import EntryService from '@/repositories/entry.service';
 import CreateEntryDto from '@/types/create-entry.dto';
 import UpdateEntryDto from '@/types/update-entry.dto';
 
+import Entry from '@/types/entry.interface';
+
 const repository = new EntryRepository();
 const service = new EntryService(repository);
 
@@ -51,5 +53,12 @@ export const moveEntry = createAsyncThunk(
     position: 'before' | 'after' | 'inside';
   }) => {
     return await service.move(draggedId, targetId, position);
+  },
+);
+
+export const importEntries = createAsyncThunk(
+  'entries/importEntries',
+  async (entries: Entry[]) => {
+    return await service.import(entries);
   },
 );
