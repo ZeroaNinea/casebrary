@@ -22,6 +22,23 @@ export default function SettingsPage({
     close();
   }
 
+  function exportEntries(entries: Entry[]) {
+    const json = JSON.stringify(entries, null, 2);
+
+    const blob = new Blob([json], {
+      type: 'application/json',
+    });
+
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'casebrary-backup.json';
+    a.click();
+
+    URL.revokeObjectURL(url);
+  }
+
   return (
     <div
       className={`
@@ -41,7 +58,11 @@ export default function SettingsPage({
       <h1 className="text-2xl font-bold text-primary-title">
         {t('settingsTitle')}
       </h1>
-      <FilledButton title="Entry" isState={true} onClick={() => {}}>
+      <FilledButton
+        title="Entry"
+        isState={true}
+        onClick={() => exportEntries(entries)}
+      >
         <HardDriveDownload
           size={16}
           color="var(--color-on-primary-container)"
