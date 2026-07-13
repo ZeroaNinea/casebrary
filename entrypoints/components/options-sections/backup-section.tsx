@@ -1,8 +1,9 @@
 import { useRef } from 'react';
-import { ChevronLeft, HardDriveDownload, DatabaseArrowUp } from 'lucide-react';
+import { HardDriveDownload, DatabaseArrowUp } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
 import FilledButton from '@/entrypoints/components/buttons/filled-button';
+import CancelButton from '@/entrypoints/components/buttons/cancel-button/inedx';
 
 import Entry from '@/types/entry.interface';
 import { importEntries } from '@/features/entries/entries.thunks';
@@ -32,6 +33,10 @@ export default function BackupSection({ entries }: { entries: Entry[] }) {
   }
 
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  function openFilePicker() {
+    fileInputRef.current?.click();
+  }
 
   async function handleImport(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -65,20 +70,19 @@ export default function BackupSection({ entries }: { entries: Entry[] }) {
           </span>
         </FilledButton>
         <input
-          type="file"
-          className="
-          px-5 py-2.5
-          bg-surface-container hover:bg-surface-container-hover
-          rounded-xl cursor-pointer font-semibold text-sm
-          border border-border/30
-          shadow-sm hover:shadow-md hover:shadow-black/5
-          hover:scale-[1.02] active:scale-[0.97] hover:-translate-y-0.5 active:translate-y-0
-          transition-all duration-200 ease-out
-        "
-          accept=".json"
           ref={fileInputRef}
+          type="file"
+          accept=".json"
+          className="hidden"
           onChange={handleImport}
         />
+
+        <CancelButton title="Import" isState={true} onClick={openFilePicker}>
+          <DatabaseArrowUp size={16} color="var(--color-on-surface)" />
+          <span className="text-on-surface text-sm font-semibold">
+            {t('uploadEntriesIndexedDB')}
+          </span>
+        </CancelButton>
       </div>
     </div>
   );
