@@ -152,6 +152,8 @@ export default function PropertyEditor({
           placeholder={t('enterPropertyName')}
           value={propertyName}
           icon="folder"
+          required
+          errorMessage={t('propertyNameRequired')}
           onChange={setPropertyName}
         />
       </div>
@@ -231,7 +233,8 @@ export default function PropertyEditor({
           </CancelButton>
         )}
         <FilledButton
-          title="Entry"
+          title="Property"
+          disabled={propertyName === ''}
           isState={true}
           onClick={() => {
             if (updatingProperty !== null) {
