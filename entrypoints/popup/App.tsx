@@ -180,6 +180,7 @@ function App() {
         clearParentId={() => setParentId(null)}
       />
       <SettingsPage
+        entries={entries}
         show={currentPage === 'settings'}
         close={() => setCurrentPage(null)}
       />

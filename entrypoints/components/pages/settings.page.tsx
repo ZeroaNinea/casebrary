@@ -1,12 +1,18 @@
-import { ChevronLeft } from 'lucide-react';
+import { ChevronLeft, HardDriveDownload, DatabaseArrowUp } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+
+import FilledButton from '@/entrypoints/components/buttons/filled-button';
 
 import TransparentPillButton from '@/entrypoints/components/buttons/transparent-pill-button';
 
+import Entry from '@/types/entry.interface';
+
 export default function SettingsPage({
+  entries,
   show,
   close,
 }: {
+  entries: Entry[];
   show: boolean;
   close: () => void;
 }) {
@@ -32,7 +38,24 @@ export default function SettingsPage({
         <ChevronLeft size={18} color="var(--color-primary-on-container)" />
         <span className="text-primary-on-container">{t('back')}</span>
       </TransparentPillButton>
-      <h1 className="text-2xl font-bold text-primary-title">Settisgs</h1>
+      <h1 className="text-2xl font-bold text-primary-title">
+        {t('settingsTitle')}
+      </h1>
+      <FilledButton title="Entry" isState={true} onClick={() => {}}>
+        <HardDriveDownload
+          size={16}
+          color="var(--color-on-primary-container)"
+        />
+        <span className="text-on-primary-container text-sm font-semibold">
+          {t('downloadEntries')}
+        </span>
+      </FilledButton>
+      <FilledButton title="Entry" isState={true} onClick={() => {}}>
+        <DatabaseArrowUp size={16} color="var(--color-on-primary-container)" />
+        <span className="text-on-primary-container text-sm font-semibold">
+          {t('uploadEntriesIndexedDB')}
+        </span>
+      </FilledButton>
     </div>
   );
 }

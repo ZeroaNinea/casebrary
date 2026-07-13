@@ -31,5 +31,8 @@
   "update": "Update",
   "updateProperty": "Update Property",
   "cancelUpdate": "Cancel Update",
-  "titleRequired": "Title is required."
+  "titleRequired": "Title is required.",
+  "settingsTitle": "Settings",
+  "downloadEntries": "Download Entries",
+  "uploadEntriesIndexedDB": "Upload Entries to IndexedDB"
 }

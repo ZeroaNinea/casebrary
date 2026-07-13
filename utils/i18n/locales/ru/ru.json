@@ -31,5 +31,8 @@
   "update": "Обновить",
   "updateProperty": "Обновить свойство",
   "cancelUpdate": "Отменить обновление",
-  "titleRequired": "Требуется заголовок."
+  "titleRequired": "Требуется заголовок.",
+  "settingsTitle": "Настройки",
+  "downloadEntries": "Скачать записи",
+  "uploadEntriesIndexedDB": "Загрузить записи в IndexedDB"
 }
