@@ -5,8 +5,6 @@ import i18n from '@/utils/i18n';
 import { useAppDispatch, useAppSelector } from '@/utils/store';
 import { useTranslation } from 'react-i18next';
 
-import '../popup/style.css';
-
 import SettingsPage from '@/entrypoints/components/pages/settings.page';
 
 function App() {

@@ -13,8 +13,7 @@ import store from '@/utils/store';
 
 applyTheme(defaultTheme);
 
-// import '@/utils/theme/theme.css';
-// import './style.css';
+import '../popup/style.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
