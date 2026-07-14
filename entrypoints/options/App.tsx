@@ -68,3 +68,24 @@ function App() {
 }
 
 export default App;
+
+/*
+General
+──────────────────────────
+Language
+
+Appearance
+──────────────────────────
+Theme colors
+
+Backup
+──────────────────────────
+Export
+Import
+
+About
+──────────────────────────
+Version
+Privacy Policy
+GitHub
+*/
