@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 
 import ColorInput from '@/entrypoints/components/inputs/color-input';
 import RippleButton from '@/entrypoints/components/buttons/ripple-button';
+import RadioGroup from '@/entrypoints/components/radio-group/radio-group';
 
 import type { ThemeColors, ThemeMode } from '@/types/theme.interface';
 
@@ -166,6 +167,24 @@ export default function ColorThemeSection() {
           </RippleButton>
         ))}
       </div>
+      <RadioGroup
+        value={mode}
+        onChange={setMode}
+        options={[
+          {
+            value: 'light',
+            label: t('light'),
+          },
+          {
+            value: 'dark',
+            label: t('dark'),
+          },
+          {
+            value: 'system',
+            label: t('system'),
+          },
+        ]}
+      />
     </div>
   );
 }

@@ -17,6 +17,6 @@ const themeColors: ThemeColors = {
   error: '#f43f5e', // Rose/Red (Error)
 };
 
-const themeMode: ThemeMode = 'light';
+const themeMode: ThemeMode = 'system';
 
 export default createTheme(themeColors, themeMode);

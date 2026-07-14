@@ -24,7 +24,7 @@ function App() {
         neutralVariant: '#64748b',
         error: '#f43f5e',
       };
-  const mode = saved ? JSON.parse(saved).mode : 'light';
+  const mode = saved ? JSON.parse(saved).mode : 'system';
 
   useEffect(() => {
     if (mode !== 'system') return;
