@@ -1,52 +1,63 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import ColorInput from '@/entrypoints/components/inputs/color-input';
 
 import type { ThemeColors, ThemeMode } from '@/types/theme.interface';
 
+import createTheme from '@/utils/theme';
+import applyTheme from '@/utils/theme/apply-theme';
+
 export default function ColorThemeSection() {
   const { t } = useTranslation();
 
-  const [primary, setPrimary] = useState('#0284c7');
-  const [secondary, setSecondary] = useState('#06b6d4');
-  const [tertiary, setTertiary] = useState('#38bdf8');
-  const [neutral, setNeutral] = useState('#475569');
-  const [neutralVariant, setNeutralVariant] = useState('#64748b');
-  const [error, setError] = useState('#f43f5e');
+  const [themeColors, setThemeColors] = useState<ThemeColors>({
+    primary: '#0284c7',
+    secondary: '#06b6d4',
+    tertiary: '#38bdf8',
+    neutral: '#475569',
+    neutralVariant: '#64748b',
+    error: '#f43f5e',
+  });
 
   const [mode, setMode] = useState<ThemeMode>('light');
 
   const inputs = [
     {
       label: t('primaryLabel'),
-      value: primary,
-      onChange: setPrimary,
+      value: themeColors.primary,
+      onChange: (value: string) =>
+        setThemeColors({ ...themeColors, primary: value }),
     },
     {
       label: t('secondaryLabel'),
-      value: secondary,
-      onChange: setSecondary,
+      value: themeColors.secondary,
+      onChange: (value: string) =>
+        setThemeColors({ ...themeColors, secondary: value }),
     },
     {
       label: t('tertiaryLabel'),
-      value: tertiary,
-      onChange: setTertiary,
+      value: themeColors.tertiary,
+      onChange: (value: string) =>
+        setThemeColors({ ...themeColors, tertiary: value }),
     },
     {
       label: t('neutralLabel'),
-      value: neutral,
-      onChange: setNeutral,
+      value: themeColors.neutral,
+      onChange: (value: string) =>
+        setThemeColors({ ...themeColors, neutral: value }),
     },
     {
       label: t('neutralVariantLabel'),
-      value: neutralVariant,
-      onChange: setNeutralVariant,
+      value: themeColors.neutralVariant,
+      onChange: (value: string) =>
+        setThemeColors({ ...themeColors, neutralVariant: value }),
     },
     {
       label: t('errorLabel'),
-      value: error,
-      onChange: setError,
+      value: themeColors.error,
+      onChange: (value: string) =>
+        setThemeColors({ ...themeColors, error: value }),
     },
   ];
 
@@ -62,16 +73,20 @@ export default function ColorThemeSection() {
     ));
   }
 
-  const colors: ThemeColors = {
-    primary,
-    secondary,
-    tertiary,
-    neutral,
-    neutralVariant,
-    error,
-  };
+  useEffect(() => {
+    const theme = createTheme(themeColors, mode);
+    applyTheme(theme);
+  }, [themeColors, mode]);
 
-  const colorMode = mode;
+  useEffect(() => {
+    localStorage.setItem(
+      'theme',
+      JSON.stringify({
+        colors: themeColors,
+        mode,
+      }),
+    );
+  }, [themeColors, mode]);
 
   return (
     <div>
