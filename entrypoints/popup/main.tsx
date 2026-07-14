@@ -22,7 +22,6 @@ if (saved) {
   applyTheme(defaultTheme);
 }
 
-// import '@/utils/theme/theme.css';
 import './style.css';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
