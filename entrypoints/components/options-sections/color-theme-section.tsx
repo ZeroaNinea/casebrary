@@ -2,11 +2,14 @@ import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import ColorInput from '@/entrypoints/components/inputs/color-input';
+import RippleButton from '@/entrypoints/components/buttons/ripple-button';
 
 import type { ThemeColors, ThemeMode } from '@/types/theme.interface';
 
 import createTheme from '@/utils/theme';
 import applyTheme from '@/utils/theme/apply-theme';
+
+import presets from './presets/presets';
 
 export default function ColorThemeSection() {
   const { t } = useTranslation();
@@ -99,6 +102,40 @@ export default function ColorThemeSection() {
         {t('colorThemeTitle')}
       </h2>
       <div className="grid grid-cols-2 gap-4">{renderInputs()}</div>
+      <div className="flex justify-center flex-wrap gap-3 my-4">
+        {presets.map((preset) => (
+          <RippleButton
+            key={preset.name}
+            mode="dark"
+            isState={true}
+            onClick={() => setThemeColors(preset.colors)}
+            style={{
+              background: `radial-gradient(
+                circle,
+                ${preset.colors.primary} 0%,
+                ${preset.colors.secondary} 25%,
+                ${preset.colors.tertiary} 50%,
+                ${preset.colors.neutral} 75%,
+                ${preset.colors.neutralVariant} 90%,
+                ${preset.colors.error} 100%
+              )`,
+            }}
+            className={`
+              flex justify-center items-center
+              rounded-full w-18 h-18
+              cursor-pointer
+              hover:opacity-80
+              hover:scale-105
+              active:scale-95
+              transition-all duration-200
+            `}
+          >
+            <span className="text-white font-bold opacity-100">
+              {preset.name}
+            </span>
+          </RippleButton>
+        ))}
+      </div>
     </div>
   );
 }
