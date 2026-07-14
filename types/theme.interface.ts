@@ -11,6 +11,18 @@ export interface ThemeColors {
 
 export type ThemeMode = 'light' | 'dark';
 
+export interface ThemeSettings {
+  palettes: {
+    primary: string;
+    secondary: string;
+    tertiary: string;
+    neutral: string;
+    neutralVariant: string;
+    error: string;
+  };
+  mode: ThemeMode;
+}
+
 export default interface Theme {
   primary: Palette;
   secondary: Palette;
