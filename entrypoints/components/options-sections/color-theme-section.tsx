@@ -102,7 +102,7 @@ export default function ColorThemeSection() {
         {t('colorThemeTitle')}
       </h2>
       <div className="grid grid-cols-2 gap-4">{renderInputs()}</div>
-      <div className="flex justify-center flex-wrap gap-3 my-4">
+      <div className="flex justify-center flex-wrap gap-4 my-4">
         {presets.map((preset) => (
           <RippleButton
             key={preset.name}
