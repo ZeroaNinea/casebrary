@@ -167,24 +167,27 @@ export default function ColorThemeSection() {
           </RippleButton>
         ))}
       </div>
-      <RadioGroup
-        value={mode}
-        onChange={setMode}
-        options={[
-          {
-            value: 'light',
-            label: t('light'),
-          },
-          {
-            value: 'dark',
-            label: t('dark'),
-          },
-          {
-            value: 'system',
-            label: t('system'),
-          },
-        ]}
-      />
+      <div className="my-4">
+        <RadioGroup
+          value={mode}
+          rippleMode={resolveThemeMode(mode) === 'dark' ? 'light' : 'dark'}
+          onChange={setMode}
+          options={[
+            {
+              value: 'light',
+              label: t('light'),
+            },
+            {
+              value: 'dark',
+              label: t('dark'),
+            },
+            {
+              value: 'system',
+              label: t('system'),
+            },
+          ]}
+        />
+      </div>
     </div>
   );
 }
