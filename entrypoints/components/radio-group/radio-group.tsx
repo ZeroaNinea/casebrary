@@ -30,7 +30,7 @@ export default function RadioGroup({
             ${
               value === option.value
                 ? 'bg-primary text-primary-title border-border shadow-md'
-                : 'bg-surface-container/30 hover:bg-surface-container-hover/30 border-border/20'
+                : 'bg-surface-container/30 hover:bg-surface-container-hover/30 border-border/20 cursor-pointer'
             }
           `}
         >

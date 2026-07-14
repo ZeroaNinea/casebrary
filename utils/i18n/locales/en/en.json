@@ -42,6 +42,10 @@
   "neutralVariantLabel": "Neutral Variant",
   "errorLabel": "Error",
 
+  "light": "Light",
+  "dark": "Dark",
+  "system": "System",
+
   "backupTitle": "Backup",
   "downloadEntries": "Download Entries",
   "uploadEntriesIndexedDB": "Upload Entries to IndexedDB",
