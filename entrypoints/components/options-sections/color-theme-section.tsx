@@ -16,21 +16,26 @@ import presets from './presets/presets';
 export default function ColorThemeSection() {
   const { t } = useTranslation();
 
-  const saved = localStorage.getItem('theme');
-  const initialColors = saved
-    ? JSON.parse(saved).colors
-    : {
-        primary: '#0284c7',
-        secondary: '#06b6d4',
-        tertiary: '#38bdf8',
-        neutral: '#475569',
-        neutralVariant: '#64748b',
-        error: '#f43f5e',
-      };
-  const initialMode = saved ? JSON.parse(saved).mode : 'system';
+  const [themeColors, setThemeColors] = useState<ThemeColors>(() => {
+    const saved = localStorage.getItem('theme');
 
-  const [themeColors, setThemeColors] = useState<ThemeColors>(initialColors);
-  const [mode, setMode] = useState<ThemeMode>(initialMode);
+    return saved
+      ? JSON.parse(saved).colors
+      : {
+          primary: '#0284c7',
+          secondary: '#06b6d4',
+          tertiary: '#38bdf8',
+          neutral: '#475569',
+          neutralVariant: '#64748b',
+          error: '#f43f5e',
+        };
+  });
+
+  const [mode, setMode] = useState<ThemeMode>(() => {
+    const saved = localStorage.getItem('theme');
+
+    return saved ? JSON.parse(saved).mode : 'system';
+  });
 
   const inputs = [
     {
