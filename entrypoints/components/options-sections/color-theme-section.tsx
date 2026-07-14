@@ -8,6 +8,7 @@ import type { ThemeColors, ThemeMode } from '@/types/theme.interface';
 
 import createTheme from '@/utils/theme';
 import applyTheme from '@/utils/theme/apply-theme';
+import resolveThemeMode from '@/utils/theme/resolve-theme-mode.helper';
 
 import presets from './presets/presets';
 
@@ -25,7 +26,7 @@ export default function ColorThemeSection() {
         neutralVariant: '#64748b',
         error: '#f43f5e',
       };
-  const initialMode = saved ? JSON.parse(saved).mode : 'light';
+  const initialMode = saved ? JSON.parse(saved).mode : 'system';
 
   const [themeColors, setThemeColors] = useState<ThemeColors>(initialColors);
   const [mode, setMode] = useState<ThemeMode>(initialMode);
@@ -82,7 +83,7 @@ export default function ColorThemeSection() {
   }
 
   useEffect(() => {
-    const theme = createTheme(themeColors, mode);
+    const theme = createTheme(themeColors, resolveThemeMode(mode));
     applyTheme(theme);
   }, [themeColors, mode]);
 
@@ -95,6 +96,22 @@ export default function ColorThemeSection() {
       }),
     );
   }, [themeColors, mode]);
+
+  useEffect(() => {
+    if (mode !== 'system') return;
+
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function handleChange() {
+      applyTheme(createTheme(themeColors, media.matches ? 'dark' : 'light'));
+    }
+
+    media.addEventListener('change', handleChange);
+
+    return () => {
+      media.removeEventListener('change', handleChange);
+    };
+  }, [mode, themeColors]);
 
   return (
     <div>

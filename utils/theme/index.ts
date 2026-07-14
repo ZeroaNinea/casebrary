@@ -1,4 +1,5 @@
 import createPalette from './palette.util';
+import resolveThemeMode from './resolve-theme-mode.helper';
 
 import Theme, { ThemeColors, ThemeMode } from '@/types/theme.interface';
 
@@ -6,6 +7,8 @@ export default function createTheme(
   { primary, secondary, tertiary, neutral, neutralVariant, error }: ThemeColors,
   mode: ThemeMode,
 ): Theme {
+  const resolveMode = resolveThemeMode(mode);
+
   const palettes = {
     primary: createPalette(primary),
     secondary: createPalette(secondary),
@@ -15,7 +18,7 @@ export default function createTheme(
     error: createPalette(error),
   };
 
-  if (mode === 'light') {
+  if (resolveMode === 'light') {
     const theme: Theme = {
       ...palettes,
       primaryBase: primary,

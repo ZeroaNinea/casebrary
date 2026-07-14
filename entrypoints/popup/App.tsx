@@ -21,9 +21,40 @@ import CurrentPage from '@/types/current-page.alias';
 import Entry from '@/types/entry.interface';
 
 import i18n from '@/utils/i18n';
+import createTheme from '@/utils/theme';
+import applyTheme from '@/utils/theme/apply-theme';
 
 function App() {
   const { t } = useTranslation();
+
+  const saved = localStorage.getItem('theme');
+  const themeColors = saved
+    ? JSON.parse(saved).colors
+    : {
+        primary: '#0284c7',
+        secondary: '#06b6d4',
+        tertiary: '#38bdf8',
+        neutral: '#475569',
+        neutralVariant: '#64748b',
+        error: '#f43f5e',
+      };
+  const mode = saved ? JSON.parse(saved).mode : 'light';
+
+  useEffect(() => {
+    if (mode !== 'system') return;
+
+    const media = window.matchMedia('(prefers-color-scheme: dark)');
+
+    function handleChange() {
+      applyTheme(createTheme(themeColors, media.matches ? 'dark' : 'light'));
+    }
+
+    media.addEventListener('change', handleChange);
+
+    return () => {
+      media.removeEventListener('change', handleChange);
+    };
+  }, [mode, themeColors]);
 
   useEffect(() => {
     async function initializeLanguage() {
