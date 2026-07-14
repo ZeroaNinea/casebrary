@@ -32,7 +32,16 @@
   "updateProperty": "Update Property",
   "cancelUpdate": "Cancel Update",
   "titleRequired": "Title is required.",
+
   "optionsTitle": "Options",
+  "colorThemeTitle": "Color Theme Customization",
+  "primaryLabel": "Primary",
+  "secondaryLabel": "Secondary",
+  "tertiaryLabel": "Tertiary",
+  "neutralLabel": "Neutral",
+  "neutralVariantLabel": "Neutral Variant",
+  "errorLabel": "Error",
+
   "backupTitle": "Backup",
   "downloadEntries": "Download Entries",
   "uploadEntriesIndexedDB": "Upload Entries to IndexedDB",

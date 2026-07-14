@@ -32,8 +32,17 @@
   "updateProperty": "Обновить свойство",
   "cancelUpdate": "Отменить обновление",
   "titleRequired": "Требуется заголовок.",
+
   "optionsTitle": "Настройки",
   "backupTitle": "Резервное копирование",
+  "colorThemeTitle": "Настройка цветовой темы",
+  "primaryLabel": "Основной цвет",
+  "secondaryLabel": "Второстепенный цвет",
+  "tertiaryLabel": "Третестепенный цвет",
+  "neutralLabel": "Средний цвет",
+  "neutralVariantLabel": "Вариант среднего цвета",
+  "errorLabel": "Ошибка",
+
   "downloadEntries": "Скачать записи",
   "uploadEntriesIndexedDB": "Загрузить записи в IndexedDB",
   "backupDescription": "Скачайте свои записи в формате JSON. Вы можете использовать это, чтобы востановить свои записи позже. Загркзите JSON файлы обратно в IndexedDB, чтобы востановить свои записи."

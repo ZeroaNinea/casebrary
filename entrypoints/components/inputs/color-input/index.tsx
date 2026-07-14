@@ -1,10 +1,13 @@
 import { useState } from 'react';
+import chroma from 'chroma-js';
+
 import ColorInputProps from './types/color-input-props.interface';
 
 import RippleButton from '@/entrypoints/components/buttons/ripple-button';
 import { HexColorPicker } from 'react-colorful';
 
 export default function ColorInput({
+  isOptionsPage = false,
   label = 'Color',
   value,
   onChange,
@@ -34,6 +37,10 @@ export default function ColorInput({
     } else {
       setInternalValue(value);
     }
+  }
+
+  function getRippleMode() {
+    return chroma.contrast(value || '', '#fff') > 4.5 ? 'light' : 'dark';
   }
 
   return (
@@ -70,6 +77,7 @@ export default function ColorInput({
         />
         <RippleButton
           className="w-8 h-8 rounded-lg overflow-hidden cursor-pointer"
+          mode={getRippleMode()}
           onClick={() => setShowPicker((v) => !v)}
         >
           <div
@@ -84,7 +92,9 @@ export default function ColorInput({
           <div className="rounded-xl overflow-hidden shadow-xs border border-border/10">
             <HexColorPicker color={currentValue} onChange={update} />
           </div>
-          <div className="flex flex-wrap gap-2.5 items-center pl-3.5 h-24 w-30">
+          <div
+            className={`flex flex-wrap gap-2.5 items-center h-24 ${isOptionsPage ? 'pl-2 w-18' : 'pl-3.5 w-30'}`}
+          >
             {presets.map((color) => (
               <RippleButton
                 key={color}

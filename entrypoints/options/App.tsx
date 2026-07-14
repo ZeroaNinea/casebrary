@@ -5,6 +5,7 @@ import i18n from '@/utils/i18n';
 import { useAppDispatch, useAppSelector } from '@/utils/store';
 import { useTranslation } from 'react-i18next';
 
+import ColorThemeSection from '@/entrypoints/components/options-sections/color-theme-section';
 import BackupSection from '@/entrypoints/components/options-sections/backup-section';
 
 function App() {
@@ -58,7 +59,7 @@ function App() {
       {/* Introduction */}
       {/* Content Links */}
       {/* Language Switch */}
-      {/* Color Theme Customization */}
+      <ColorThemeSection />
       <BackupSection entries={entries} />
       {/* About */}
       {/* Privacy Policy */}
