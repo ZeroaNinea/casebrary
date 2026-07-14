@@ -106,19 +106,32 @@ export default function ColorThemeSection() {
         {presets.map((preset) => (
           <RippleButton
             key={preset.name}
-            mode="dark"
+            mode="light"
             isState={true}
             onClick={() => setThemeColors(preset.colors)}
             style={{
-              background: `radial-gradient(
-                circle,
-                ${preset.colors.primary} 0%,
-                ${preset.colors.secondary} 25%,
-                ${preset.colors.tertiary} 50%,
-                ${preset.colors.neutral} 75%,
-                ${preset.colors.neutralVariant} 90%,
-                ${preset.colors.error} 100%
-              )`,
+              background: `
+                radial-gradient(
+                  circle at top left,
+                  ${preset.colors.primary},
+                  transparent 45%
+                ),
+                radial-gradient(
+                  circle at top right,
+                  ${preset.colors.secondary},
+                  transparent 45%
+                ),
+                radial-gradient(
+                  circle at bottom left,
+                  ${preset.colors.tertiary},
+                  transparent 45%
+                ),
+                linear-gradient(
+                  135deg,
+                  ${preset.colors.neutral},
+                  ${preset.colors.neutralVariant}
+                )
+              `,
             }}
             className={`
               flex justify-center items-center
