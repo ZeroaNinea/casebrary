@@ -24,6 +24,8 @@ import i18n from '@/utils/i18n';
 import createTheme from '@/utils/theme';
 import applyTheme from '@/utils/theme/apply-theme';
 
+import resolveThemeMode from '@/utils/theme/resolve-theme-mode.helper';
+
 function App() {
   const { t } = useTranslation();
 
@@ -167,6 +169,7 @@ function App() {
         <div className="px-4.5 pt-4 pb-2">
           <FilledButton
             title="Entry"
+            mode={resolveThemeMode(mode)}
             isState={true}
             className="w-full"
             onClick={() => {

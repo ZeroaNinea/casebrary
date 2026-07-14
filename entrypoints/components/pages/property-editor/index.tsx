@@ -19,6 +19,8 @@ import { IconName } from '@/utils/icons';
 
 import { Property } from '@/types/entry.interface';
 
+import resolveThemeMode from '@/utils/theme/resolve-theme-mode.helper';
+
 export default function PropertyEditor({
   updatingProperty,
   onCancel,
@@ -31,6 +33,9 @@ export default function PropertyEditor({
   onSave: (property: Property) => void;
 }) {
   const { t } = useTranslation();
+
+  const saved = localStorage.getItem('theme');
+  const mode = resolveThemeMode(saved ? JSON.parse(saved).mode : 'system');
 
   const [propertyType, setPropertyType] = useState<PropertyType>('text');
   const [propertyName, setPropertyName] = useState('');
@@ -234,6 +239,7 @@ export default function PropertyEditor({
         )}
         <FilledButton
           title="Property"
+          mode={mode}
           disabled={propertyName === ''}
           isState={true}
           onClick={() => {

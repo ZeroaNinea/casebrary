@@ -20,6 +20,8 @@ import Entry from '@/types/entry.interface';
 import { useAppDispatch } from '@/utils/store';
 import { createEntry, updateEntry } from '@/features/entries/entries.thunks';
 
+import resolveThemeMode from '@/utils/theme/resolve-theme-mode.helper';
+
 export default function EntryEditorPage({
   show,
   parentId = null,
@@ -36,6 +38,9 @@ export default function EntryEditorPage({
   clearParentId: () => void;
 }) {
   const { t } = useTranslation();
+
+  const saved = localStorage.getItem('theme');
+  const mode = resolveThemeMode(saved ? JSON.parse(saved).mode : 'system');
 
   const [title, setTitle] = useState('');
   const [icon, setIcon] = useState<IconName>('folder');
@@ -138,7 +143,11 @@ export default function EntryEditorPage({
         transform: show ? 'translateX(0)' : 'translateX(105%)',
       }}
     >
-      <TransparentPillButton isState={true} onClick={handleClose}>
+      <TransparentPillButton
+        isState={true}
+        mode={mode === 'dark' ? 'light' : 'dark'}
+        onClick={handleClose}
+      >
         <ChevronLeft size={18} color="var(--color-primary-on-container)" />
         <span className="text-primary-on-container">{t('back')}</span>
       </TransparentPillButton>
@@ -184,6 +193,7 @@ export default function EntryEditorPage({
         </CancelButton>
         <FilledButton
           title="Save"
+          mode={mode}
           disabled={title === ''}
           isState={true}
           onClick={() => {

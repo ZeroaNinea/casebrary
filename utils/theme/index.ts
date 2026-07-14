@@ -70,7 +70,7 @@ export default function createTheme(
       surfaceAlt: palettes.neutral['100'],
       surfaceContainer: palettes.neutral['100'],
       surfaceContainerHover: palettes.neutral['200'],
-      onSurface: palettes.neutralVariant['700'],
+      onSurface: palettes.neutralVariant['100'],
       border: palettes.neutralVariant['400'],
       text: palettes.neutral['50'],
       textMuted: palettes.neutral['300'],
