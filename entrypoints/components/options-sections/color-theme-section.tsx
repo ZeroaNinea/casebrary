@@ -11,16 +11,21 @@ import applyTheme from '@/utils/theme/apply-theme';
 export default function ColorThemeSection() {
   const { t } = useTranslation();
 
-  const [themeColors, setThemeColors] = useState<ThemeColors>({
-    primary: '#0284c7',
-    secondary: '#06b6d4',
-    tertiary: '#38bdf8',
-    neutral: '#475569',
-    neutralVariant: '#64748b',
-    error: '#f43f5e',
-  });
+  const saved = localStorage.getItem('theme');
+  const initialColors = saved
+    ? JSON.parse(saved).colors
+    : {
+        primary: '#0284c7',
+        secondary: '#06b6d4',
+        tertiary: '#38bdf8',
+        neutral: '#475569',
+        neutralVariant: '#64748b',
+        error: '#f43f5e',
+      };
+  const initialMode = saved ? JSON.parse(saved).mode : 'light';
 
-  const [mode, setMode] = useState<ThemeMode>('light');
+  const [themeColors, setThemeColors] = useState<ThemeColors>(initialColors);
+  const [mode, setMode] = useState<ThemeMode>(initialMode);
 
   const inputs = [
     {
