@@ -55,7 +55,13 @@ function App() {
       <h1 className="text-3xl font-bold text-primary-title">
         {t('optionsTitle')}
       </h1>
+      {/* Introduction */}
+      {/* Content Links */}
+      {/* Language Switch */}
+      {/* Color Theme Customization */}
       <BackupSection entries={entries} />
+      {/* About */}
+      {/* Privacy Policy */}
     </div>
   );
 }
