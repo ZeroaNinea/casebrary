@@ -13,11 +13,22 @@
   background: var(--glow-color);
 
   opacity: 0.16;
-  filter: blur(40px);
+  filter: blur(10px);
 
   animation:
     language-pulse 2s ease-in-out infinite,
     language-drift 8s ease-in-out infinite;
+}
+
+.language-card:hover .language-glow {
+  background: var(--glow-hover);
+
+  opacity: 0.32;
+  scale: 1.45;
+
+  filter: blur(15px);
+
+  animation-duration: 1.2s, 5s;
 }
 
 .language-drift {

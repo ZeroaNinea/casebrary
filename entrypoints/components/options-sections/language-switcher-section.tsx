@@ -65,20 +65,17 @@ export default function LanguageSwitcherSection() {
       <div className="relative flex flex-row flex-wrap justify-center gap-4 items-center my-6">
         {glassCards.map((glassCard) => (
           <div
-            key={glassCard.id}
             className="
-                relative
-                h-38 w-48
-                rounded-3xl
-                overflow-hidden
-
-                border border-border/10
-
-                flex flex-col
-                justify-center
-                items-center
-                gap-2
-              "
+              language-card
+              relative
+              h-38 w-48
+              rounded-3xl
+              overflow-hidden
+              border border-border/10
+              transition-all duration-300
+              flex flex-col justify-center items-center gap-2
+              hover:scale-105 hover:bg-surface-container/10 hover:border-border/20
+            "
           >
             <div className="absolute inset-0 pointer-events-none">
               <div
@@ -97,11 +94,22 @@ export default function LanguageSwitcherSection() {
               <RippleButton
                 key={language.code}
                 className="
-                    relative z-10
-                    px-4 py-2
-                    rounded-xl
-                    text-sm font-semibold
-                  "
+                  relative z-10
+
+                  px-4 py-2
+
+                  rounded-full
+
+                  backdrop-blur-xl
+                  bg-white/10
+
+                  border border-white/15
+
+                  hover:bg-white/20
+                  active:scale-95
+
+                  transition-all duration-300
+                "
               >
                 {language.label}
               </RippleButton>
