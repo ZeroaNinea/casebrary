@@ -4,6 +4,8 @@ import i18n from '@/utils/i18n';
 
 import RippleButton from '@/entrypoints/components/buttons/ripple-button';
 
+import './styles/language-switcher-section.css';
+
 export default function LanguageSwitcherSection() {
   const { t } = useTranslation();
 
@@ -12,6 +14,7 @@ export default function LanguageSwitcherSection() {
       id: 1,
       shadow: '#4FC3F7', // Sky blue
       shadowHover: '#7DD3FC',
+      delay: `${-Math.random() * 40}s`,
       languages: [
         { code: 'en', label: 'English' },
         { code: 'ru', label: 'Русский' },
@@ -21,6 +24,7 @@ export default function LanguageSwitcherSection() {
       id: 2,
       shadow: '#8BC34A', // Green
       shadowHover: '#A5D66A',
+      delay: `${-Math.random() * 40}s`,
       languages: [
         { code: 'hy', label: 'Արևելահայերեն' },
         { code: 'hyw', label: 'Արեւմտահայերէն' },
@@ -31,6 +35,7 @@ export default function LanguageSwitcherSection() {
       id: 3,
       shadow: '#F59E0B', // Amber
       shadowHover: '#FBBF24',
+      delay: `${-Math.random() * 40}s`,
       languages: [
         { code: 'uk', label: 'Українська' },
         { code: 'be', label: 'Беларуская' },
@@ -40,12 +45,14 @@ export default function LanguageSwitcherSection() {
       id: 4,
       shadow: '#EC4899', // Pink
       shadowHover: '#F472B6',
+      delay: `${-Math.random() * 40}s`,
       languages: [{ code: 'es', label: 'Español' }],
     },
     {
       id: 5,
       shadow: '#94A3B8', // Neutral silver
       shadowHover: '#CBD5E1',
+      delay: `${-Math.random() * 40}s`,
       languages: [{ code: 'system', label: t('system') }],
     },
   ];
@@ -55,18 +62,64 @@ export default function LanguageSwitcherSection() {
       <h2 className="text-2xl text-primary-title font-bold">
         {t('languageSwitcherTitle')}
       </h2>
-      <div className="flex flex-row flex-wrap justify-center items-center">
+      <div className="relative flex flex-row flex-wrap justify-center gap-4 items-center">
         {glassCards.map((glassCard) => (
+          // <div
+          //   style={{
+          //     animationDelay: glassCard.delay,
+          //   }}
+          //   className="language-drift"
+          // >
           <div
             key={glassCard.id}
-            className="flex flex-row flex-wrap justify-center items-center bg-bg w-30 h-40"
+            style={{
+              animationDelay: glassCard.delay,
+            }}
+            className="
+                relative
+                w-36 h-48
+                overflow-hidden
+
+                bg-surface-container/40
+
+                flex flex-col
+                justify-center
+                items-center
+                gap-2
+              "
           >
+            <div
+              className="absolute inset-0 pointer-events-none"
+              style={{
+                animationDelay: `${Math.random() * -40}s`,
+              }}
+            >
+              <div
+                className="language-glow"
+                style={
+                  {
+                    '--glow-color': glassCard.shadow,
+                    '--glow-hover': glassCard.shadowHover,
+                  } as React.CSSProperties
+                }
+              />
+            </div>
+
             {glassCard.languages.map((language) => (
-              <RippleButton key={language.code} onClick={() => {}}>
+              <RippleButton
+                key={language.code}
+                className="
+                    relative z-10
+                    px-4 py-2
+                    rounded-xl
+                    text-sm font-semibold
+                  "
+              >
                 {language.label}
               </RippleButton>
             ))}
           </div>
+          // </div>
         ))}
       </div>
     </div>
