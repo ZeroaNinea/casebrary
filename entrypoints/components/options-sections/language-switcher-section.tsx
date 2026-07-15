@@ -55,9 +55,12 @@ export default function LanguageSwitcherSection() {
       <h2 className="text-2xl text-primary-title font-bold">
         {t('languageSwitcherTitle')}
       </h2>
-      <div>
+      <div className="flex flex-row flex-wrap justify-center items-center">
         {glassCards.map((glassCard) => (
-          <div key={glassCard.id}>
+          <div
+            key={glassCard.id}
+            className="flex flex-row flex-wrap justify-center items-center bg-bg w-30 h-40"
+          >
             {glassCard.languages.map((language) => (
               <RippleButton key={language.code} onClick={() => {}}>
                 {language.label}
