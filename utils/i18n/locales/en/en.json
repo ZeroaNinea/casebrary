@@ -46,6 +46,8 @@
   "dark": "Dark",
   "system": "System",
 
+  "languageSwitcherTitle": "Language Switcher",
+
   "backupTitle": "Backup",
   "downloadEntries": "Download Entries",
   "uploadEntriesIndexedDB": "Upload Entries to IndexedDB",

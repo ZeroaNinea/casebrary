@@ -1,6 +1,10 @@
 import { useTranslation } from 'react-i18next';
 
-export default function LanguageSwitcher() {
+import i18n from '@/utils/i18n';
+
+import RippleButton from '@/entrypoints/components/buttons/ripple-button';
+
+export default function LanguageSwitcherSection() {
   const { t } = useTranslation();
 
   const glassCards = [
@@ -45,4 +49,23 @@ export default function LanguageSwitcher() {
       languages: [{ code: 'system', label: t('system') }],
     },
   ];
+
+  return (
+    <div>
+      <h2 className="text-2xl text-primary-title font-bold">
+        {t('languageSwitcherTitle')}
+      </h2>
+      <div>
+        {glassCards.map((glassCard) => (
+          <div key={glassCard.id}>
+            {glassCard.languages.map((language) => (
+              <RippleButton key={language.code} onClick={() => {}}>
+                {language.label}
+              </RippleButton>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
 }

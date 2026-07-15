@@ -7,6 +7,8 @@ import { useTranslation } from 'react-i18next';
 
 import ColorThemeSection from '@/entrypoints/components/options-sections/color-theme-section';
 import BackupSection from '@/entrypoints/components/options-sections/backup-section';
+import LanguageSwitcherSection from '@/entrypoints/components/options-sections/language-switcher-section';
+
 import createTheme from '@/utils/theme';
 import applyTheme from '@/utils/theme/apply-theme';
 
@@ -89,7 +91,7 @@ function App() {
       </h1>
       {/* Introduction */}
       {/* Content Links */}
-      {/* Language Switch */}
+      <LanguageSwitcherSection />
       <ColorThemeSection />
       <BackupSection entries={entries} />
       {/* About */}
