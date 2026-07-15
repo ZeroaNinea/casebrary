@@ -62,25 +62,17 @@ export default function LanguageSwitcherSection() {
       <h2 className="text-2xl text-primary-title font-bold">
         {t('languageSwitcherTitle')}
       </h2>
-      <div className="relative flex flex-row flex-wrap justify-center gap-4 items-center">
+      <div className="relative flex flex-row flex-wrap justify-center gap-4 items-center my-6">
         {glassCards.map((glassCard) => (
-          // <div
-          //   style={{
-          //     animationDelay: glassCard.delay,
-          //   }}
-          //   className="language-drift"
-          // >
           <div
             key={glassCard.id}
-            style={{
-              animationDelay: glassCard.delay,
-            }}
             className="
                 relative
-                w-36 h-48
+                h-38 w-48
+                rounded-3xl
                 overflow-hidden
 
-                bg-surface-container/40
+                border border-border/10
 
                 flex flex-col
                 justify-center
@@ -88,16 +80,12 @@ export default function LanguageSwitcherSection() {
                 gap-2
               "
           >
-            <div
-              className="absolute inset-0 pointer-events-none"
-              style={{
-                animationDelay: `${Math.random() * -40}s`,
-              }}
-            >
+            <div className="absolute inset-0 pointer-events-none">
               <div
                 className="language-glow"
                 style={
                   {
+                    animationDelay: glassCard.delay,
                     '--glow-color': glassCard.shadow,
                     '--glow-hover': glassCard.shadowHover,
                   } as React.CSSProperties
@@ -119,7 +107,6 @@ export default function LanguageSwitcherSection() {
               </RippleButton>
             ))}
           </div>
-          // </div>
         ))}
       </div>
     </div>

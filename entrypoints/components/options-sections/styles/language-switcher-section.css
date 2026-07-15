@@ -15,7 +15,9 @@
   opacity: 0.16;
   filter: blur(40px);
 
-  animation: language-pulse 2s ease-in-out infinite;
+  animation:
+    language-pulse 2s ease-in-out infinite,
+    language-drift 8s ease-in-out infinite;
 }
 
 .language-drift {
