@@ -18,7 +18,7 @@
   "property-3": "date",
   "property-4": "URL",
   "property-5": "image",
-  "propertyNameLabel": "Property Name*",
+  "propertyNameLabel": "Property Name *",
   "enterPropertyName": "Enter property name...",
   "propertyNameRequired": "Property name is required.",
   "propertyDescriptionLabelDefault": "Name",
