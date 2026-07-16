@@ -67,6 +67,28 @@ export default function LanguageSwitcherSection() {
     '--color-bg',
   );
 
+  function changeLanguage(code: string) {
+    if (code === 'system') {
+      const browserLanguage = navigator.language.split('-')[0];
+
+      const supported = ['en', 'ru', 'hy', 'hyw', 'epo', 'uk', 'be', 'es'];
+
+      const resolved = supported.includes(browserLanguage)
+        ? browserLanguage
+        : 'en';
+
+      document.documentElement.lang = resolved;
+      i18n.changeLanguage(resolved);
+
+      localStorage.setItem('language', 'system');
+    } else {
+      document.documentElement.lang = code;
+      i18n.changeLanguage(code);
+
+      localStorage.setItem('language', code);
+    }
+  }
+
   return (
     <div>
       <h2 className="text-2xl text-primary-title font-bold">
@@ -104,7 +126,7 @@ export default function LanguageSwitcherSection() {
               <RippleButton
                 key={language.code}
                 mode={getRippleMode(colorBg)}
-                onClick={() => i18n.changeLanguage(language.code)}
+                onClick={() => changeLanguage(language.code)}
                 className="
                   relative z-10
                   px-4 py-2
