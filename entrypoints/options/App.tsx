@@ -19,6 +19,7 @@ import RainbowButton from '@/entrypoints/components/buttons/rainbow-button';
 // import '@/entrypoints/components/buttons/rainbow-button/rainbow-content.css';
 
 import resolveThemeMode from '@/utils/theme/resolve-theme-mode.helper';
+import { ThemeMode } from '@/types/theme.interface';
 
 function App() {
   const { t } = useTranslation();
@@ -36,12 +37,15 @@ function App() {
       };
   const mode = saved ? JSON.parse(saved).mode : 'system';
 
+  const [reactiveMode, setReactiveMode] = useState<ThemeMode | null>(null);
+
   useEffect(() => {
     if (mode !== 'system') return;
 
     const media = window.matchMedia('(prefers-color-scheme: dark)');
 
     function handleChange() {
+      setReactiveMode(media.matches ? 'dark' : 'light');
       applyTheme(createTheme(themeColors, media.matches ? 'dark' : 'light'));
     }
 
@@ -84,14 +88,6 @@ function App() {
   }, [dispatch]);
 
   const entries = useAppSelector((state) => state.entries.entries);
-
-  function getRippleMode(value: string) {
-    return chroma.contrast(value || '', '#fff') > 4.5 ? 'light' : 'dark';
-  }
-
-  const colorBg = getComputedStyle(document.documentElement).getPropertyValue(
-    '--color-bg',
-  );
 
   return (
     <div
@@ -155,11 +151,11 @@ function App() {
         <RainbowButton
           className="flex items-center gap-2"
           onClick={() => {}}
-          mode={getRippleMode(
-            getComputedStyle(document.documentElement).getPropertyValue(
-              '--color-bg',
-            ),
-          )}
+          mode={
+            resolveThemeMode(reactiveMode || 'light') === 'light'
+              ? 'dark'
+              : 'light'
+          }
         >
           <Coins size={20} color="#e8a81e" />
           {t('donate')}
