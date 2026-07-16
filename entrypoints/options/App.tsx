@@ -12,6 +12,8 @@ import LanguageSwitcherSection from '@/entrypoints/components/options-sections/l
 import createTheme from '@/utils/theme';
 import applyTheme from '@/utils/theme/apply-theme';
 
+import RippleButton from '@/entrypoints/components/buttons/ripple-button';
+
 function App() {
   const { t } = useTranslation();
 
@@ -109,6 +111,29 @@ function App() {
           v1.0.0
         </span>
       </p>
+      <RippleButton
+        className="
+          flex items-center gap-2
+          px-5 py-2.5
+          text-white/70
+          bg-surface-container-filled hover:bg-surface-container-filled-hover
+          rounded-xl cursor-pointer font-semibold text-sm
+          border border-border/80
+          shadow-sm hover:shadow-md hover:shadow-black/5
+          hover:scale-[1.02] active:scale-[0.97] hover:-translate-y-0.5 active:translate-y-0
+          transition-all duration-200 ease-out
+        "
+        onClick={() =>
+          setTimeout(
+            () =>
+              window.open('https://github.com/ZeroaNinea/casebrary', '_blank'),
+            200,
+          )
+        }
+      >
+        <img src="./github.svg" alt="GitHub" width={20} />
+        <span className="font-bold">GitHub</span>
+      </RippleButton>
     </div>
   );
 }

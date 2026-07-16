@@ -75,12 +75,13 @@
     var(--surface-container) 60%,
     transparent
   );
-  /* --color-surface-container-hover: var(--surface-container-hover); */
   --color-surface-container-hover: color-mix(
     in lch,
     var(--surface-container-hover) 60%,
     transparent
   );
+  --color-surface-container-filled: var(--surface-container-filled);
+  --color-surface-container-filled-hover: var(--surface-container-filled-hover);
   --color-on-surface: var(--on-surface);
   --color-border: var(--border);
   --color-text: var(--text);

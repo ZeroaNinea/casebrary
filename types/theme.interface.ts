@@ -43,6 +43,8 @@ export default interface Theme {
   surfaceAlt: string;
   surfaceContainer: string;
   surfaceContainerHover: string;
+  surfaceContainerFilled: string;
+  surfaceContainerFilledHover: string;
   onSurface: string;
   border: string;
   text: string;
