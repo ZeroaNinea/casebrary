@@ -107,6 +107,25 @@ function App() {
   }
 
   const entries = useAppSelector((state) => state.entries.entries);
+  const [query, setQuery] = useState('');
+
+  const filteredEntries = useMemo(() => {
+    const q = query.trim().toLowerCase();
+
+    if (!q) return entries;
+
+    return entries.filter((entry) => {
+      if (entry.title.toLowerCase().includes(q)) return true;
+
+      return entry.properties.some((property) => {
+        if (property.name.toLowerCase().includes(q)) return true;
+
+        if (property.value == null) return false;
+
+        return String(property.value).toLowerCase().includes(q);
+      });
+    });
+  }, [entries, query]);
 
   return (
     <div className="relative w-full h-full flex flex-col overflow-hidden bg-linear-to-br from-(--color-bg) via-(--color-primary-background) to-(--color-secondary-background) shadow-2xl">
@@ -189,11 +208,13 @@ function App() {
             label={t('searchLabel')}
             placeholder={t('searchRecords')}
             icon="search"
+            value={query}
+            onChange={setQuery}
           />
         </div>
-        {/* {JSON.stringify(entries)} */}
+        {/* {JSON.stringify(filteredEntries)}) */}
         <EntryList
-          entries={entries}
+          entries={filteredEntries}
           deleteEntry={handleDeleteEntry}
           updateEntry={handleUpdateEntry}
           onAddChild={(parentId: string) => {
