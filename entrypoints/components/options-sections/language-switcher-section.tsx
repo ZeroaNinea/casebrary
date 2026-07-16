@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import chroma from 'chroma-js';
 
 import RippleButton from '@/entrypoints/components/buttons/ripple-button';
 
@@ -65,14 +66,6 @@ export default function LanguageSwitcherSection({
     },
   ];
 
-  // function getRippleMode(value: string) {
-  //   return chroma.contrast(value || '', '#fff') > 4.5 ? 'light' : 'dark';
-  // }
-
-  const colorBg = getComputedStyle(document.documentElement).getPropertyValue(
-    '--color-bg',
-  );
-
   function changeLanguage(code: string) {
     if (code === 'system') {
       const browserLanguage = navigator.language.split('-')[0];
@@ -134,7 +127,13 @@ export default function LanguageSwitcherSection({
                   resolveThemeMode(rippleMode) === 'light' ? 'dark' : 'light'
                 }
                 onClick={() => changeLanguage(language.code)}
-                className="
+                style={{
+                  color:
+                    rippleMode === 'light'
+                      ? chroma(glassCard.shadowHover).darken(2).hex()
+                      : chroma(glassCard.shadow).darken(1).hex(),
+                }}
+                className={`
                   relative z-10
                   px-4 py-2
                   border border-border/10
@@ -142,7 +141,7 @@ export default function LanguageSwitcherSection({
                   rounded-full
                   hover:scale-105 hover:bg-surface-container/10 hover:border-border/20 active:scale-95
                   cursor-pointer
-                "
+                `}
               >
                 {language.label}
               </RippleButton>
