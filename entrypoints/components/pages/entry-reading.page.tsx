@@ -1,11 +1,14 @@
 import { ChevronLeft } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+import chroma from 'chroma-js';
 
 import TransparentPillButton from '@/entrypoints/components/buttons/transparent-pill-button';
 import Entry, { Property, PropertyType } from '@/types/entry.interface';
 
 import resolveThemeMode from '@/utils/theme/resolve-theme-mode.helper';
 import { propertyIcons } from '@/utils/property';
+
+import RippleButton from '@/entrypoints/components/buttons/ripple-button';
 
 export default function EntryReadingPage({
   readingEntry,
@@ -38,12 +41,12 @@ export default function EntryReadingPage({
           <div className="mt-2">
             <span
               className="
-                  rounded-md
-                  bg-surface-container
-                  px-2 py-1
-                  font-mono
-                  text-sm
-                "
+                rounded-md
+                bg-surface-container
+                px-2 py-1
+                font-mono
+                text-sm
+              "
             >
               {property.value}
             </span>
@@ -79,12 +82,12 @@ export default function EntryReadingPage({
             target="_blank"
             rel="noopener noreferrer"
             className="
-                mt-2
-                block
-                truncate
-                text-accent
-                underline
-              "
+              mt-2
+              block
+              truncate
+              text-accent
+              underline
+            "
           >
             {property.value}
           </a>
@@ -115,6 +118,33 @@ export default function EntryReadingPage({
     }
   }
 
+  function renderCurrentIcon() {
+    if (readingEntry?.icon?.type === 'lucide') {
+      const Icon = icons[readingEntry.icon.value as IconName];
+      return <Icon size={100} color="var(--color-text-muted)" />;
+    }
+  }
+
+  function renderCurrentImage() {
+    if (readingEntry?.icon?.type === 'url') {
+      return (
+        <img
+          src={readingEntry.icon.value}
+          width={100}
+          alt={readingEntry.title}
+        />
+      );
+    }
+  }
+
+  function getRippleMode(color: string | undefined) {
+    if (!color) {
+      return 'light';
+    }
+
+    return chroma.contrast(color || '', '#fff') > 4.5 ? 'light' : 'dark';
+  }
+
   return (
     <div
       className={`
@@ -137,19 +167,40 @@ export default function EntryReadingPage({
       </TransparentPillButton>
 
       <h1 className="flex aluign-center gap-2 text-2xl text-primary-title font-bold m-4">
-        <div
+        <RippleButton
           style={{
             backgroundColor: readingEntry?.color,
           }}
+          mode={getRippleMode(readingEntry?.color)}
           className="w-9 h-9 rounded-lg border border-border/80"
-        ></div>
+        ></RippleButton>
         {readingEntry?.title}
       </h1>
-      <div className="flex flex-col gap-3.5 p-4.5">
-        {readingEntry?.properties.map((property) => (
-          <div
-            key={property.id}
-            className="
+
+      {((readingEntry?.icon?.type === 'lucide' && readingEntry?.icon.value) ||
+        (readingEntry?.icon?.type === 'url' && readingEntry?.icon.value)) && (
+        <div
+          className="
+          flex items-center justify-center py-6 my-3
+          bg-surface-container/30 hover:bg-surface-container/50
+          rounded-xl font-semibold text-sm
+          border border-border/30
+          shadow-sm hover:shadow-md hover:shadow-black/5
+          hover:scale-[1.02] hover:-translate-y-0.5
+          transition-all duration-200 ease-out
+        "
+        >
+          {renderCurrentIcon()}
+          {renderCurrentImage()}
+        </div>
+      )}
+
+      {(readingEntry?.properties?.length || 0) > 0 ? (
+        <div className="flex flex-col gap-3.5 p-4.5">
+          {readingEntry?.properties.map((property) => (
+            <div
+              key={property.id}
+              className="
             flex justify-between items-center
             bg-surface-container/20 p-4 rounded-2xl
             border border-border/10
@@ -157,29 +208,36 @@ export default function EntryReadingPage({
             transition-all duration-200 ease-out
             z-50
           "
-          >
-            <div className="flex-1 min-w-0 pr-4">
-              <div className="flex flex-wrap items-center gap-2 mb-2">
-                <div className="flex items-center gap-1.5 text-primary-title">
-                  {renderIcon(property.type)}
-                  <h1 className="font-semibold text-text text-xs tracking-wide truncate max-w-30">
-                    {property.name}
-                  </h1>
-                </div>
-                <div
-                  className="
+            >
+              <div className="flex-1 min-w-0 pr-4">
+                <div className="flex flex-wrap items-center gap-2 mb-2">
+                  <div className="flex items-center gap-1.5 text-primary-title">
+                    {renderIcon(property.type)}
+                    <h1 className="font-semibold text-text text-xs tracking-wide truncate max-w-30">
+                      {property.name}
+                    </h1>
+                  </div>
+                  <div
+                    className="
                   inline-block px-2 py-0.5 text-[9px] font-bold tracking-wider uppercase rounded-full
                   bg-primary-container text-primary-on-container border border-border/10
                 "
-                >
-                  {property.type}
+                  >
+                    {property.type}
+                  </div>
                 </div>
+                {renderValue(property)}
               </div>
-              {renderValue(property)}
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div className="flex justify-center">
+          <h1 className="text-text-muted text-sm font-semibold tracking-wide">
+            {t('noProperties')}
+          </h1>
+        </div>
+      )}
     </div>
   );
 }

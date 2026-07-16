@@ -66,5 +66,7 @@
 
   "version": "Version",
 
-  "donate": "Donar"
+  "donate": "Donar",
+
+  "noProperties": "Esta entrada aún no tiene propiedades."
 }
