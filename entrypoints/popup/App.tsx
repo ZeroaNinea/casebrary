@@ -61,8 +61,6 @@ function App() {
 
   useEffect(() => {
     async function initializeLanguage() {
-      // const supported = ['en', 'ru'];
-
       const saved = localStorage.getItem('language');
 
       if (saved && supportedLocales.includes(saved)) {
