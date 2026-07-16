@@ -121,9 +121,10 @@ export default function ColorThemeSection() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-primary-title">
+      <h3 className="text-xl font-bold text-primary-title my-1">
         {t('colorThemeTitle')}
-      </h2>
+      </h3>
+      <p className="text-text/80">{t('colorThemeDescription')}</p>
       <div className="grid grid-cols-2 gap-4">{renderInputs()}</div>
       <div className="flex justify-center flex-wrap gap-4 my-4">
         {presets.map((preset) => (

@@ -91,9 +91,10 @@ export default function LanguageSwitcherSection() {
 
   return (
     <div>
-      <h2 className="text-2xl text-primary-title font-bold">
+      <h3 className="text-xl text-primary-title font-bold my-1">
         {t('languageSwitcherTitle')}
-      </h2>
+      </h3>
+      <p className="text-text/80">{t('languageSwitcherDescription')}</p>
       <div className="relative flex flex-row flex-wrap justify-center gap-4 items-center my-6">
         {glassCards.map((glassCard) => (
           <div

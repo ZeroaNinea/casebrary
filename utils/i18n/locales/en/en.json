@@ -33,8 +33,18 @@
   "cancelUpdate": "Cancel Update",
   "titleRequired": "Title is required.",
 
+  "privacyPolicyTitle": "Privacy Policy",
+  "privacyPolicyDescription": "Casebrary stores all data locally in your browser using IndexedDB. The extension does not collect, transmit, or sell your personal data. No analytics or tracking services are used. If cloud synchronization is added in a future version, this policy will be updated accordingly.",
+
   "optionsTitle": "Options",
+  "welcomeToCasebrary": "Welcome to Casebrary!",
+  "welcomeMessage": "Casebrary is a browser extension for organizing notes in a hierarchical structure. It is designed to help moderators and power users quickly manage large collections of information. Current version: local storage only. Future versions will add optional encrypted cloud synchronization and collaboration.",
+  "optionsDescription": "Customize Casebrary's behavior.",
+  "generalTitle": "General",
+  "generalDescription": "Customize how Casebrary looks and which language it uses.",
+
   "colorThemeTitle": "Color Theme Customization",
+  "colorThemeDescription": "Customize the colors used in Casebrary.",
   "primaryLabel": "Primary",
   "secondaryLabel": "Secondary",
   "tertiaryLabel": "Tertiary",
@@ -47,9 +57,12 @@
   "system": "System",
 
   "languageSwitcherTitle": "Language Switcher",
+  "languageSwitcherDescription": "Choose your preferred language.",
 
   "backupTitle": "Backup",
   "downloadEntries": "Download Entries",
   "uploadEntriesIndexedDB": "Upload Entries to IndexedDB",
-  "backupDescription": "Download your entries in JSON format. You can use this to restore your entries later. Upload JSON files back to IndexedDB to restore your entries."
+  "backupDescription": "Download your entries in JSON format. You can use this to restore your entries later. Upload JSON files back to IndexedDB to restore your entries.",
+
+  "version": "Version"
 }

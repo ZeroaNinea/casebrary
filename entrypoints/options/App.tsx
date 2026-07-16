@@ -89,36 +89,28 @@ function App() {
       <h1 className="text-3xl font-bold text-primary-title">
         {t('optionsTitle')}
       </h1>
-      {/* Introduction */}
-      {/* Content Links */}
+      <p className="text-text/80 my-1">{t('welcomeToCasebrary')}</p>
+      <p className="text-text/80 my-1">{t('welcomeMessage')}</p>
+      <p className="text-text/80 my-1">{t('optionsDescription')}</p>
+      <h2 className="text-2xl font-bold text-primary-title my-1">
+        {t('generalTitle')}
+      </h2>
+      <p className="text-text/80">{t('generalDescription')}</p>
       <LanguageSwitcherSection />
       <ColorThemeSection />
       <BackupSection entries={entries} />
-      {/* About */}
-      {/* Privacy Policy */}
+      <h2 className="text-2xl font-bold text-primary-title my-1">
+        {t('privacyPolicyTitle')}
+      </h2>
+      <p className="text-text/80">{t('privacyPolicyDescription')}</p>
+      <p className="text-text/80 my-2">
+        <b className="font-bold">{t('version')}:</b>{' '}
+        <span className="text-sm bg-primary-container text-text px-2 py-1 rounded-full">
+          v1.0.0
+        </span>
+      </p>
     </div>
   );
 }
 
 export default App;
-
-/*
-General
-──────────────────────────
-Language
-
-Appearance
-──────────────────────────
-Theme colors
-
-Backup
-──────────────────────────
-Export
-Import
-
-About
-──────────────────────────
-Version
-Privacy Policy
-GitHub
-*/
