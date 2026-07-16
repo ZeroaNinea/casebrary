@@ -136,7 +136,13 @@ export default function EntryReadingPage({
         <span className="text-primary-on-container">{t('back')}</span>
       </TransparentPillButton>
 
-      <h1 className="text-2xl text-primary-title font-bold">
+      <h1 className="flex aluign-center gap-2 text-2xl text-primary-title font-bold m-4">
+        <div
+          style={{
+            backgroundColor: readingEntry?.color,
+          }}
+          className="w-9 h-9 rounded-lg border border-border/80"
+        ></div>
         {readingEntry?.title}
       </h1>
       <div className="flex flex-col gap-3.5 p-4.5">
