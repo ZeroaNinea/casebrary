@@ -6,6 +6,8 @@ import RippleButton from '@/entrypoints/components/buttons/ripple-button';
 
 import './styles/language-switcher-section.css';
 
+import chroma from 'chroma-js';
+
 export default function LanguageSwitcherSection() {
   const { t } = useTranslation();
 
@@ -57,6 +59,14 @@ export default function LanguageSwitcherSection() {
     },
   ];
 
+  function getRippleMode(value: string) {
+    return chroma.contrast(value || '', '#fff') > 4.5 ? 'light' : 'dark';
+  }
+
+  const colorBg = getComputedStyle(document.documentElement).getPropertyValue(
+    '--color-bg',
+  );
+
   return (
     <div>
       <h2 className="text-2xl text-primary-title font-bold">
@@ -68,7 +78,7 @@ export default function LanguageSwitcherSection() {
             className="
               language-card
               relative
-              h-38 w-48
+              h-40 w-48
               rounded-3xl
               overflow-hidden
               border border-border/10
@@ -93,22 +103,16 @@ export default function LanguageSwitcherSection() {
             {glassCard.languages.map((language) => (
               <RippleButton
                 key={language.code}
+                mode={getRippleMode(colorBg)}
+                onClick={() => i18n.changeLanguage(language.code)}
                 className="
                   relative z-10
-
                   px-4 py-2
-
-                  rounded-full
-
-                  backdrop-blur-xl
-                  bg-white/10
-
-                  border border-white/15
-
-                  hover:bg-white/20
-                  active:scale-95
-
+                  border border-border/10
                   transition-all duration-300
+                  rounded-full
+                  hover:scale-105 hover:bg-surface-container/10 hover:border-border/20 active:scale-95
+                  cursor-pointer
                 "
               >
                 {language.label}
