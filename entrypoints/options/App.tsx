@@ -85,6 +85,14 @@ function App() {
 
   const entries = useAppSelector((state) => state.entries.entries);
 
+  function getRippleMode(value: string) {
+    return chroma.contrast(value || '', '#fff') > 4.5 ? 'light' : 'dark';
+  }
+
+  const colorBg = getComputedStyle(document.documentElement).getPropertyValue(
+    '--color-bg',
+  );
+
   return (
     <div
       className={`
@@ -147,7 +155,11 @@ function App() {
         <RainbowButton
           className="flex items-center gap-2"
           onClick={() => {}}
-          mode={resolveThemeMode(mode) === 'light' ? 'dark' : 'light'}
+          mode={getRippleMode(
+            getComputedStyle(document.documentElement).getPropertyValue(
+              '--color-bg',
+            ),
+          )}
         >
           <Coins size={20} color="#e8a81e" />
           {t('donate')}
