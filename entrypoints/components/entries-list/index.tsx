@@ -18,6 +18,7 @@ export default function EntriesList({
   search,
   deleteEntry,
   updateEntry,
+  readEntry,
   onAddChild,
 }: {
   entries: Entry[];
@@ -25,6 +26,7 @@ export default function EntriesList({
   search: string;
   deleteEntry: (id: string) => void;
   updateEntry: (updates: Entry) => void;
+  readEntry: (entry: Entry) => void;
   onAddChild: (id: string) => void;
 }) {
   const [isDropdownOpenId, setIsDropdownOpenId] = useState<string | null>(null);
@@ -128,6 +130,7 @@ export default function EntriesList({
               setIsDropdownOpenId={setIsDropdownOpenId}
               deleteEntry={deleteEntry}
               updateEntry={updateEntry}
+              readEntry={readEntry}
               onAddChild={onAddChild}
               renderChildren={renderChildren}
               depth={depth}
@@ -158,6 +161,7 @@ export default function EntriesList({
             deleteEntry={deleteEntry}
             updateEntry={updateEntry}
             onAddChild={onAddChild}
+            readEntry={readEntry}
             renderChildren={renderChildren}
             depth={depth}
             draggedId={draggedId}

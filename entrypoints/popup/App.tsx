@@ -10,6 +10,7 @@ import IconButton from '@/entrypoints/components/buttons/icon-button';
 import FilledButton from '@/entrypoints/components/buttons/filled-button';
 import SearchField from '@/entrypoints/components/inputs/input-field';
 import EntryEditorPage from '@/entrypoints/components/pages/entry-editor.page';
+import EntryReadingPage from '@/entrypoints/components/pages/entry-reading.page';
 import LanguageDropdown from '@/entrypoints/components/language-dropdown';
 
 import EntryList from '@/entrypoints/components/entries-list';
@@ -87,6 +88,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState<CurrentPage>(null);
   const [parentId, setParentId] = useState<string | null>(null);
   const [updatingEntry, setUpdatingEntry] = useState<Entry | null>(null);
+  const [readingEntry, setReadingEntry] = useState<Entry | null>(null);
   const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] =
     useState<boolean>(false);
 
@@ -218,6 +220,10 @@ function App() {
           matchesSearch={filteredEntries}
           deleteEntry={handleDeleteEntry}
           updateEntry={handleUpdateEntry}
+          readEntry={(entry: Entry) => {
+            setReadingEntry(entry);
+            setCurrentPage('entry-reader');
+          }}
           search={query}
           onAddChild={(parentId: string) => {
             setParentId(parentId);
@@ -235,6 +241,14 @@ function App() {
           setUpdatingEntry(null);
         }}
         clearParentId={() => setParentId(null)}
+      />
+      <EntryReadingPage
+        show={currentPage === 'entry-reader'}
+        readingEntry={readingEntry}
+        handleClose={() => {
+          setCurrentPage(null);
+          setReadingEntry(null);
+        }}
       />
     </div>
   );

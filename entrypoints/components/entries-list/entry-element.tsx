@@ -20,6 +20,7 @@ export default function EntryElement({
   deleteEntry,
   updateEntry,
   onAddChild,
+  readEntry,
   renderChildren,
   depth = 0,
   draggedId,
@@ -34,6 +35,7 @@ export default function EntryElement({
   deleteEntry: (id: string) => void;
   updateEntry: (entry: Entry) => void;
   onAddChild: (id: string) => void;
+  readEntry: (entry: Entry) => void;
   renderChildren: (
     parentId: string | null,
     depth: number,
@@ -154,7 +156,10 @@ export default function EntryElement({
             {/* {renderIcon(entry)} */}
             <EntryIcon entry={entry} />
           </div>
-          <h1 className="font-semibold text-text text-sm tracking-wide">
+          <h1
+            onClick={() => readEntry(entry)}
+            className="font-semibold text-text text-sm tracking-wide"
+          >
             {entry.title}
           </h1>
         </div>
