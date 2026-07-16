@@ -214,9 +214,11 @@ function App() {
         </div>
         {/* {JSON.stringify(filteredEntries)}) */}
         <EntryList
-          entries={filteredEntries}
+          entries={entries}
+          matchesSearch={filteredEntries}
           deleteEntry={handleDeleteEntry}
           updateEntry={handleUpdateEntry}
+          search={query}
           onAddChild={(parentId: string) => {
             setParentId(parentId);
             setCurrentPage('entry-editor');

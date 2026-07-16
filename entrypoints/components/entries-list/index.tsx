@@ -14,11 +14,15 @@ import ClassicIconButton from '@/entrypoints/components/buttons/classic-icon-but
 
 export default function EntriesList({
   entries,
+  matchesSearch,
+  search,
   deleteEntry,
   updateEntry,
   onAddChild,
 }: {
   entries: Entry[];
+  matchesSearch: Entry[];
+  search: string;
   deleteEntry: (id: string) => void;
   updateEntry: (updates: Entry) => void;
   onAddChild: (id: string) => void;
@@ -31,6 +35,12 @@ export default function EntriesList({
   } | null>(null);
 
   const [expandedIds, setExpandedIds] = useState<string[]>([]);
+
+  const matchingIds = new Set(
+    entries.filter((e) => matchesSearch.includes(e)).map((e) => e.id),
+  );
+
+  const visibleIds = new Set<string>();
 
   function geretatePalettes() {
     const palettes: Record<string, Palette> = {};
@@ -50,6 +60,29 @@ export default function EntriesList({
   }
 
   let depth = 0;
+
+  function addDescendants(parentId: string) {
+    for (const child of entries.filter((e) => e.parentId === parentId)) {
+      if (!visibleIds.has(child.id)) {
+        visibleIds.add(child.id);
+        addDescendants(child.id);
+      }
+    }
+  }
+
+  for (const id of matchingIds) {
+    visibleIds.add(id);
+    addDescendants(id);
+  }
+
+  const rootEntries =
+    search.trim() === ''
+      ? entries.filter((e) => e.parentId === null)
+      : entries.filter(
+          (e) =>
+            visibleIds.has(e.id) &&
+            (!e.parentId || !visibleIds.has(e.parentId)),
+        );
 
   function renderChildren(parentId: string | null, depth: number) {
     const children = getChildren(parentId);
@@ -114,8 +147,7 @@ export default function EntriesList({
       {/* {JSON.stringify(dropTarget)} */}
       {/* {JSON.stringify(draggedId)} */}
       {/* {JSON.stringify(entries)} */}
-      {entries
-        .filter((e) => e.parentId === null)
+      {rootEntries
         .sort((a, b) => a.order - b.order)
         .map((entry) => (
           <EntryElement
