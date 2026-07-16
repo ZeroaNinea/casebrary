@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { Coins } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
-import chroma from 'chroma-js';
 
 import { fetchEntries } from '@/features/entries/entries.thunks';
 import i18n from '@/utils/i18n';
+import supportedLocales from '@/utils/i18n/supported-locales';
 import { useAppDispatch, useAppSelector } from '@/utils/store';
 
 import ColorThemeSection from '@/entrypoints/components/options-sections/color-theme-section';
@@ -16,9 +16,9 @@ import applyTheme from '@/utils/theme/apply-theme';
 
 import RippleButton from '@/entrypoints/components/buttons/ripple-button';
 import RainbowButton from '@/entrypoints/components/buttons/rainbow-button';
-// import '@/entrypoints/components/buttons/rainbow-button/rainbow-content.css';
 
 import resolveThemeMode from '@/utils/theme/resolve-theme-mode.helper';
+
 import { ThemeMode } from '@/types/theme.interface';
 
 function App() {
@@ -35,9 +35,14 @@ function App() {
         neutralVariant: '#64748b',
         error: '#f43f5e',
       };
-  const mode = saved ? JSON.parse(saved).mode : 'system';
 
-  const [reactiveMode, setReactiveMode] = useState<ThemeMode | null>(null);
+  const [rippleMode, setrippleMode] = useState<ThemeMode>('light');
+
+  const [mode, setMode] = useState<ThemeMode>(() => {
+    const saved = localStorage.getItem('theme');
+
+    return saved ? JSON.parse(saved).mode : 'system';
+  });
 
   useEffect(() => {
     if (mode !== 'system') return;
@@ -45,7 +50,7 @@ function App() {
     const media = window.matchMedia('(prefers-color-scheme: dark)');
 
     function handleChange() {
-      setReactiveMode(media.matches ? 'dark' : 'light');
+      setrippleMode(media.matches ? 'dark' : 'light');
       applyTheme(createTheme(themeColors, media.matches ? 'dark' : 'light'));
     }
 
@@ -58,17 +63,15 @@ function App() {
 
   useEffect(() => {
     async function initializeLanguage() {
-      const supported = ['en', 'ru'];
-
       const saved = localStorage.getItem('language');
 
-      if (saved && supported.includes(saved)) {
+      if (saved && supportedLocales.includes(saved)) {
         document.documentElement.lang = saved;
         i18n.changeLanguage(saved);
       } else {
         const browserLanguage = navigator.language.split('-')[0];
 
-        const language = supported.includes(browserLanguage)
+        const language = supportedLocales.includes(browserLanguage)
           ? browserLanguage
           : 'en';
 
@@ -108,8 +111,14 @@ function App() {
         {t('generalTitle')}
       </h2>
       <p className="text-text/80">{t('generalDescription')}</p>
-      <LanguageSwitcherSection />
-      <ColorThemeSection />
+      <LanguageSwitcherSection rippleMode={rippleMode} />
+      <ColorThemeSection
+        mode={mode}
+        setMode={(mode) => {
+          setMode(mode);
+          setrippleMode(mode);
+        }}
+      />
       <BackupSection entries={entries} />
       <h2 className="text-2xl font-bold text-primary-title my-1">
         {t('privacyPolicyTitle')}
@@ -151,11 +160,7 @@ function App() {
         <RainbowButton
           className="flex items-center gap-2"
           onClick={() => {}}
-          mode={
-            resolveThemeMode(reactiveMode || 'light') === 'light'
-              ? 'dark'
-              : 'light'
-          }
+          mode={resolveThemeMode(rippleMode) === 'light' ? 'dark' : 'light'}
         >
           <Coins size={20} color="#e8a81e" />
           {t('donate')}

@@ -21,6 +21,7 @@ import CurrentPage from '@/types/current-page.alias';
 import Entry from '@/types/entry.interface';
 
 import i18n from '@/utils/i18n';
+import supportedLocales from '@/utils/i18n/supported-locales';
 import createTheme from '@/utils/theme';
 import applyTheme from '@/utils/theme/apply-theme';
 
@@ -60,17 +61,17 @@ function App() {
 
   useEffect(() => {
     async function initializeLanguage() {
-      const supported = ['en', 'ru'];
+      // const supported = ['en', 'ru'];
 
       const saved = localStorage.getItem('language');
 
-      if (saved && supported.includes(saved)) {
+      if (saved && supportedLocales.includes(saved)) {
         document.documentElement.lang = saved;
         i18n.changeLanguage(saved);
       } else {
         const browserLanguage = navigator.language.split('-')[0];
 
-        const language = supported.includes(browserLanguage)
+        const language = supportedLocales.includes(browserLanguage)
           ? browserLanguage
           : 'en';
 

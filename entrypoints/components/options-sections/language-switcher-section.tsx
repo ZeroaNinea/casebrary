@@ -1,14 +1,20 @@
 import { useTranslation } from 'react-i18next';
 
-import i18n from '@/utils/i18n';
-
 import RippleButton from '@/entrypoints/components/buttons/ripple-button';
+
+import i18n from '@/utils/i18n';
+import supportedLocales from '@/utils/i18n/supported-locales';
+import resolveThemeMode from '@/utils/theme/resolve-theme-mode.helper';
+
+import { ThemeMode } from '@/types/theme.interface';
 
 import './styles/language-switcher-section.css';
 
-import chroma from 'chroma-js';
-
-export default function LanguageSwitcherSection() {
+export default function LanguageSwitcherSection({
+  rippleMode,
+}: {
+  rippleMode: ThemeMode;
+}) {
   const { t } = useTranslation();
 
   const glassCards = [
@@ -59,9 +65,9 @@ export default function LanguageSwitcherSection() {
     },
   ];
 
-  function getRippleMode(value: string) {
-    return chroma.contrast(value || '', '#fff') > 4.5 ? 'light' : 'dark';
-  }
+  // function getRippleMode(value: string) {
+  //   return chroma.contrast(value || '', '#fff') > 4.5 ? 'light' : 'dark';
+  // }
 
   const colorBg = getComputedStyle(document.documentElement).getPropertyValue(
     '--color-bg',
@@ -71,9 +77,7 @@ export default function LanguageSwitcherSection() {
     if (code === 'system') {
       const browserLanguage = navigator.language.split('-')[0];
 
-      const supported = ['en', 'ru', 'hy', 'hyw', 'epo', 'uk', 'be', 'es'];
-
-      const resolved = supported.includes(browserLanguage)
+      const resolved = supportedLocales.includes(browserLanguage)
         ? browserLanguage
         : 'en';
 
@@ -126,7 +130,9 @@ export default function LanguageSwitcherSection() {
             {glassCard.languages.map((language) => (
               <RippleButton
                 key={language.code}
-                mode={getRippleMode(colorBg)}
+                mode={
+                  resolveThemeMode(rippleMode) === 'light' ? 'dark' : 'light'
+                }
                 onClick={() => changeLanguage(language.code)}
                 className="
                   relative z-10

@@ -13,7 +13,13 @@ import resolveThemeMode from '@/utils/theme/resolve-theme-mode.helper';
 
 import presets from './presets/presets';
 
-export default function ColorThemeSection() {
+export default function ColorThemeSection({
+  mode,
+  setMode,
+}: {
+  mode: ThemeMode;
+  setMode: (mode: ThemeMode) => void;
+}) {
   const { t } = useTranslation();
 
   const [themeColors, setThemeColors] = useState<ThemeColors>(() => {
@@ -29,12 +35,6 @@ export default function ColorThemeSection() {
           neutralVariant: '#64748b',
           error: '#f43f5e',
         };
-  });
-
-  const [mode, setMode] = useState<ThemeMode>(() => {
-    const saved = localStorage.getItem('theme');
-
-    return saved ? JSON.parse(saved).mode : 'system';
   });
 
   const inputs = [
