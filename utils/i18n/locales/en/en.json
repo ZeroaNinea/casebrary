@@ -64,5 +64,7 @@
   "uploadEntriesIndexedDB": "Upload Entries to IndexedDB",
   "backupDescription": "Download your entries in JSON format. You can use this to restore your entries later. Upload JSON files back to IndexedDB to restore your entries.",
 
-  "version": "Version"
+  "version": "Version",
+
+  "donate": "Donate"
 }

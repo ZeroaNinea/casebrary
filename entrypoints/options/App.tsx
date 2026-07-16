@@ -1,9 +1,11 @@
 import { useEffect } from 'react';
+import { Coins } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
+import chroma from 'chroma-js';
 
 import { fetchEntries } from '@/features/entries/entries.thunks';
 import i18n from '@/utils/i18n';
 import { useAppDispatch, useAppSelector } from '@/utils/store';
-import { useTranslation } from 'react-i18next';
 
 import ColorThemeSection from '@/entrypoints/components/options-sections/color-theme-section';
 import BackupSection from '@/entrypoints/components/options-sections/backup-section';
@@ -13,6 +15,10 @@ import createTheme from '@/utils/theme';
 import applyTheme from '@/utils/theme/apply-theme';
 
 import RippleButton from '@/entrypoints/components/buttons/ripple-button';
+import RainbowButton from '@/entrypoints/components/buttons/rainbow-button';
+// import '@/entrypoints/components/buttons/rainbow-button/rainbow-content.css';
+
+import resolveThemeMode from '@/utils/theme/resolve-theme-mode.helper';
 
 function App() {
   const { t } = useTranslation();
@@ -111,11 +117,12 @@ function App() {
           v1.0.0
         </span>
       </p>
-      <RippleButton
-        className="
+      <div className="flex gap-5 px-8 my-4">
+        <RippleButton
+          className="
           flex items-center gap-2
-          px-5 py-2.5
-          text-white/70
+          px-5 py-1
+          text-white/70 text-[16px]
           bg-surface-container-filled hover:bg-surface-container-filled-hover
           rounded-xl cursor-pointer font-semibold text-sm
           border border-border/80
@@ -123,17 +130,29 @@ function App() {
           hover:scale-[1.02] active:scale-[0.97] hover:-translate-y-0.5 active:translate-y-0
           transition-all duration-200 ease-out
         "
-        onClick={() =>
-          setTimeout(
-            () =>
-              window.open('https://github.com/ZeroaNinea/casebrary', '_blank'),
-            200,
-          )
-        }
-      >
-        <img src="./github.svg" alt="GitHub" width={20} />
-        <span className="font-bold">GitHub</span>
-      </RippleButton>
+          onClick={() =>
+            setTimeout(
+              () =>
+                window.open(
+                  'https://github.com/ZeroaNinea/casebrary',
+                  '_blank',
+                ),
+              200,
+            )
+          }
+        >
+          <img src="./github.svg" alt="GitHub" width={20} />
+          <span className="font-bold">GitHub</span>
+        </RippleButton>
+        <RainbowButton
+          className="flex items-center gap-2"
+          onClick={() => {}}
+          mode={resolveThemeMode(mode) === 'light' ? 'dark' : 'light'}
+        >
+          <Coins size={20} color="#e8a81e" />
+          {t('donate')}
+        </RainbowButton>
+      </div>
     </div>
   );
 }

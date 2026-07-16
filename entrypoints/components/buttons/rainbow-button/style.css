@@ -1,0 +1,58 @@
+/* Rainbow border */
+.rainbow-btn::before {
+  background: linear-gradient(
+    90deg,
+    red 0%,
+    orange 14%,
+    yellow 28%,
+    green 42%,
+    cyan 56%,
+    blue 70%,
+    violet 84%,
+    red 100%
+  );
+  background-size: 200% 100%;
+  animation: rainbowMove 4s linear infinite;
+  will-change: background-position;
+
+  /* Border mask trick */
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+}
+
+/* Rainbow text */
+.rainbow-btn {
+  background: linear-gradient(
+    90deg,
+    red 0%,
+    orange 14%,
+    yellow 28%,
+    green 42%,
+    cyan 56%,
+    blue 70%,
+    violet 84%,
+    red 100%
+  );
+
+  background-size: 200% 100%;
+  animation: rainbowMove 4s linear infinite;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  will-change: background-position;
+}
+
+@keyframes rainbowMove {
+  from {
+    background-position: 0% 0%;
+  }
+  to {
+    background-position: 200% 0%;
+  }
+}
