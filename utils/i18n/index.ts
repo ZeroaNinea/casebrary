@@ -7,6 +7,7 @@ import esLang from './locales/es/es.json';
 import hyLang from './locales/hy/hy.json';
 import hywLang from './locales/hyw/hyw.json';
 import eoLang from './locales/eo/eo.json';
+import ukLang from './locales/uk/uk.json';
 
 // the translations
 // (tip move them in a JSON file and import them,
@@ -29,6 +30,9 @@ const resources = {
   },
   eo: {
     translation: eoLang,
+  },
+  uk: {
+    translation: ukLang,
   },
 };
 
