@@ -32,6 +32,7 @@
   "updateProperty": "Actualizar Propiedad",
   "cancelUpdate": "Cancelar Actualización",
   "titleRequired": "Un titulo es requerido",
+  "noProperties": "Esta entrada aún no tiene propiedades.",
 
   "privacyPolicyTitle": "Politica de Privacidad",
   "privacyPolicyDescription": "Casebrary guarda todos los datos localmente en tu buscador usando IndexedDB. La extensión no colleciona, guarda o vende tus datos personales. Ningun servicio de analitica o collección de datos es usado. Si se añade syncronización con la nube, esta descripción sera actualizada.",
@@ -66,7 +67,5 @@
 
   "version": "Version",
 
-  "donate": "Donar",
-
-  "noProperties": "Esta entrada aún no tiene propiedades."
+  "donate": "Donar"
 }

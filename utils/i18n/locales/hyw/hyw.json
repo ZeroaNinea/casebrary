@@ -28,10 +28,11 @@
   "save": "Հաստատել",
   "addChild": "Զաւակ մը աւելցնել",
   "delete": "Ջնջել",
-  "update": "Update",
-  "updateProperty": "Update Property",
-  "cancelUpdate": "Cancel Update",
-  "titleRequired": "Title is required.",
+  "update": "Թարմացնել",
+  "updateProperty": "Հատկութիւն մը թարմացնել",
+  "cancelUpdate": "Չեղարկել թարմացմումը",
+  "titleRequired": "Գլխագիը պարտադիր է։",
+  "noProperties": "Այս գրառումը տակաւին հատկութիւններ չունի։",
 
   "privacyPolicyTitle": "Privacy Policy",
   "privacyPolicyDescription": "Casebrary stores all data locally in your browser using IndexedDB. The extension does not collect, transmit, or sell your personal data. No analytics or tracking services are used. If cloud synchronization is added in a future version, this policy will be updated accordingly.",
@@ -66,7 +67,5 @@
 
   "version": "Version",
 
-  "donate": "Donate",
-
-  "noProperties": "This entry has no properties yet."
+  "donate": "Donate"
 }

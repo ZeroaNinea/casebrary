@@ -32,6 +32,7 @@
   "updateProperty": "Update Property",
   "cancelUpdate": "Cancel Update",
   "titleRequired": "Title is required.",
+  "noProperties": "This entry has no properties yet.",
 
   "privacyPolicyTitle": "Privacy Policy",
   "privacyPolicyDescription": "Casebrary stores all data locally in your browser using IndexedDB. The extension does not collect, transmit, or sell your personal data. No analytics or tracking services are used. If cloud synchronization is added in a future version, this policy will be updated accordingly.",
@@ -66,7 +67,5 @@
 
   "version": "Version",
 
-  "donate": "Donate",
-
-  "noProperties": "This entry has no properties yet."
+  "donate": "Donate"
 }
