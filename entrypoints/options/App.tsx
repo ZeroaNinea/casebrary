@@ -125,7 +125,7 @@ function App() {
       </h2>
       <p className="text-text/80">{t('privacyPolicyDescription')}</p>
       <p className="text-text/80 my-2">
-        <b className="font-bold">{t('version')}:</b>{' '}
+        <b className="font-bold">{t('version')}</b>
         <span className="text-sm bg-primary-container text-text px-2 py-1 rounded-full">
           v1.0.0
         </span>

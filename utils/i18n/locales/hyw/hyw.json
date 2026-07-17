@@ -35,37 +35,37 @@
   "noProperties": "Այս գրառումը տակաւին հատկութիւններ չունի։",
 
   "privacyPolicyTitle": "Գաղտնիութեան քաղաքականութիւն",
-  "privacyPolicyDescription": "Casebrary-ն բոլոր տվյալները կը պահէ ձեր զննարկիչի մէջ՝ օգտագործելով IndexedDB-ն: Ընդլայնումը չի հաւաքեր, փոխանցեր կամ վաճառեր ձեր անձնական տվյալները: Չեն օգտագործուեր վերլուծական կամ հետեւողական ծառայութիւններ: Եթե ապագայ տարբերակին մէջ աւելցուի ամպային համաժամեցում, այս քաղաքականութիւնը համապատասխանաբար պիտի թարմացուի:",
+  "privacyPolicyDescription": "Casebrary-ն բոլոր տուեալները կը պահէ ձեր զննարկիչի մէջ՝ օգտագործելով IndexedDB-ն: Ընդլայնումը չի հաւաքեր, փոխանցեր կամ վաճառեր ձեր անձնական տուեալները: Չեն օգտագործուեր վերլուծական կամ հետեւողական ծառայութիւններ: Եթէ ապագայ տարբերակին մէջ աւելցուի ամպային համաժամեցում, այս քաղաքականութիւնը համապատասխանաբար պիտի թարմացուի:",
 
   "optionsTitle": "Ընտրանքներ",
   "welcomeToCasebrary": "Բարի գալո՛ւստ Casebrary։",
-  "welcomeMessage": "Casebrary is a browser extension for organizing notes in a hierarchical structure. It is designed to help moderators and power users quickly manage large collections of information. Current version: local storage only. Future versions will add optional encrypted cloud synchronization and collaboration.",
-  "optionsDescription": "Customize Casebrary's behavior.",
-  "generalTitle": "General",
-  "generalDescription": "Customize how Casebrary looks and which language it uses.",
+  "welcomeMessage": "Casebrary-ն զննարկիչի ընդլայնում է, որը նախատեսուած է գրառումները հիերարխիկ կառուցուածքով կազմակերպելու համար: Այն նախատեսուած է մոտերաթորներուն եւ փորձառու օգտատէրերուն օգնելու արագ կառավարել տեղեկատւութեան մեծ հաւաքածուները: Ներկայիս տարբերակը՝ միայն տեղական պահեստաւորում: Ապագայ տարբերակները կ՚աւելացնեն լրացուցիչ ծածկագրուած ամպային համաժամեցում եւ համագործակցութիւն:",
+  "optionsDescription": "Աիհատականացրէք Casebrary-ի վարքագիծը։",
+  "generalTitle": "Գլխաւոր",
+  "generalDescription": "Անհատականացրէք Casebrary-ի տեսքը եւ օգտագործուող լեզուն։",
 
-  "colorThemeTitle": "Color Theme Customization",
-  "colorThemeDescription": "Customize the colors used in Casebrary.",
-  "primaryLabel": "Primary",
-  "secondaryLabel": "Secondary",
-  "tertiaryLabel": "Tertiary",
-  "neutralLabel": "Neutral",
-  "neutralVariantLabel": "Neutral Variant",
-  "errorLabel": "Error",
+  "colorThemeTitle": "Գոյնային թեմայի անհատականացում",
+  "colorThemeDescription": "Անհատականացրէք Casebrary-ի մէջ օգտագործուող գոյները։",
+  "primaryLabel": "Առաջնային",
+  "secondaryLabel": "Երկրորային",
+  "tertiaryLabel": "Երրորդային",
+  "neutralLabel": "Չեզոք",
+  "neutralVariantLabel": "Չեզոք տարբերակ",
+  "errorLabel": "Սխալ",
 
-  "light": "Light",
-  "dark": "Dark",
-  "system": "System",
+  "light": "Բաց",
+  "dark": "Մուգ",
+  "system": "Ըստ համակարգին",
 
-  "languageSwitcherTitle": "Language Switcher",
-  "languageSwitcherDescription": "Choose your preferred language.",
+  "languageSwitcherTitle": "Լեզվի փոխարկիչ",
+  "languageSwitcherDescription": "Ընտրեք ձեր նախընտրած լեզուն։",
 
-  "backupTitle": "Backup",
-  "downloadEntries": "Download Entries",
-  "uploadEntriesIndexedDB": "Upload Entries to IndexedDB",
-  "backupDescription": "Download your entries in JSON format. You can use this to restore your entries later. Upload JSON files back to IndexedDB to restore your entries.",
+  "backupTitle": "Պահուստաւորում",
+  "downloadEntries": "Ներբեռնել գրառումները",
+  "uploadEntriesIndexedDB": "Վերբեռնել գրառումները IndexedDB",
+  "backupDescription": "Ներբեռնէք ձեր գրառումները JSON ձևաչափով: Դուք կը կարնաք օգտագործել սա՝ ձեր գրառումները հետագայում վերականգնելու համար: Վերբեռնեք JSON ֆայլերը հետ IndexedDB՝ ձեր գրառումները վերականգնելու համար:",
 
-  "version": "Version",
+  "version": "Տարբերակ․ ",
 
-  "donate": "Donate"
+  "donate": "Նուիրաբերել"
 }

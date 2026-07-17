@@ -61,11 +61,11 @@
   "languageSwitcherDescription": "Ընտրեք ձեր նախընտրած լեզուն։",
 
   "backupTitle": "Պահուստավորում",
-  "downloadEntries": "Ներբռնել գրառումները",
+  "downloadEntries": "Ներբեռնել գրառումները",
   "uploadEntriesIndexedDB": "Վերբեռնել գրառումները IndexedDB",
   "backupDescription": "Ներբեռնեք ձեր գրառումները JSON ձևաչափով: Դուք կարող եք օգտագործել սա՝ ձեր գրառումները հետագայում վերականգնելու համար: Վերբեռնեք JSON ֆայլերը հետ IndexedDB՝ ձեր գրառումները վերականգնելու համար:",
 
-  "version": "Տարբերակ",
+  "version": "Տարբերակ․ ",
 
   "donate": "Նվիրաբերել"
 }

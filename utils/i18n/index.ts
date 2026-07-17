@@ -5,6 +5,7 @@ import enLang from './locales/en/en.json';
 import ruLang from './locales/ru/ru.json';
 import esLang from './locales/es/es.json';
 import hyLang from './locales/hy/hy.json';
+import hywLang from './locales/hyw/hyw.json';
 
 // the translations
 // (tip move them in a JSON file and import them,
@@ -21,6 +22,9 @@ const resources = {
   },
   hy: {
     translation: hyLang,
+  },
+  hyw: {
+    translation: hywLang,
   },
 };
 

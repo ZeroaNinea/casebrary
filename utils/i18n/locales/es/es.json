@@ -65,7 +65,7 @@
   "uploadEntriesIndexedDB": "Subir instancias",
   "backupDescription": "Decarga tus instancuas como un JSON. Pueses usar esto para restaurar tus instancias. Subir los JSONs a IndexedDB para restaurar tus instancias.",
 
-  "version": "Version",
+  "version": "Versión: ",
 
   "donate": "Donar"
 }
