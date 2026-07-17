@@ -49,8 +49,8 @@
   "primaryLabel": "Основной цвет",
   "secondaryLabel": "Второстепенный цвет",
   "tertiaryLabel": "Третестепенный цвет",
-  "neutralLabel": "Средний цвет",
-  "neutralVariantLabel": "Вариант среднего цвета",
+  "neutralLabel": "Нейтральний цвет",
+  "neutralVariantLabel": "Вариант нейтрального цвета",
   "errorLabel": "Ошибка",
 
   "light": "Светлая",
