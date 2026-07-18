@@ -9,6 +9,7 @@ import hywLang from './locales/hyw/hyw.json';
 import eoLang from './locales/eo/eo.json';
 import ukLang from './locales/uk/uk.json';
 import beLang from './locales/be/be.json';
+import kaLang from './locales/ka/ka.json';
 
 // the translations
 // (tip move them in a JSON file and import them,
@@ -37,6 +38,9 @@ const resources = {
   },
   be: {
     translation: beLang,
+  },
+  ka: {
+    translation: kaLang,
   },
 };
 

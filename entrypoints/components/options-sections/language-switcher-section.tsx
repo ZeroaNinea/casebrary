@@ -55,7 +55,10 @@ export default function LanguageSwitcherSection({
       shadow: '#EC4899', // Pink
       shadowHover: '#F472B6',
       delay: `${-Math.random() * 40}s`,
-      languages: [{ code: 'es', label: 'Español' }],
+      languages: [
+        { code: 'es', label: 'Español' },
+        { code: 'ka', label: 'ქართული' },
+      ],
     },
     {
       id: 5,
