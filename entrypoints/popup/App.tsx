@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Menu, Settings, Globe, Plus } from 'lucide-react';
+import { Settings, Globe, Plus } from 'lucide-react';
 
 import browser from 'webextension-polyfill';
 
