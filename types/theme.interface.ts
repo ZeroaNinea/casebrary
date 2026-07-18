@@ -62,4 +62,11 @@ export default interface Theme {
   errorContainer: string;
   onErrorContainer: string;
   errorBorder: string;
+
+  logoPrimary: string;
+  logoSecondary: string;
+  logoTertiary: string;
+  logoNeutral: string;
+  logoNeutralVariant: string;
+  logoError: string;
 }

@@ -53,6 +53,13 @@ export default function createTheme(
       errorContainer: palettes.error['100'],
       onErrorContainer: palettes.error['50'],
       errorBorder: palettes.error['500'],
+
+      logoPrimary: palettes.primary['900'],
+      logoSecondary: palettes.secondary['300'],
+      logoTertiary: palettes.tertiary['300'],
+      logoNeutral: palettes.neutral['300'],
+      logoNeutralVariant: palettes.neutralVariant['300'],
+      logoError: palettes.error['300'],
     };
 
     return theme;
@@ -91,6 +98,13 @@ export default function createTheme(
       errorContainer: palettes.error['900'],
       onErrorContainer: palettes.error['50'],
       errorBorder: palettes.error['400'],
+
+      logoPrimary: palettes.primary['50'],
+      logoSecondary: palettes.secondary['200'],
+      logoTertiary: palettes.tertiary['200'],
+      logoNeutral: palettes.neutral['200'],
+      logoNeutralVariant: palettes.neutralVariant['200'],
+      logoError: palettes.error['200'],
     };
 
     return theme;

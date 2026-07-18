@@ -12,6 +12,7 @@ import SearchField from '@/entrypoints/components/inputs/input-field';
 import EntryEditorPage from '@/entrypoints/components/pages/entry-editor.page';
 import EntryReadingPage from '@/entrypoints/components/pages/entry-reading.page';
 import LanguageDropdown from '@/entrypoints/components/language-dropdown';
+import LogoComponent from '@/entrypoints/components/logo';
 
 import EntryList from '@/entrypoints/components/entries-list';
 
@@ -152,9 +153,17 @@ function App() {
       {/* Sticky header */}
       <div className="flex justify-between items-center w-full px-4.5 py-3.5 border-b border-border/10 backdrop-blur-md bg-white/10 z-10 shrink-0">
         <div className="flex gap-2.5 items-center">
-          <IconButton title="Menu">
-            <Menu size={18} color="var(--color-primary-title)" />
-          </IconButton>
+          <LogoComponent
+            width={50}
+            height={50}
+            backgroundColor="color-mix(in lch, var(--color-logo-neutral) 5%, transparent)"
+            primaryColor="var(--color-logo-primary)"
+            secondaryColor="var(--color-logo-secondary)"
+            tertiaryColor="var(--color-logo-tertiary)"
+            neutralColor="var(--color-logo-neutral)"
+            neutralVariantColor="var(--color-logo-neutral-variant)"
+            errorColor="var(--color-logo-error)"
+          />
           <h1 className="font-extrabold text-base tracking-wide bg-linear-to-r from-(--color-primary-700) to-(--color-secondary-600) bg-clip-text text-transparent">
             Casebrary
           </h1>
