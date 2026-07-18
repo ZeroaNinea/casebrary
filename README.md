@@ -81,6 +81,12 @@ Backend (planned):
 - NestJS
 - PostgreSQL
 
+## Credits
+
+- UI elements: https://github.com/thesampat
+- Georgian translation: https://github.com/IosebiGames
+- Spanish translation: https://github.com/Ivysaur-Mrquestionmarks
+
 ## Status
 
 🚧 Casebrary is currently under active development.
