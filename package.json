@@ -1,6 +1,6 @@
 {
-  "name": "wxt-react-starter",
-  "description": "manifest.json description",
+  "name": "Casebrary",
+  "description": "A browser extension that allows to create small notes and share between users.",
   "private": true,
   "version": "0.0.0",
   "type": "module",
