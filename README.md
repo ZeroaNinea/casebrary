@@ -1,52 +1,29 @@
 # Casebrary
 
-> Organize cases, notes, and evidence in one place.
+<img src="./public/logo.svg" width="120" alt="Casebrary logo" />
 
-Casebrary is a browser extension that helps moderators and community managers keep track of users, cases, notes, message links, and moderation history without relying on scattered documents or chat messages. Initially created for Discord.
+> Organize information in an infinitely nested hierarchy.
 
-Designed with privacy and productivity in mind, Casebrary keeps your team's knowledge organized and searchable.
+Casebrary is an open-source browser extension for organizing structured information. It allows you to create hierarchical entries containing custom properties such as text, numbers, dates, images, URLs, and more.
 
-## Implementing Features
+All data is stored locally in your browser using IndexedDB. No accounts, tracking, or cloud services are required.
 
-### 📝 Notes
+## Features
 
-Store personal or shared notes about users and cases.
-
-### 🔗 Message Links
-
-Save links to important Discord messages as evidence.
-
-### 🏷️ Tags
-
-Categorize users and cases with custom tags.
-
-### 🔍 Search
-
-Quickly search notes, users, tags, and message links.
-
-### 📅 Last Interaction
-
-Keep track of the last time a moderator interacted with a user.
-
-### 🕒 History
-
-Maintain a timeline of moderation actions and updates.
-
-### ⭐ Trust Status
-
-Assign custom trust levels or statuses to users.
-
-### 🌐 Server Separation
-
-Keep data organized independently for each server.
-
-### 📤 Export
-
-Export your data as JSON or CSV.
-
-### ⌨️ Keyboard Shortcuts
-
-Navigate and manage Casebrary efficiently using keyboard shortcuts.
+- 🌳 Infinite hierarchy of entries
+- 🔍 Search through your entries
+- 📝 Custom properties
+  - Text
+  - Number
+  - Boolean
+  - Date
+  - URL
+  - Image
+- 🎨 Fully customizable color themes
+- 🌍 Multiple interface languages
+- 💾 Local IndexedDB storage
+- 📤 Import and export entries as JSON
+- 🔒 Privacy-friendly (all data stays on your device)
 
 ## Planned Features
 
@@ -59,27 +36,25 @@ Navigate and manage Casebrary efficiently using keyboard shortcuts.
 - ☁️ Cloud backups
 - 🔔 Notifications
 
-## Pro Features (Planned)
-
-- Cloud synchronization
-- Shared moderation database
-- Screenshot storage
-- Advanced permissions
-- Automatic backups
-- Team collaboration tools
-
 ## Technology Stack
 
 - React
 - TypeScript
 - WXT
+- Redux
 - IndexedDB
-- Browser Extension APIs
+- Tailwind CSS
+- chroma-js
 
-Backend (planned):
+## Installation
 
-- NestJS
-- PostgreSQL
+See the installation instructions below for:
+
+- Firefox
+- Chrome
+- Microsoft Edge
+
+Install: https://github.com/ZeroaNinea/casebrary-build
 
 ## Credits
 
@@ -87,12 +62,6 @@ Backend (planned):
 - Georgian translation: https://github.com/IosebiGames
 - Spanish translation: https://github.com/Ivysaur-Mrquestionmarks
 
-## Status
-
-🚧 Casebrary is currently under active development.
-
-Feedback, feature suggestions, and contributions are welcome.
-
 ## License
 
-MIT License: The link should be added here later.
+MIT
