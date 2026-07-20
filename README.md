@@ -48,14 +48,14 @@ All data is stored locally in your browser using IndexedDB. No accounts, trackin
 
 ## Screenshots
 
-- <img src="./public/screenshots/1.png" alt="Screenshot 1" />
-- <img src="./public/screenshots/2.png" alt="Screenshot 2" />
-- <img src="./public/screenshots/3.png" alt="Screenshot 3" />
-- <img src="./public/screenshots/4.png" alt="Screenshot 4" />
-- <img src="./public/screenshots/5.png" alt="Screenshot 5" />
-- <img src="./public/screenshots/6.png" alt="Screenshot 6" />
-- <img src="./public/screenshots/7.png" alt="Screenshot 7" />
-- <img src="./public/screenshots/8.png" alt="Screenshot 8" />
+<img src="./public/screenshots/1.png" alt="Screenshot 1" />
+<img src="./public/screenshots/2.png" alt="Screenshot 2" />
+<img src="./public/screenshots/3.png" alt="Screenshot 3" />
+<img src="./public/screenshots/4.png" alt="Screenshot 4" />
+<img src="./public/screenshots/5.png" alt="Screenshot 5" />
+<img src="./public/screenshots/6.png" alt="Screenshot 6" />
+<img src="./public/screenshots/7.png" alt="Screenshot 7" />
+<img src="./public/screenshots/8.png" alt="Screenshot 8" />
 
 ## Installation
 
