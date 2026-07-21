@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Check, ChevronDown, X } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
+
 import RippleButton from '@/entrypoints/components/buttons/ripple-button';
 import { propertyTypes, PropertyType } from '@/types/entry.interface';
 
@@ -20,6 +21,7 @@ import { IconName } from '@/utils/icons';
 import { Property } from '@/types/entry.interface';
 
 import resolveThemeMode from '@/utils/theme/resolve-theme-mode.helper';
+import i18n from '@/utils/i18n';
 
 export default function PropertyEditor({
   updatingProperty,
@@ -119,14 +121,20 @@ export default function PropertyEditor({
       <h2 className="font-bold text-primary-title text-lg m-2 mx-[8%]">
         {t('propertyTitle')}
       </h2>
-      <div className="flex justify-center bg-surface-container/20 p-1.5 rounded-2xl border border-border/10 max-w-[92%] mx-auto shadow-xs">
+      <div
+        className={`
+          flex justify-center
+          bg-surface-container/20 p-1.5 rounded-2xl border border-border/10
+          max-w-[${i18n.language === 'ka' ? '100%' : '92%'}] mx-auto shadow-xs
+        `}
+      >
         {propertyTypes.map((type, index) => (
           <RippleButton
             key={type}
-            title="Entry"
+            title={t(`property-${index}`)}
             mode="dark"
             className={`
-              flex items-center justify-center gap-1.5 py-1.5 px-3
+              flex ${i18n.language === 'ka' ? 'flex-wrap' : ''} items-center justify-center gap-1.5 py-1.5 px-3
               rounded-xl cursor-pointer font-semibold
               transition-all duration-200
               ${
