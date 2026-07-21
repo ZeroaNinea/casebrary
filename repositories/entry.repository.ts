@@ -164,7 +164,9 @@ export default class EntryRepository {
     const tx = db.transaction('entries', 'readwrite');
 
     // const rootEntries = await this.getChildren(null);
-    const rootEntries = entries.filter((e) => e.parentId === null);
+    const rootEntries = entries
+      .filter((e) => e.parentId === null)
+      .sort((a, b) => a.order - b.order);
     let nextRootOrder = rootEntries.length;
     const ids = new Set(entries.map((e) => e.id));
 
