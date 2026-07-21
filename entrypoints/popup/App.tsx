@@ -223,7 +223,7 @@ function App() {
             onChange={setQuery}
           />
         </div>
-        {/* {JSON.stringify(filteredEntries)}) */}
+        {/* {JSON.stringify(entries)}) */}
         <EntryList
           entries={entries}
           matchesSearch={filteredEntries}

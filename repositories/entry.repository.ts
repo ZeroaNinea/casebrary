@@ -163,14 +163,39 @@ export default class EntryRepository {
 
     const tx = db.transaction('entries', 'readwrite');
 
-    await tx.store.clear();
+    // const rootEntries = await this.getChildren(null);
+    const rootEntries = entries.filter((e) => e.parentId === null);
+    let nextRootOrder = rootEntries.length;
+    const ids = new Set(entries.map((e) => e.id));
 
     for (const entry of entries) {
-      await tx.store.put(entry);
+      if (
+        entry.parentId !== null &&
+        !ids.has(entry.parentId) &&
+        !(await db.get('entries', entry.parentId))
+      ) {
+        throw new Error(`Missing parent: ${entry.parentId}`);
+      }
     }
+
+    for (const entry of entries) {
+      const imported = { ...entry };
+
+      if (imported.parentId === null) {
+        imported.order = nextRootOrder++;
+      }
+
+      await tx.store.put(imported);
+    }
+
+    // await tx.store.clear();
+
+    // for (const entry of entries) {
+    //   await tx.store.put(entry);
+    // }
 
     await tx.done;
 
-    return entries;
+    return await this.getAllEntries();
   }
 }
