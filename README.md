@@ -75,4 +75,4 @@ Install: https://github.com/ZeroaNinea/casebrary-build
 
 ## License
 
-MIT
+MIT: [LICENSE](./LICENSE)

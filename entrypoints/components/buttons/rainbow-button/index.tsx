@@ -4,6 +4,7 @@ import './style.css';
 interface Props {
   onClick: () => void;
   mode: 'light' | 'dark';
+  title?: string;
   className?: string;
   children: React.ReactNode;
 }
@@ -11,12 +12,14 @@ interface Props {
 export default function RainbowButton({
   onClick,
   mode,
+  title,
   className,
   children,
 }: Props) {
   return (
     <RippleButton
       mode={mode}
+      title={title}
       className={`rainbow-btn
         relative
         p-[12px_24px]
