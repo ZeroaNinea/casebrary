@@ -15,9 +15,9 @@ import createTheme from '@/utils/theme';
 import applyTheme from '@/utils/theme/apply-theme';
 
 import RippleButton from '@/entrypoints/components/buttons/ripple-button';
-import RainbowButton from '@/entrypoints/components/buttons/rainbow-button';
+// import RainbowButton from '@/entrypoints/components/buttons/rainbow-button';
 
-import resolveThemeMode from '@/utils/theme/resolve-theme-mode.helper';
+// import resolveThemeMode from '@/utils/theme/resolve-theme-mode.helper';
 
 import { ThemeMode } from '@/types/theme.interface';
 
@@ -157,14 +157,14 @@ function App() {
           <img src="./github.svg" alt="GitHub" width={20} />
           <span className="font-bold">GitHub</span>
         </RippleButton>
-        <RainbowButton
+        {/* <RainbowButton
           className="flex items-center gap-2"
           onClick={() => {}}
           mode={resolveThemeMode(rippleMode) === 'light' ? 'dark' : 'light'}
         >
           <Coins size={20} color="#e8a81e" />
           {t('donate')}
-        </RainbowButton>
+        </RainbowButton> */}
       </div>
     </div>
   );
